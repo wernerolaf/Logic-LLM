@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "ar_lsat_200006_1-G_1_1",
+    "question": "Which one of the following is a complete and accurate list of the children who must be among those assigned to shared lockers?",
+    "answer": "E",
+    "predicted_reasoning": "Fred must be assigned to locker 3. Nita's locker cannot be adjacent to Trisha's locker. Therefore, Nita and Trisha must be assigned to lockers 1 and 5. Since Juan must share a locker, he must be assigned to locker 2. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_1_2",
+    "question": "If Trisha is assigned to locker 3 and Marc alone is assigned to locker 1, then which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since Trisha is assigned to locker 3, Nita's locker cannot be adjacent to Trisha's locker. Therefore, Nita is assigned to locker 1 or 2. Since Marc alone is assigned to locker 1, Nita is assigned to locker 2. Since Fred must be assigned to locker 3, Juan is assigned to locker 4",
+    "predicted_answer": "Since Trisha is assigned to locker 3, Nita's locker cannot be adjacent to Trisha's locker. Therefore, Nita is assigned to locker 1 or 2. Since Marc alone is assigned to locker 1, Nita is assigned to locker 2. Since Fred must be assigned to locker 3, Juan is assigned to locker 4",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_1_3",
+    "question": "If the four boys are assigned to consecutively numbered lockers and Juan is assigned to locker 5, then which one of the following is a complete and accurate list of lockers each of which CANNOT be a shared locker?",
+    "answer": "D",
+    "predicted_reasoning": "Since Fred is assigned to locker 3, Juan must be assigned to locker 5. Since Juan must share a locker, he must share locker 5 with a girl. Since Rachel cannot share a locker, Nita must share locker 5 with Juan. Since Nita's locker cannot be adjacent to Trisha's locker, Trisha must be assigned to lock",
+    "predicted_answer": "Since Fred is assigned to locker 3, Juan must be assigned to locker 5. Since Juan must share a locker, he must share locker 5 with a girl. Since Rachel cannot share a locker, Nita must share locker 5 with Juan. Since Nita's locker cannot be adjacent to Trisha's locker, Trisha must be assigned to lock",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_1_4",
+    "question": "Once Rachel has been assigned to a locker, what is the maximum number of different lockers each of which could be the locker to which Juan is assigned?",
+    "answer": "C",
+    "predicted_reasoning": "Since Fred must be assigned to locker 3, we can rule out option A. Since Nita's locker cannot be adjacent to Trisha's locker, we can rule out option E. Since Rachel cannot share a locker, we can rule out option D. Since Juan must share a locker, we can rule out option B. Therefore, the final answer is C.",
+    "predicted_answer": "Since Fred must be assigned to locker 3, we can rule out option A. Since Nita's locker cannot be adjacent to Trisha's locker, we can rule out option E. Since Rachel cannot share a locker, we can rule out option D. Since Juan must share a locker, we can rule out option B. Therefore, the final answer is C.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_1_5",
+    "question": "If the first three lockers are assigned to girls, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Fred must be assigned to locker 3, we can rule out option B. Since Nita's locker cannot be adjacent to Trisha's locker, we can rule out option C. Since Rachel cannot share a locker, we can rule out option D. Since Juan must share a locker, we can rule out option E. Therefore, the final answer is A.",
+    "predicted_answer": "Since Fred must be assigned to locker 3, we can rule out option B. Since Nita's locker cannot be adjacent to Trisha's locker, we can rule out option C. Since Rachel cannot share a locker, we can rule out option D. Since Juan must share a locker, we can rule out option E. Therefore, the final answer is A.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_1_6",
+    "question": "If lockers 1 and 2 are each assigned to one boy and are not shared lockers, then locker 4 must be assigned to",
+    "answer": "C",
+    "predicted_reasoning": "Since lockers 1 and 2 are each assigned to one boy and are not shared lockers, lockers 3 and 4 must be shared lockers. Since Fred must be assigned to locker 3, locker 4 must be assigned to Juan. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 1",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_7",
+    "question": "Which one of the following could be a complete and accurate list of the types of CDs that are on sale?",
+    "answer": "E",
+    "predicted_reasoning": "If both types of pop are on sale, then all soul is. If either type of rap is on sale, then no soul is. Therefore, we can rule out option A and B. If both types of jazz are on sale, then no rap is. If neither type of jazz is on sale, then new pop is. Therefore, we can rule out option C. If both types of pop are on sale, then all soul is. Therefore, we can rule out option D. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_8",
+    "question": "If new soul is not on sale, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "If new soul is not on sale, then both types of jazz are on sale. If both types of jazz are on sale, then no rap is on sale. Therefore, new rap is not on sale. The final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 100 employees, including 10 managers. Each employee is either a manager or a nonmanager. Each employee is either a member of the board of directors or not a member of the board of directors. The following conditions must",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_9",
+    "question": "If both types of jazz are on sale, then which one of the following is the minimum number of types of new CDs that could be included in the sale?",
+    "answer": "A",
+    "predicted_reasoning": "If both types of jazz are on sale, then no rap is on sale. If no rap is on sale, then all soul is on sale. If all soul is on sale, then new pop is on sale. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either a member of the board of directors or not a member of the board of directors.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_10",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "D",
+    "predicted_reasoning": "If both types of pop are on sale, then all soul is. If neither type of jazz is on sale, then new pop is. Therefore, if neither type of jazz is on sale, then all soul is on sale. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a stockholder or a nonstockholder. The following statements describe the company's employees.\n\nQuestion: If",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_11",
+    "question": "If neither type of jazz is on sale, then each of the following must be true EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "If neither type of jazz is on sale, then new pop is on sale. If new pop is on sale, then all soul is on sale. Therefore, new soul is on sale.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either a member of the board of directors or not a member of the board of directors. The following statements are true of the company's employees: Exactly",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_12",
+    "question": "If new soul is the only type of new CD on sale, then which one of the following CANNOT be true?",
+    "answer": "A",
+    "predicted_reasoning": "If new soul is the only type of new CD on sale, then new pop is not on sale. If new pop is not on sale, then both types of jazz are on sale. If both types of jazz are on sale, then no rap is on sale. If no rap is on sale, then used soul is on sale. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's five departments, and",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_2_13",
+    "question": "If exactly four of the five types of used CDs are the only CDs on sale, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "If exactly four of the five types of used CDs are the only CDs on sale, then used jazz is not on sale. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_3_14",
+    "question": "Which one of the following CANNOT be true of the week's tour schedule?",
+    "answer": "C",
+    "predicted_reasoning": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "predicted_answer": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_3_15",
+    "question": "If in addition to the Sales division one other division is toured on two consecutive days, then it could be true of the week's tour schedule both that the",
+    "answer": "B",
+    "predicted_reasoning": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "predicted_answer": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_3_16",
+    "question": "If in the week's tour schedule the division that is toured on Tuesday is also toured on Friday, then for which one of the following days must a tour of the Production division be scheduled?",
+    "answer": "A",
+    "predicted_reasoning": "Since Tuesday and Friday already have tours planned, only Monday, Wednesday and Thursday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "predicted_answer": "Since Tuesday and Friday already have tours planned, only Monday, Wednesday and Thursday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_3_17",
+    "question": "If in the week's tour schedule the division that is toured on Monday is not the division that is toured on Tuesday, then which one of the following could be true of the week's schedule?",
+    "answer": "E",
+    "predicted_reasoning": "Since Monday and Tuesday are not consecutive days, the Sales division is not toured on Monday. Therefore, the Sales division is toured on Tuesday and Wednesday. Since the Operations division is not toured on Monday, it is",
+    "predicted_answer": "Since Monday and Tuesday are not consecutive days, the Sales division is not toured on Monday. Therefore, the Sales division is toured on Tuesday and Wednesday. Since the Operations division is not toured on Monday, it is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_3_18",
+    "question": "If in the week's tour schedule the division that is toured on Tuesday is also toured on Wednesday, then which one of the following must be true of the week's tour schedule?",
+    "answer": "A",
+    "predicted_reasoning": "Since Tuesday and Wednesday already have tours planned, only Monday, Thursday and Friday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "predicted_answer": "Since Tuesday and Wednesday already have tours planned, only Monday, Thursday and Friday tours need to be determined. On Tuesday, the Sales division is toured since that division is toured on only two consecutive days, i.e",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_4_19",
+    "question": "Which one of the following could be a complete and accurate list of the members of the crew?",
+    "answer": "B",
+    "predicted_reasoning": "Taping and priming are done on different days, so we rule out option A. Each crew member does at least one task during the installation, but no more than one task a day, so we rule out option E. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_4_20",
+    "question": "If the installation takes three days, and if the same two crew members work on the first and third days, then which one of the following could be the pair of crew members who work on those two days?",
+    "answer": "D",
+    "predicted_reasoning": "The first day must have framing, wallboarding, and taping. The third day must have sanding and priming. The second day must have at least one task. The first and third days must have the same two crew members. Therefore, the final answer is B.\n\nThe correct option is",
+    "predicted_answer": "The first day must have framing, wallboarding, and taping. The third day must have sanding and priming. The second day must have at least one task. The first and third days must have the same two crew members. Therefore, the final answer is B.\n\nThe correct option is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_4_21",
+    "question": "Each of the following could be a complete and accurate list of the members of the crew EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "The first task is framing, which can be done by Inga or Olaf. The second task is wallboarding, which can be done by Olaf or Leanda. The third task is taping, which can be done by George or Leanda. The fourth task is sanding, which can be done",
+    "predicted_answer": "The first task is framing, which can be done by Inga or Olaf. The second task is wallboarding, which can be done by Olaf or Leanda. The third task is taping, which can be done by George or Leanda. The fourth task is sanding, which can be done",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_4_22",
+    "question": "If the installation takes three days, and if the sanding is done on the third day, then which one of the following could be a list of all the crew members who work on the second day?",
+    "answer": "E",
+    "predicted_reasoning": "Since the sanding is done on the third day, the priming is done on the second day. Since the priming is done on the second day, the taping is done on the first day. Since the taping is done on the first day, the wallboarding is done on the second day.",
+    "predicted_answer": "Since the sanding is done on the third day, the priming is done on the second day. Since the priming is done on the second day, the taping is done on the first day. Since the taping is done on the first day, the wallboarding is done on the second day.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200006_1-G_4_23",
+    "question": "Which one of the following could be a pair of members of the crew both of whom work on the same days as each other and each of whom perform two tasks?",
+    "answer": "D",
+    "predicted_reasoning": "The only two people who can do two tasks are George and Maricita. George can do taping and priming, and Maricita can do sanding and priming. Since taping and priming are done on different days, George and Maricita cannot work on the same days. Therefore, the",
+    "predicted_answer": "The only two people who can do two tasks are George and Maricita. George can do taping and priming, and Maricita can do sanding and priming. Since taping and priming are done on different days, George and Maricita cannot work on the same days. Therefore, the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_1",
+    "question": "Which one of the following could be an accurate matching of the hangers to the fabrics of the dresses that hang on them?",
+    "answer": "A",
+    "predicted_reasoning": "The gauze dress is on a lower-numbered hanger than the polyester dress. The rayon dress is on hanger 1 or hanger 6. Either the wool dress or the silk dress is on hanger 3. The linen dress hangs immediately to the right of the silk dress",
+    "predicted_answer": "The gauze dress is on a lower-numbered hanger than the polyester dress. The rayon dress is on hanger 1 or hanger 6. Either the wool dress or the silk dress is on hanger 3. The linen dress hangs immediately to the right of the silk dress",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_2",
+    "question": "If both the silk dress and the gauze dress are on odd-numbered hangers, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "The silk dress is on an odd-numbered hanger, so it is on hanger 1, 3 or 5. The gauze dress is on an odd-numbered hanger, so it is on hanger 1, 3 or 5. The rayon dress is on hanger 1 or 6. The linen dress hangs immediately to the right of the silk dress. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_3",
+    "question": "If the silk dress is on an even-numbered hanger, which one of the following could be on the hanger immediately to its left?",
+    "answer": "E",
+    "predicted_reasoning": "The silk dress is on an even-numbered hanger, so it is on hanger 2, 4 or 6. If the silk dress is on hanger 2, then the linen dress is on hanger 3. If the silk dress is on hanger 4, then the linen dress is on hanger 5. If the silk dress is on hanger 6, then the linen dress is on hanger 1. Therefore, the final answer is B",
+    "predicted_answer": "The silk dress is on an even-numbered hanger, so it is on hanger 2, 4 or 6. If the silk dress is on hanger 2, then the linen dress is on hanger 3. If the silk dress is on hanger 4, then the linen dress is on hanger 5. If the silk dress is on hanger 6, then the linen dress is on hanger 1. Therefore, the final answer is B",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_4",
+    "question": "If the polyester dress is on hanger 2, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "The polyester dress is on hanger 2, so the gauze dress is on hanger 1. The rayon dress is on hanger 6. The wool dress is on hanger 3. The linen dress hangs immediately to the right of the silk dress. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_5",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "B",
+    "predicted_reasoning": "The linen dress hangs immediately to the right of the silk dress. Therefore, the linen dress cannot hang immediately next to the gauze dress. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a stockholder or a nonstockholder. The following statements describe the company's employees:\n\nExactly 20",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_6",
+    "question": "Which one of the following CANNOT hang immediately next to the rayon dress?",
+    "answer": "D",
+    "predicted_reasoning": "The rayon dress is on hanger 1 or hanger 6. The linen dress hangs immediately to the right of the silk dress. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a stockholder or a nonstockholder. The following statements describe the company's employees: Exactly 20 percent of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_1_7",
+    "question": "Assume that the original condition that the linen dress hangs immediately to the right of the silk dress is replaced by the condition that the wool dress hangs immediately to the right of the silk dress. If all the other initial conditions remain in effect, which one of the following must be false?",
+    "answer": "D",
+    "predicted_reasoning": "The original condition that the linen dress hangs immediately to the right of the silk dress is replaced by the condition that the wool dress hangs immediately to the right of the silk dress. Therefore, the linen dress cannot be on hanger 1. The final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a stockholder or a nonstock",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_2_8",
+    "question": "Which one of the following could be an accurate matching of the four songs performed at the festival with the instruments on which they are performed, listed in order from the first song performed to the last?",
+    "answer": "B",
+    "predicted_reasoning": "The song performed on the keyboard immediately follows \"Rhino Rock\" and immediately precedes \"Night's All Right.\" Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_2_9",
+    "question": "Which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since \"Night's All Right\" is performed on the flute, \"Question Man\" is performed on the keyboard. \"Rhino Rock\" is performed on the harmonica and \"Sammy\" is",
+    "predicted_answer": "Since \"Night's All Right\" is performed on the flute, \"Question Man\" is performed on the keyboard. \"Rhino Rock\" is performed on the harmonica and \"Sammy\" is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_2_10",
+    "question": "Which one of the following CANNOT be true of the song performed on the flute?",
+    "answer": "C",
+    "predicted_reasoning": "Since the song performed on the keyboard immediately follows \"Rhino Rock\" and immediately precedes \"Night's All Right,\" we can rule out options A and B. Since the first song performed is not performed",
+    "predicted_answer": "Since the song performed on the keyboard immediately follows \"Rhino Rock\" and immediately precedes \"Night's All Right,\" we can rule out options A and B. Since the first song performed is not performed",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_2_11",
+    "question": "If \"Rhino Rock\" is the second song performed at the festival, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since \"Rhino Rock\" is the second song performed, \"Night's All Right\" is performed on the keyboard. Since \"Night's All Right\" is performed on the keyboard, \"Question",
+    "predicted_answer": "Since \"Rhino Rock\" is the second song performed, \"Night's All Right\" is performed on the keyboard. Since \"Night's All Right\" is performed on the keyboard, \"Question",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_2_12",
+    "question": "If \"Question Man\" is the third song performed at the festival, then each of the following could be true EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "Since \"Question Man\" is the third song performed, \"Rhino Rock\" is performed on the harmonica and \"Night's All Right\" is performed on the flute. Since \"Night'",
+    "predicted_answer": "Since \"Question Man\" is the third song performed, \"Rhino Rock\" is performed on the harmonica and \"Night's All Right\" is performed on the flute. Since \"Night'",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_3_13",
+    "question": "Which one of the following could be a complete and accurate list of the members of the finance committee?",
+    "answer": "E",
+    "predicted_reasoning": "If Guzman serves on the finance committee, then Hawking serves on the incentives committee. If Lepp serves on the finance committee, then Miyauchi and Upchurch both serve on the incentives",
+    "predicted_answer": "If Guzman serves on the finance committee, then Hawking serves on the incentives committee. If Lepp serves on the finance committee, then Miyauchi and Upchurch both serve on the incentives",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_3_14",
+    "question": "Which one of the following pairs of board members CANNOT both serve on the incentives committee?",
+    "answer": "C",
+    "predicted_reasoning": "If Guzman serves on the finance committee, then Hawking serves on the incentives committee. If Lepp serves on the finance committee, then Miyauchi and Upchurch both serve on the incentives committee. Wharton serves on a different committee from the one on which Zhu serves. Upchurch serves on a different committee from the one on which Guzman serves. If Zhu serves on the finance committee, so does Hawking. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_3_15",
+    "question": "What is the maximum number of members on the finance committee?",
+    "answer": "C",
+    "predicted_reasoning": "If Guzman serves on the finance committee, then Hawking serves on the incentives committee. If Lepp serves on the finance committee, then Miyauchi and Upchurch both serve on the incentives committee. Wharton serves on a different committee from the one on which Zhu serves. Upchurch serves on a different committee from the one on which Guzman serves. If Zhu serves on the finance committee, so does Hawking. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_3_16",
+    "question": "If Miyauchi and Wharton both serve on the finance committee, then which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "If Miyauchi and Wharton both serve on the finance committee, then Lepp serves on the incentives committee. If Lepp serves on the incentives committee, then Upchurch serves on the incentives committee. If Upchurch serves on the incentives committee, then Guzman serves on the incentives committee. If Guzman serves on the incentives committee, then Hawking serves on the finance committee. If Hawking serves on the finance committee, then Zhu serves on the finance committee. Therefore, the final answer is",
+    "predicted_answer": "If Miyauchi and Wharton both serve on the finance committee, then Lepp serves on the incentives committee. If Lepp serves on the incentives committee, then Upchurch serves on the incentives committee. If Upchurch serves on the incentives committee, then Guzman serves on the incentives committee. If Guzman serves on the incentives committee, then Hawking serves on the finance committee. If Hawking serves on the finance committee, then Zhu serves on the finance committee. Therefore, the final answer is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_3_17",
+    "question": "If Guzman serves on the incentives committee, then which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "If Guzman serves on the incentives committee, then Hawking serves on the finance committee. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a member of the board of directors or a nonmember. Each manager is a member of the board of directors, but not all members of the board of directors are managers. Each employee has exactly one supervisor. No",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_18",
+    "question": "Which one of the following could be the order in which four of the people are seated, with no one else seated between them, counting clockwise around the table?",
+    "answer": "C",
+    "predicted_reasoning": "Fiona sits directly across from George, so we rule out option A. Harriet sits immediately next to neither Fiona nor Karl, so we rule out option B. Ingrid sits immediately next to, and immediately clockwise from, Olivia, so we rule out option C. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including a president, a vice president, a treasurer, and a secretary. Each employee is a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_19",
+    "question": "If Harriet and Olivia each sits immediately next to George, then which one of the following could be the two people each of whom sits immediately next to Peter?",
+    "answer": "D",
+    "predicted_reasoning": "Since Harriet sits immediately next to neither Fiona nor Karl, she sits between Fiona and Karl. Since Harriet and Olivia each sits immediately next to George, George sits between Harriet and Olivia. Since Ingrid sits immediately next to, and immediately clockwise from, Olivia, Ingrid sits between Olivia and Peter. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, each of whom is either a manager or a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_20",
+    "question": "If George does not sit immediately next to Harriet, then which one of the following could be the two people each of whom sits immediately next to Manuel?",
+    "answer": "A",
+    "predicted_reasoning": "Since Harriet sits immediately next to neither Fiona nor Karl, she must sit between Fiona and George. Since Ingrid sits immediately next to, and immediately clockwise from, Olivia, she must sit between Olivia and Peter. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_21",
+    "question": "If Manuel sits immediately next to Olivia, then which one of the following people must sit immediately next to Fiona?",
+    "answer": "C",
+    "predicted_reasoning": "Fiona sits directly across from George. Harriet sits immediately next to neither Fiona nor Karl. Ingrid sits immediately next to, and immediately clockwise from, Olivia. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_22",
+    "question": "What is the minimum possible number of people sitting between Ingrid and Manuel, counting clockwise from Ingrid around the table?",
+    "answer": "A",
+    "predicted_reasoning": "Fiona sits directly across from George, so there are three people sitting between them. Harriet sits immediately next to neither Fiona nor Karl, so she sits between George and Ingrid. Ingrid sits immediately next to, and immediately clockwise from, Olivia. Therefore, the final answer is C.\n\nThe correct",
+    "predicted_answer": "Fiona sits directly across from George, so there are three people sitting between them. Harriet sits immediately next to neither Fiona nor Karl, so she sits between George and Ingrid. Ingrid sits immediately next to, and immediately clockwise from, Olivia. Therefore, the final answer is C.\n\nThe correct",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_23",
+    "question": "If Karl sits directly across from Ingrid, then each of the following people could sit immediately next to Olivia EXCEPT:",
+    "answer": "B",
+    "predicted_reasoning": "Fiona sits directly across from George. Harriet sits immediately next to neither Fiona nor Karl. Ingrid sits immediately next to, and immediately clockwise from, Olivia. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_200310_2-G_4_24",
+    "question": "If Karl sits directly across from Harriet, then what is the minimum possible number of people sitting between George and Karl, counting clockwise from George to Karl?",
+    "answer": "C",
+    "predicted_reasoning": "Fiona sits directly across from George. Harriet sits immediately next to neither Fiona nor Karl. Ingrid sits immediately next to, and immediately clockwise from, Olivia. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_1_1",
+    "question": "Which one of the following is an acceptable set of appointments of candidates to courts?",
+    "answer": "E",
+    "predicted_reasoning": "Li must be appointed to appellate court, so we rule out option A. Kurtz must be appointed to trial court, so we rule out option C. Hamadi and Perkins cannot be appointed to the same court, so we rule out option B and D. Therefore, the final answer is E.\n\nThe",
+    "predicted_answer": "Li must be appointed to appellate court, so we rule out option A. Kurtz must be appointed to trial court, so we rule out option C. Hamadi and Perkins cannot be appointed to the same court, so we rule out option B and D. Therefore, the final answer is E.\n\nThe",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_1_2",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "B",
+    "predicted_reasoning": "Li must be appointed to appellate court, so we rule out option C. Kurtz must be appointed to trial court, so we rule out option D. Hamadi and Perkins cannot be appointed to the same court, so we rule out option A. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_1_3",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Li must be appointed to appellate court, we rule out option D. Since Kurtz must be appointed to trial court, we rule out option C. Since Hamadi and Perkins cannot be appointed to the same court, we rule out option E. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_1_4",
+    "question": "If Ortiz is appointed to the appellate court, which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "If Ortiz is appointed to the appellate court, then Hamadi and Perkins cannot be appointed to the appellate court. Therefore, Hamadi and Perkins must be appointed to the trial court. Since Kurtz must be appointed to the trial court, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_1_5",
+    "question": "Which one of the following, if substituted for the condition that Hamadi cannot be appointed to the same court as Perkins, would have the same effect on the appointments of the seven candidates?",
+    "answer": "E",
+    "predicted_reasoning": "The condition that Hamadi cannot be appointed to the same court as Perkins is equivalent to the condition that if Hamadi is appointed to the appellate court, then Perkins must be appointed to the trial court. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nEach of seven candidates for",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_2_6",
+    "question": "Which one of the following could be an accurate list of the members in the order in which they dive from the plane, from first to last?",
+    "answer": "B",
+    "predicted_reasoning": "Larue dives from the plane either first or last. Weiss and Zacny do not dive from the plane last. Therefore, Larue dives from the plane first. Trevino dives from the plane at some time before Weiss does. Therefore, Trevino dives from the plane second. Pei dives from",
+    "predicted_answer": "Larue dives from the plane either first or last. Weiss and Zacny do not dive from the plane last. Therefore, Larue dives from the plane first. Trevino dives from the plane at some time before Weiss does. Therefore, Trevino dives from the plane second. Pei dives from",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_2_7",
+    "question": "Which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Weiss dives from the plane at some time after Larue, so we rule out option E. Zacny dives from the plane at some time after Larue, so we rule out option A. Ohba dives from the plane at some time after Larue, so we rule out option B. Therefore, the final answer is D",
+    "predicted_answer": "Weiss dives from the plane at some time after Larue, so we rule out option E. Zacny dives from the plane at some time after Larue, so we rule out option A. Ohba dives from the plane at some time after Larue, so we rule out option B. Therefore, the final answer is D",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_2_8",
+    "question": "If Larue dives from the plane last, then each of the following could be true EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "If Larue dives from the plane last, then Ohba dives from the plane first. Pei dives from the plane at some time after either Ohba or Larue but not both. Therefore, Pei dives from the plane second. Trevino dives from the plane at some time before Weiss does. Therefore, Trevino dives from the plane third. Weiss dives from the plane at some time after either Ohba or Larue but not both. Therefore, Weiss dives from the plane fourth. Zacny dives from the plane at some time after either Ohba or Larue but not both. Therefore, Zacny dives from the plane sixth. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_2_9",
+    "question": "If Zacny dives from the plane immediately after Weiss, then which one of the following must be false?",
+    "answer": "D",
+    "predicted_reasoning": "If Zacny dives from the plane immediately after Weiss, then Weiss dives from the plane second. Larue dives from the plane either first or last. Neither Weiss nor Zacny dives from the plane last. Therefore, Larue dives from the plane first. Pei dives from the plane at some time after either Ohba or Larue but not both. Therefore, Pei dives from the plane fourth. The final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a member of the board of directors or a nonmember. Each manager is a member of the board of directors, but",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_2_10",
+    "question": "If Trevino dives from the plane immediately after Larue, then each of the following could be true EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "If Trevino dives from the plane immediately after Larue, then Weiss dives from the plane at some time after Larue. Therefore, Weiss cannot dive from the plane third. The final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's five departments, and there are at least 10 but fewer than 25 employees in each department. Each employee is also a member of exactly one of the company's six committees, and there are at least 10 but fewer than 25 employees on each committee. No employee is a member of more than two committees.\n\nQuestion: If exactly 2",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_11",
+    "question": "Which one of the following could be the order in which the vehicles are serviced, from Monday through Saturday?",
+    "answer": "B",
+    "predicted_reasoning": "The roadster is serviced later in the week than the van and earlier in the week than the hatchback. Therefore, the van is serviced before the roadster and the roadster is serviced before the hatchback. The sedan is serviced earlier in the week than the pickup or earlier in the week than the limousine, but not both. Therefore, the sedan is serviced before the pickup and the limousine. The pickup and the van are serviced on consecutive days, or the pickup and the sedan are serviced on consecutive days, but not both. Therefore, the pickup is serviced before the van and the sedan. The final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA company's six",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_12",
+    "question": "Which one of the following CANNOT be the vehicle serviced on Thursday?",
+    "answer": "E",
+    "predicted_reasoning": "The roadster is serviced later in the week than the van and earlier in the week than the hatchback. Therefore, the van is serviced on Monday and the hatchback is serviced on Friday. The sedan is serviced earlier in the week than the pickup or earlier in the week than the limousine, but not both. Therefore, the sedan is serviced on Monday and the limousine is serviced on Friday. The pickup and the van are serviced on consecutive days, so the pickup is serviced on Tuesday. The pickup and the sedan are serviced on consecutive days, so the sedan is serviced on Wednesday. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA company's six",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_13",
+    "question": "If neither the pickup nor the limousine is serviced on Monday, then which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since neither the pickup nor the limousine is serviced on Monday, the sedan is serviced on Monday. The roadster is serviced on Tuesday. The hatchback is serviced on Wednesday. The van is serviced on Thursday. The pickup is serviced on Friday. The limousine is serviced on Saturday. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA company's six vehicles—a hatchback, a limousine, a pickup, a roadster, a sedan, and a van—are serviced during a certain week—Monday through Saturday—one vehicle per day. The following conditions must apply: At least one of the vehicles is serviced later in the week than the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_14",
+    "question": "If the limousine is not serviced on Saturday, then each of the following could be true EXCEPT:",
+    "answer": "E",
+    "predicted_reasoning": "The limousine is not serviced on Saturday, so it is serviced on Monday, Tuesday, Wednesday, Thursday or Friday. If the limousine is serviced on Monday, then the roadster is serviced on Tuesday, the hatchback is serviced on Wednesday, the van is serviced on Thursday and the pickup is serviced on Friday. If the limousine is serviced on Tuesday, then the roadster is serviced on Wednesday, the hatchback is serviced on Thursday and the van is serviced on Friday. If the limousine is serviced on Wednesday, then the roadster is serviced on Thursday, the hatchback is serviced on Friday and the van is serviced on Saturday. If the limousine is serviced on Thursday, then the roadster is serviced on Friday and the hatchback is serviced on Saturday. If the limousine is serviced on Friday, then the roadster is serviced on Saturday. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_15",
+    "question": "If the sedan is serviced earlier in the week than the pickup, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "The sedan is serviced earlier in the week than the pickup, so the pickup is serviced on Friday. The roadster is serviced later in the week than the van and earlier in the week than the hatchback, so the van is serviced on Monday and the hatchback is serviced on Saturday. The limousine is serviced on Thursday. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA company's six vehicles—a hatchback, a limousine, a pickup, a roadster, a sedan, and a van—are serviced during a certain week—Monday through Saturday—one vehicle per day. The following conditions must apply: At least one of the vehicles is serviced later in the week than the hatchback. The roadster is serviced later in the week than the van and earlier in the week than the hatchback. Either the pickup and the van are serviced on consecutive days, or the pickup and the sedan are serviced",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_16",
+    "question": "If the limousine is serviced on Saturday, then which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since the limousine is serviced on Saturday, the hatchback is serviced on Friday. The roadster is serviced on Thursday. The pickup and the sedan are serviced on consecutive days. The sedan is serviced earlier in the week than the pickup. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA company's six vehicles—a hatchback, a limousine, a pickup, a roadster, a sedan, and a van—are serviced during a certain week—Monday through Saturday—one vehicle per day. The following conditions must apply: At least one of the vehicles is serviced later in the week than the hatchback. The roadster is serviced later in the week than the van and earlier in the week than the hatchback. Either the pickup and the van are serviced on consecutive days, or the pickup and the sedan are serviced on consecutive days, but not both. The sedan is serviced earlier in the week than the pick",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_3_17",
+    "question": "Which one of the following could be the list of the vehicles serviced on Tuesday, Wednesday, and Friday, listed in that order?",
+    "answer": "B",
+    "predicted_reasoning": "The roadster is serviced later in the week than the van and earlier in the week than the hatchback. The hatchback is serviced later in the week than the roadster. Therefore, the van is serviced before the roadster. The sedan is serviced earlier in the week than the pickup or earlier in the week than the limousine, but not both. Therefore, the sedan is serviced before the pickup and the limousine. The pickup and the van are serviced on consecutive days, or the pickup and the sedan are serviced on consecutive days, but not both. Therefore, the pickup is serviced before the van and the sedan. The hatchback is serviced later in the week than the pickup. Therefore, the hatchback is serviced after the pickup, the van and the sedan. The final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA company's six vehicles—a hatchback, a limousine, a pickup, a roadster",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_18",
+    "question": "If there are exactly two white balls, then which one of the following boxes could contain a green ball?",
+    "answer": "B",
+    "predicted_reasoning": "There are more red balls than white balls. There is a box containing a green ball that is lower in the stack than any box that contains a red ball. There is a white ball in a box that is immediately below a box that contains a green ball.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's five departments, and there are at least 10 employees in each department. Each employee is also a member of exactly one of the company's six committees, and there are at least 10 employees in each committee. The number of employees who are members of both the Sales department and the Training Committee is equal to the number of employees who are members of both the Research department and the Training Committee.\n\nQuestion: If the number of employees who are members of both the Sales department and the Training Committee is 10, then which one of the following could be the total number of employees who are members of both the Research department and the Training",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_19",
+    "question": "If there are green balls in boxes 5 and 6, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "There are more red balls than white balls. There is a box containing a green ball that is lower in the stack than any box that contains a red ball. There is a white ball in a box that is immediately below a box that contains a green ball.",
+    "predicted_answer": "A\n------\nContext:\nA certain city council will select two of the five candidates running for two open council seats. The candidates are Brown, Davis, Jones, Robinson, and Smith. The city council has a policy that no more than one candidate can be selected from any one political party. The candidates have the following political affiliations: Brown and Robinson are members of the same political party. Davis and Smith are members of the same political party. Jones is not a member of the same political party as any of the other candidates.\n\nQuestion: Which one of the following is a pair of candidates that could be selected by the city council?\n\nOptions:\nA) Brown and Davis\nB) Brown and Jones\nC) Davis and Jones\nD) Jones and Robinson\nE) Jones and",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_20",
+    "question": "The ball in which one of the following boxes must be the same color as at least one of the other balls?",
+    "answer": "E",
+    "predicted_reasoning": "There are more red balls than white balls. There is a box containing a green ball that is lower in the stack than any box that contains a red ball. There is a white ball in a box that is immediately below a box that contains a green ball. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_21",
+    "question": "Which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "There are more red balls than white balls. There is a box containing a green ball that is lower in the stack than any box that contains a red ball. There is a white ball in a box that is immediately below a box that contains a green ball. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_22",
+    "question": "If there are red balls in boxes 2 and 3, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since there are more red balls than white balls, there are at least 4 red balls and at most 2 white balls. Since there is a green ball in a box that is lower in the stack than any box that contains a red ball, the green ball is in box 1. Since there is a white ball in a box that is",
+    "predicted_answer": "Since there are more red balls than white balls, there are at least 4 red balls and at most 2 white balls. Since there is a green ball in a box that is lower in the stack than any box that contains a red ball, the green ball is in box 1. Since there is a white ball in a box that is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201106_2-G_4_23",
+    "question": "If boxes 2, 3, and 4 all contain balls that are the same color as each other, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since there are more red balls than white balls, there are at least two red balls. Since there is a green ball in a box that is lower in the stack than any box that contains a red ball, the green ball is in box 1. Since there is a white ball in a box that is immediately below a box that contains a green",
+    "predicted_answer": "Since there are more red balls than white balls, there are at least two red balls. Since there is a green ball in a box that is lower in the stack than any box that contains a red ball, the green ball is in box 1. Since there is a white ball in a box that is immediately below a box that contains a green",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_1_1",
+    "question": "Which one of the following could be the order, from first to last, in which the students perform?",
+    "answer": "D",
+    "predicted_reasoning": "Ginny must perform earlier than Fernando. Kevin must perform earlier than Hakim and Juanita. Hakim must perform either immediately before or immediately after Fernando. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA group of 100 people is to be divided into two",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_1_2",
+    "question": "If Juanita performs earlier than Ginny, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "If Juanita performs earlier than Ginny, then Ginny performs after Fernando. Therefore, Hakim performs after Fernando. Therefore, Kevin performs before Hakim and Juanita. Therefore, Kevin performs before Ginny. Therefore, Kevin performs second. The final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_1_3",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "C",
+    "predicted_reasoning": "Ginny must perform earlier than Fernando. Kevin must perform earlier than Hakim and Juanita. Hakim must perform either immediately before or immediately after Fernando. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_1_4",
+    "question": "The order in which the students perform is fully determined if which one of the following is true?",
+    "answer": "E",
+    "predicted_reasoning": "Ginny must perform earlier than Fernando. Kevin must perform earlier than Hakim and Juanita. Hakim must perform either immediately before or immediately after Fernando. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_1_5",
+    "question": "How many of the students are there any one of whom could perform fourth?",
+    "answer": "B",
+    "predicted_reasoning": "Ginny must perform earlier than Fernando, so we rule out option A. Kevin must perform earlier than Hakim and Juanita, so we rule out option E. Hakim must perform either immediately before or immediately after Fernando, so we rule out",
+    "predicted_answer": "Ginny must perform earlier than Fernando, so we rule out option A. Kevin must perform earlier than Hakim and Juanita, so we rule out option E. Hakim must perform either immediately before or immediately after Fernando, so we rule out",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_6",
+    "question": "Which one of the following could be the order of the presentations, from first to sixth?",
+    "answer": "C",
+    "predicted_reasoning": "Kudrow cannot give two presentations in a row, so we rule out option A. The presentation on stenciling must be given earlier than the one on origami, so we rule out option D. The presentation on textile making must be given",
+    "predicted_answer": "Kudrow cannot give two presentations in a row, so we rule out option A. The presentation on stenciling must be given earlier than the one on origami, so we rule out option D. The presentation on textile making must be given",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_7",
+    "question": "If textile making is presented fifth, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since textile making is presented fifth, the presentation on woodworking must be given sixth. The presentation on stenciling must be given earlier than the one on origami. Therefore, the presentation on stenciling must be given either first or second. The",
+    "predicted_answer": "Since textile making is presented fifth, the presentation on woodworking must be given sixth. The presentation on stenciling must be given earlier than the one on origami. Therefore, the presentation on stenciling must be given either first or second. The",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_8",
+    "question": "If needlework is presented first, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since needlework is presented first, origami is presented sixth. Therefore, we rule out option A. Since needlework is presented first, stenciling is presented second. Therefore, we rule out option C. Since needlework is presented first, textile",
+    "predicted_answer": "Since needlework is presented first, origami is presented sixth. Therefore, we rule out option A. Since needlework is presented first, stenciling is presented second. Therefore, we rule out option C. Since needlework is presented first, textile",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_9",
+    "question": "Jiang CANNOT give both",
+    "answer": "B",
+    "predicted_reasoning": "Kudrow cannot give two presentations in a row, so we rule out option A. The presentation on stenciling must be given earlier than the one on origami, so we rule out option B. The presentation on textile making must be given earlier than the one on woodworking, so we rule out option C. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_10",
+    "question": "If needlework is presented sixth, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since needlework is presented sixth, origami is presented fifth. Since stenciling is presented earlier than origami, stenciling is presented fourth. Since textile making is presented earlier than woodworking, textile making is presented third. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_2_11",
+    "question": "Which one of the following CANNOT be the subject of the second presentation?",
+    "answer": "C",
+    "predicted_reasoning": "The presentation on stenciling must be given earlier than the one on origami. Therefore, the presentation on origami cannot be the second presentation. The final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_3_12",
+    "question": "Which one of the following is a list of foods that could be the foods selected?",
+    "answer": "B",
+    "predicted_reasoning": "If G is selected, O must be selected. If N is selected, V cannot be selected. Therefore, we rule out option A. If either P or W is selected, both must be selected. Therefore, we rule out option D. If G is selected, O must be selected. Therefore, we rule out option E. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_3_13",
+    "question": "Which one of the following is a pair of foods of which the organizer of the luncheon must select at least one?",
+    "answer": "D",
+    "predicted_reasoning": "If G is selected, O must be selected. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has a total of 1,000 employees. Each employee is either a manager or a nonmanager. The company has a total of 100 managers. Each manager is either a senior manager or a junior manager. The company has",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_3_14",
+    "question": "If O is the only main course selected, then which one of the following CANNOT be selected?",
+    "answer": "E",
+    "predicted_reasoning": "If O is the only main course selected, then P cannot be selected. If G is selected, O must be selected. Therefore, G cannot be selected. The final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has a total of 100 employees, including 50 women. The company has two departments, A and B. Each employee works in",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_3_15",
+    "question": "If F is not selected, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "If F is not selected, then G must be selected. If G is selected, then O must be selected. If O is selected, then N cannot be selected. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_3_16",
+    "question": "If T and V are the only side dishes selected, then which one of the following is a pair of foods each of which must be selected?",
+    "answer": "A",
+    "predicted_reasoning": "If T and V are the only side dishes selected, then the other three foods must be selected from the remaining five foods. Since at least one dessert must be selected, either F or G must be selected. Since at least one main course must be selected",
+    "predicted_answer": "If T and V are the only side dishes selected, then the other three foods must be selected from the remaining five foods. Since at least one dessert must be selected, either F or G must be selected. Since at least one main course must be selected",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_17",
+    "question": "Which one of the following could be the order in which the programs are shown, from earliest to latest?",
+    "answer": "B",
+    "predicted_reasoning": "Since Generations starts on the hour, it must be the first program. Since Terry starts on the half hour, it must be the second program. Since Roamin' is shown earlier than Sundown, Roamin' must be the third program. Since Water",
+    "predicted_answer": "Since Generations starts on the hour, it must be the first program. Since Terry starts on the half hour, it must be the second program. Since Roamin' is shown earlier than Sundown, Roamin' must be the third program. Since Water",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_18",
+    "question": "If Waterloo is the first program, then how many orders are there in which the remaining programs could be shown?",
+    "answer": "B",
+    "predicted_reasoning": "If Waterloo is the first program, then Terry is the second program. If Waterloo is shown earlier than Terry, then it is shown immediately before Terry. Therefore, the remaining programs can be shown in only one order.\n\nThe correct option",
+    "predicted_answer": "If Waterloo is the first program, then Terry is the second program. If Waterloo is shown earlier than Terry, then it is shown immediately before Terry. Therefore, the remaining programs can be shown in only one order.\n\nThe correct option",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_19",
+    "question": "If Roamin' is the second program, then each of the following could be true EXCEPT:",
+    "answer": "D",
+    "predicted_reasoning": "If Roamin' is the second program, then Sundown is the third program. If Waterloo is shown earlier than Terry, it is shown immediately before Terry. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_20",
+    "question": "If Sundown is the third program, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "If Sundown is the third program, then Waterloo is the fourth program. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA certain company has 100 employees. Each employee is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_21",
+    "question": "If Generations is the third program, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "If Generations is the third program, then Terry is the fourth program. Therefore, we rule out option C. If Generations is the third program, then Waterloo is the second program. Therefore, we rule out option D. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_22",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since Generations starts on the hour, it must be shown at 1 P.M. Since Terry starts on the half hour, it must be shown at 1:30 P.M. Since Roamin' is shown earlier than Sundown, it must be shown at 2 P.M. Since Waterlo",
+    "predicted_answer": "Since Generations starts on the hour, it must be shown at 1 P.M. Since Terry starts on the half hour, it must be shown at 1:30 P.M. Since Roamin' is shown earlier than Sundown, it must be shown at 2 P.M. Since Waterlo",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201112_2-G_4_23",
+    "question": "Which one of the following, if substituted for the constraint that Generations starts on the hour rather than the half hour, would have the same effect in determining the order in which the programs are shown?",
+    "answer": "C",
+    "predicted_reasoning": "The constraint that Generations starts on the hour rather than the half hour is equivalent to the constraint that Generations is either the first program or the fifth. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees, each of whom",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_1_1",
+    "question": "Which one of the following could be a list of the majors of Manolo, Nadia, Owen, Peng, and Rana, respectively?",
+    "answer": "C",
+    "predicted_reasoning": "Manolo speaks on friendship, so he is not a history major. Rana speaks on liberty, so she is not a geology major. Nadia is a geology major. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_1_2",
+    "question": "If Peng speaks on friendship, then which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "If Peng speaks on friendship, then Nadia speaks on liberty. Therefore, Owen speaks on friendship. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA group of 100 people is to be divided into 10 groups of 10 people each",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_1_3",
+    "question": "If Owen is a geology major who speaks on friendship, then which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "If Owen is a geology major who speaks on friendship, then Nadia is a history major who speaks on friendship. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_1_4",
+    "question": "If Nadia speaks on friendship, then which one of the following must be false?",
+    "answer": "A",
+    "predicted_reasoning": "If Nadia speaks on friendship, then Manolo speaks on friendship. Since Manolo is a geology major, we rule out option A. Since there are only two geology majors, we rule out option C. Since there are only two history majors, we rule out option D. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_1_5",
+    "question": "Rana must be a journalism major if which one of the following is true?",
+    "answer": "C",
+    "predicted_reasoning": "Manolo speaks on friendship, so we rule out option D and E. Nadia is a geology major, so we rule out option A. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including 10 managers. Each employee is either a manager or",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_6",
+    "question": "Which one of the following could be the order in which the professors lecture, from first to last?",
+    "answer": "B",
+    "predicted_reasoning": "Powell lectures before Wood. Taylor lectures before Shihab. Vaughan lectures before Zabel. Shihab is no later than third. Young is not seventh. Powell lectures first if, but only if, Young lectures before Vaughan. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_7",
+    "question": "Which one of the following could lecture first?",
+    "answer": "B",
+    "predicted_reasoning": "Shihab is no later than third, so we rule out option A. Vaughan lectures before Zabel, so we rule out option B. Powell lectures first if, but only if, Young lectures before Vaughan. Since Young is not seventh, we rule out option D. Therefore, the final answer is C.",
+    "predicted_answer": "",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_8",
+    "question": "Which one of the following CANNOT given the second guest lecture?",
+    "answer": "E",
+    "predicted_reasoning": "Shihab is no later than third, so we rule out option B. Powell lectures before Wood, so we rule out option E. Taylor lectures before Shihab, so we rule out option C. Vaughan lectures before Zabel, so we rule out option D. Therefore, the final answer is A.",
+    "predicted_answer": "A",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_9",
+    "question": "If Shihab lectures second and Zabel lectures fourth, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "Shihab lectures second and Zabel lectures fourth. Therefore, Vaughan lectures third. Powell lectures before Wood. Therefore, Powell lectures first. Taylor lectures before Shihab. Therefore, Taylor lectures first. Young is not seventh. Therefore, Young lectures sixth. Therefore, the final answer is D.\n\nThe correct option is",
+    "predicted_answer": "Shihab lectures second and Zabel lectures fourth. Therefore, Vaughan lectures third. Powell lectures before Wood. Therefore, Powell lectures first. Taylor lectures before Shihab. Therefore, Taylor lectures first. Young is not seventh. Therefore, Young lectures sixth. Therefore, the final answer is D.\n\nThe correct option is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_10",
+    "question": "Which one of the following CANNOT be the guest lecture that Vaughan gives?",
+    "answer": "E",
+    "predicted_reasoning": "Since Shihab is no later than third, Vaughan lectures before Zabel, and Young is not seventh, Vaughan lectures before Young. Therefore, Vaughan lectures before sixth and seventh. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_11",
+    "question": "If Young lectures fourth and Taylor lectures first, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since Young lectures fourth and Taylor lectures first, Powell lectures before Young, so Powell lectures before Vaughan. Therefore, Powell lectures first. Since Powell lectures first, Young lectures before Vaughan. Therefore, Vaughan lectures no earlier than sixth.",
+    "predicted_answer": "Since Young lectures fourth and Taylor lectures first, Powell lectures before Young, so Powell lectures before Vaughan. Therefore, Powell lectures first. Since Powell lectures first, Young lectures before Vaughan. Therefore, Vaughan lectures no earlier than sixth.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_2_12",
+    "question": "If Zabel lectures fourth, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "If Zabel lectures fourth, then Vaughan lectures fifth. If Young lectures before Vaughan, then Powell lectures first. If Young lectures after Vaughan, then Powell lectures seventh. Therefore, the final answer is B.",
+    "predicted_answer": "B",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_3_13",
+    "question": "If aisle 1 contains Hobbies only, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "If aisle 1 contains Hobbies only, then aisle 2 must contain Reading and Fantasy, and aisle 3 must contain Music, Puzzles, and Science. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_3_14",
+    "question": "If aisle 3 contains Puzzles only, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since aisle 3 contains Puzzles only, Fantasy must be located in aisle 1. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees, each of whom is either a manager or a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_3_15",
+    "question": "If each aisle contains exactly two of the six sections, then Science must be located in the same aisle as",
+    "answer": "B",
+    "predicted_reasoning": "Since each aisle contains exactly two of the six sections, we can rule out option A, B, C and E. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA toy retailer is opening a small satellite store with exactly three aisles",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_3_16",
+    "question": "Which one of the following CANNOT be the list of the sections located in aisle 2?",
+    "answer": "A",
+    "predicted_reasoning": "Since Reading must be located in the same aisle as either Fantasy or Music, we can rule out option B. Since Fantasy must be located in a lower-numbered aisle than both Music and Puzzles, we can rule out option C. Since Science must be located in a lower-numbered aisle than Puzzles, we can rule out option D. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_3_17",
+    "question": "If aisle 2 contains Science only, then each of the following must be true EXCEPT:",
+    "answer": "E",
+    "predicted_reasoning": "If aisle 2 contains Science only, then aisle 1 contains Fantasy and aisle 3 contains Music. Since Reading must be located in the same aisle as either Fantasy or Music, Reading must be located in aisle 1. Since Fantasy must be located in a lower-numbered aisle than both Music and Puzzles, Fantasy must be located in aisle 1. Since Science must be located in a lower-numbered",
+    "predicted_answer": "If aisle 2 contains Science only, then aisle 1 contains Fantasy and aisle 3 contains Music. Since Reading must be located in the same aisle as either Fantasy or Music, Reading must be located in aisle 1. Since Fantasy must be located in a lower-numbered aisle than both Music and Puzzles, Fantasy must be located in aisle 1. Since Science must be located in a lower-numbered",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_18",
+    "question": "Which one of the following is an allowable way of designating subzones within the three zones?",
+    "answer": "E",
+    "predicted_reasoning": "Z1 has one housing subzone and one retail subzone. Z2 has two housing subzones and one retail subzone. Z3 has one industrial subzone and one retail subzone. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a full-time",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_19",
+    "question": "Which one of the following CANNOT be true within a single zone?",
+    "answer": "D",
+    "predicted_reasoning": "Since no more than two subzones for housing are allowed in any particular zone, we rule out option A. Since no more than one retail subzone is allowed in any zone in which a subzone is designated for housing, we rule out option B. Since industrial subzones are not allowed in any zone in which a subzone is designated for housing, we rule out option D. Since no more than three subzones can be designated for each of the three uses",
+    "predicted_answer": "Since no more than two subzones for housing are allowed in any particular zone, we rule out option A. Since no more than one retail subzone is allowed in any zone in which a subzone is designated for housing, we rule out option B. Since industrial subzones are not allowed in any zone in which a subzone is designated for housing, we rule out option D. Since no more than three subzones can be designated for each of the three uses",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_20",
+    "question": "What is the maximum number of designated subzones allowed in Z3?",
+    "answer": "D",
+    "predicted_reasoning": "Since no more than two subzones for housing are allowed in any particular zone, we can rule out option D and E. Since no more than one retail subzone is allowed in any zone in which a subzone is designated for housing, we can rule out option A. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_21",
+    "question": "If three subzones are designated for each use, then which one of the following is allowed?",
+    "answer": "B",
+    "predicted_reasoning": "Since three subzones are designated for each use, we can have three subzones for housing, three subzones for industrial use and three subzones for retail use. Since retail subzones are not allowed in Z1, we can have three subzones for housing and three subzones for industrial use in Z1. Since no more than two subzones for housing are allowed in any particular zone, we can have two subzones for housing",
+    "predicted_answer": "Since three subzones are designated for each use, we can have three subzones for housing, three subzones for industrial use and three subzones for retail use. Since retail subzones are not allowed in Z1, we can have three subzones for housing and three subzones for industrial use in Z1. Since no more than two subzones for housing are allowed in any particular zone, we can have two subzones for housing",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_22",
+    "question": "If one subzone in each of the zones is designated for industrial use, then which one of the following is allowed?",
+    "answer": "A",
+    "predicted_reasoning": "Since one subzone in each of the zones is designated for industrial use, we can rule out option C and D. Since no more than two subzones for housing are allowed in any particular zone, we can rule out option B. Since no more than one retail subzone is allowed in any zone in which a subzone is designated for housing, we can rule out option A. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201210_3-G_4_23",
+    "question": "If three subzones in all are designated for retail use and a subzone in Z2 is designated for housing, then which one of the following is allowed?",
+    "answer": "A",
+    "predicted_reasoning": "Since a subzone in Z2 is designated for housing, no more than one retail subzone is allowed in Z2. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a full-time employee or a part-time employee. The following statements describe the company'",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_1_1",
+    "question": "Which one of the following could be the order in which the manuscripts were written, from first to last?",
+    "answer": "E",
+    "predicted_reasoning": "H was written earlier than S but later than F. P was the next manuscript written after G. At least four of the manuscripts were written earlier than L. At least four of the manuscripts were written later than M. H was not written fifth.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 1,000 employees. Each employee is either a manager or a nonmanager. Each employee is either",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_1_2",
+    "question": "Which one of the following manuscripts CANNOT have been written third?",
+    "answer": "A",
+    "predicted_reasoning": "H was written earlier than S but later than F. P was the next manuscript written after G. At least four of the manuscripts were written earlier than L. At least four of the manuscripts were written later than M. H was not written fifth.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_1_3",
+    "question": "If H was the next manuscript written after M, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "H was written earlier than S but later than F. P was the next manuscript written after G. At least four of the manuscripts were written earlier than L. At least four of the manuscripts were written later than M. H was not written fifth.",
+    "predicted_answer": "C\n------\nContext:\nA researcher is studying seven manuscripts—F, G, H, L, M, P, and S—to determine their relative ages.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_1_4",
+    "question": "Which one of the following manuscripts CANNOT have been written fourth?",
+    "answer": "D",
+    "predicted_reasoning": "H was written earlier than S but later than F. P was the next manuscript written after G. At least four of the manuscripts were written earlier than L. At least four of the manuscripts were written later than M. H was not written fifth.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_1_5",
+    "question": "If P was written earlier than H, then any of the following could be true EXCEPT:",
+    "answer": "D",
+    "predicted_reasoning": "If P was written earlier than H, then P was written first. Since H was written earlier than S but later than F, H was written third. Since P was written next after G, G was written second. Since at least four manuscripts were written earlier than L, L was written fifth. Since at least four manuscripts were written later than M, M was written fourth. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_6",
+    "question": "Which one of the following is an acceptable placement of dishes on the bottom, middle, and top shelves?",
+    "answer": "B",
+    "predicted_reasoning": "Dish 2 is stored at least one shelf above dish 6. Dish 6 is stored either one shelf above or one shelf below dish 5. Dish 1 is not stored on the same shelf as dish 4. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_7",
+    "question": "If dish 6 is the only dish stored on the bottom shelf, which one of the following could be the list of dishes that are stored together on the middle shelf?",
+    "answer": "E",
+    "predicted_reasoning": "Since dish 6 is the only dish stored on the bottom shelf, dish 5 must be stored on the top shelf. Dish 1 cannot be stored on the same shelf as dish 4, so dish 1 must be stored on the top shelf. Dish 2 must be stored at least one shelf above dish 6, so dish 2 must be stored on the top shelf. Dish 3 must be stored on the middle shelf. Therefore, the",
+    "predicted_answer": "Since dish 6 is the only dish stored on the bottom shelf, dish 5 must be stored on the top shelf. Dish 1 cannot be stored on the same shelf as dish 4, so dish 1 must be stored on the top shelf. Dish 2 must be stored at least one shelf above dish 6, so dish 2 must be stored on the top shelf. Dish 3 must be stored on the middle shelf. Therefore, the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_8",
+    "question": "If dish 1, dish 2, and dish 3 are stored on the same shelf as each other, which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since dish 1, dish 2 and dish 3 are stored on the same shelf, we can rule out option A and B. Since dish 2 is stored at least one shelf above dish 6, we can rule out option C. Since dish 1 is not stored on the same shelf as dish 4, we can rule out option D. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_9",
+    "question": "If exactly one of the shelves has no dish stored on it, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since dish 2 is stored at least one shelf above dish 6, dish 2 is stored on the top shelf. Since dish 6 is stored either one shelf above or one shelf below dish 5, dish 5 is stored on the middle shelf. Since dish 1 is not stored on the same shelf as dish 4, dish 1 is stored on the bottom shelf. Therefore, the final answer is A.",
+    "predicted_answer": "A",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_10",
+    "question": "If dish 5 is the only dish stored on the bottom shelf and if exactly two of the dishes are stored on the middle shelf, then which one of the following is a pair of dishes that must be among the dishes stored on the top shelf?",
+    "answer": "C",
+    "predicted_reasoning": "Since dish 5 is the only dish stored on the bottom shelf, dish 6 is stored either one shelf above or one shelf below dish 5. Therefore, dish 6 is stored on the middle shelf. Since dish 2 is stored at least one shelf above dish 6, dish 2 is stored on the top shelf. Since dish 1 is not stored on the same shelf as dish 4, dish 1 is stored on the top shelf. Therefore,",
+    "predicted_answer": "Since dish 5 is the only dish stored on the bottom shelf, dish 6 is stored either one shelf above or one shelf below dish 5. Therefore, dish 6 is stored on the middle shelf. Since dish 2 is stored at least one shelf above dish 6, dish 2 is stored on the top shelf. Since dish 1 is not stored on the same shelf as dish 4, dish 1 is stored on the top shelf. Therefore,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_2_11",
+    "question": "If exactly one of the dishes is stored on the middle shelf, which one of the following could be the list of dishes stored on the top shelf?",
+    "answer": "A",
+    "predicted_reasoning": "Since dish 2 is stored at least one shelf above dish 6, dish 2 cannot be stored on the bottom shelf. Since dish 1 is not stored on the same shelf as dish 4, dish 1 cannot be stored on the middle shelf. Therefore, dish 1 must be stored on the top shelf. Since dish 6 is stored either one shelf above or one shelf below dish 5, dish 6 cannot be stored on the top shelf. Therefore, dish 5 must be stored on the top shelf. Since dish 2 is stored at least one shelf above dish 6, dish 2 cannot be stored on the bottom shelf. Therefore, dish 2 must be stored on the top shelf. Since dish 1 is not stored on the same shelf as dish 4, dish 4 cannot be stored on the top shelf. Therefore, dish 3 must be stored on the top shelf. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_12",
+    "question": "Which one of the following could be the schedule of deliveries to the schools, from the first to the fourth?",
+    "answer": "A",
+    "predicted_reasoning": "The first school to which juices are delivered must be the fourth one to which snacks are delivered. Therefore, we rule out option A and B. Gladstone must be the third school to which snacks are delivered. Therefore, we rule out option D. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA company operates vending machines in four schools: Ferndale, Gladstone, Hafford, and Isley. The company delivers juices in one of its two trucks and snacks in the other truck. Each week, exactly one delivery of juices and exactly one delivery of snacks is made to each school, subject to the following conditions: Snacks must be delivered to Ferndale at some time before they are delivered to Hafford. Gladstone cannot be the fourth school to which juices are delivered. Gladstone must be the third school to which snacks are delivered. The first school to which juices are",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_13",
+    "question": "If Hafford is the fourth school to which juices are delivered, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since Hafford is the fourth school to which juices are delivered, Ferndale must be the first school to which juices are delivered. Since Gladstone is the third school to which snacks are delivered, Ferndale must be the second school to which snacks are delivered. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA company operates vending machines in four schools: Ferndale, Gladstone, Hafford, and Isley. The company delivers juices in one of its two trucks and snacks in the other truck. Each week, exactly one delivery of juices and exactly one delivery of snacks is made to each school, subject to the following conditions: Snacks must be delivered to Ferndale at some time before they are delivered to Hafford. Gladstone cannot be the fourth school to which juices are delivered. Gladstone must be the third school to which snacks are delivered. The first",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_14",
+    "question": "If Isley is the third school to which juices are delivered, which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since Isley is the third school to which juices are delivered, Gladstone is the fourth school to which juices are delivered. Therefore, Gladstone cannot be the fourth school to which snacks are delivered. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA company operates vending machines in four schools: Ferndale, Gladstone, Hafford, and Isley. The company delivers juices in one of its two trucks and snacks in the other truck. Each week, exactly one delivery of juices and exactly one delivery of snacks is made to each school, subject to the following conditions: Snacks must be delivered to Ferndale at some time before they are delivered to Hafford. Gladstone cannot be the fourth school to which juices are delivered. Gladstone must be the third school to which snacks are delivered. The first school to which juices are delivered must be the fourth one to which snacks",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_15",
+    "question": "If Isley is the first school to which snacks are delivered, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Isley is the first school to which snacks are delivered, Gladstone must be the third school to which snacks are delivered. Therefore, the first school to which juices are delivered must be Ferndale. Since Ferndale is the first school to which juices are delivered, it must be the fourth one to which snacks are delivered. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA company operates vending machines in four schools: Ferndale, Gladstone, Hafford, and Isley. The company delivers juices in one of its two trucks and snacks in the other truck. Each week, exactly one delivery of juices and exactly one delivery of snacks is made to each school, subject to the following conditions: Snacks must be delivered to Ferndale at some time before they are delivered to Hafford. Gladstone cannot be the fourth school to which juices are delivered. Gladstone",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_16",
+    "question": "Which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "The first school to which juices are delivered must be the fourth one to which snacks are delivered. Therefore, Gladstone cannot be the first school to which juices are delivered. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA company operates vending machines in four schools: Ferndale, Gladstone, Hafford, and Isley. The company delivers juices in one of its two trucks and snacks in the other truck. Each week, exactly one delivery of juices and exactly one delivery of snacks is made to each school, subject to the following conditions: Snacks must be delivered to Ferndale at some time before they are delivered to Hafford. Gladstone cannot be the fourth school to which juices are delivered. Gladstone must be the third school to which snacks are delivered. The first school to which juices are delivered must be the fourth one to which snacks are delivered.\n\nQuestion",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_3_17",
+    "question": "Which one of the following, if substituted for the condition that Gladstone cannot be the fourth school to which juices are delivered, would have the same effect in determining the delivery schedule?",
+    "answer": "B",
+    "predicted_reasoning": "The first school to which juices are delivered must be the fourth one to which snacks are delivered. Therefore, Gladstone cannot be the fourth school to which juices are delivered. The correct answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_18",
+    "question": "Which one of the following could be the assignment of paralegals to cases?",
+    "answer": "D",
+    "predicted_reasoning": "Hiro is assigned to Sicoli, so we rule out option A. Either Frank is assigned to Raimes and Kevin is assigned to Thompson, or Frank is not assigned to Raimes and Kevin is not assigned to Thompson. Therefore, we rule out option D.",
+    "predicted_answer": "Hiro is assigned to Sicoli, so we rule out option A. Either Frank is assigned to Raimes and Kevin is assigned to Thompson, or Frank is not assigned to Raimes and Kevin is not assigned to Thompson. Therefore, we rule out option D.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_19",
+    "question": "Which one of the following CANNOT be the complete assignment of paralegals to the Sicoli case?",
+    "answer": "E",
+    "predicted_reasoning": "Hiro is assigned to Sicoli. If Frank is assigned to Raimes, then Kevin is assigned to Thompson. If Frank is not assigned to Raimes, then Kevin is not assigned to Thompson. Therefore, Kevin is assigned to Thompson. If Gina is the",
+    "predicted_answer": "Hiro is assigned to Sicoli. If Frank is assigned to Raimes, then Kevin is assigned to Thompson. If Frank is not assigned to Raimes, then Kevin is not assigned to Thompson. Therefore, Kevin is assigned to Thompson. If Gina is the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_20",
+    "question": "If exactly two of the paralegals are assigned to the Thompson case, then which one of the following could be the complete assignment of paralegals to the Raimes case?",
+    "answer": "A",
+    "predicted_reasoning": "Since Hiro is assigned to Sicoli, we can rule out option A. Since Frank and Kevin cannot be assigned to the same case, we can rule out option B. Since Frank and Gina cannot be assigned to the same case, we can rule out option",
+    "predicted_answer": "Since Hiro is assigned to Sicoli, we can rule out option A. Since Frank and Kevin cannot be assigned to the same case, we can rule out option B. Since Frank and Gina cannot be assigned to the same case, we can rule out option",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_21",
+    "question": "If one of the cases has Gina and Laurie as the only paralegals assigned to it, then each of the following must be false EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "If Gina and Laurie are the only paralegals assigned to a case, then that case must be the Raimes case. Since Frank is not assigned to the Raimes case, option A is false. Since Frank is not assigned to the Sic",
+    "predicted_answer": "If Gina and Laurie are the only paralegals assigned to a case, then that case must be the Raimes case. Since Frank is not assigned to the Raimes case, option A is false. Since Frank is not assigned to the Sic",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_22",
+    "question": "Which one of the following CANNOT be the complete assignment of paralegals to the Thompson case?",
+    "answer": "D",
+    "predicted_reasoning": "Since Hiro is assigned to Sicoli, we can rule out option A. Since Frank is assigned to Raimes and Kevin is assigned to Thompson, we can rule out option B. Since Frank is not assigned to Raimes and Kevin is not assigned to Thompson,",
+    "predicted_answer": "Since Hiro is assigned to Sicoli, we can rule out option A. Since Frank is assigned to Raimes and Kevin is assigned to Thompson, we can rule out option B. Since Frank is not assigned to Raimes and Kevin is not assigned to Thompson,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201306_2-G_4_23",
+    "question": "If Kevin is the sole paralegal assigned to one of the cases then which one of the following lists all of the paralegals any one of",
+    "answer": "B",
+    "predicted_reasoning": "If Kevin is the sole paralegal assigned to one of the cases, then Frank is not assigned to Raimes and Kevin is not assigned to Thompson. Therefore, Frank is assigned to Sicoli. Since Hiro is assigned to Sicoli, Frank is not assigned to Sicoli. Therefore, Frank is assigned to Raimes. Since Frank is assigned to Raimes, Gina is assigned to Thompson. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_1",
+    "question": "The five pieces could appear in which one of the following sequences on the CD, in order from first to last?",
+    "answer": "B",
+    "predicted_reasoning": "Salammbo must be earlier than Vancouver. Trapezoid must either be earlier than both Reciprocity and Salammbo or later than both Reciprocity and Salammbo. Wisteria must either be earlier than both Reciprocity and Trapezoid or later than both Reciprocity and Trapezoid. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_2",
+    "question": "If Salammbo is the fourth piece on the CD, then which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since Salammbo is the fourth piece on the CD, Vancouver must be the fifth piece on the CD. Since Trapezoid must either be earlier than both Reciprocity and Salammbo or later than both Reciprocity and Salammbo, Trapezoid must be the first piece on the CD. Since Wisteria must either be earlier than both Reciprocity and Trapezoid or later than both Reciprocity and Trap",
+    "predicted_answer": "Since Salammbo is the fourth piece on the CD, Vancouver must be the fifth piece on the CD. Since Trapezoid must either be earlier than both Reciprocity and Salammbo or later than both Reciprocity and Salammbo, Trapezoid must be the first piece on the CD. Since Wisteria must either be earlier than both Reciprocity and Trapezoid or later than both Reciprocity and Trap",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_3",
+    "question": "If Reciprocity is the first piece on the CD, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "If Reciprocity is the first piece on the CD, then Trapezoid must be the second piece on the CD. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA record producer is planning the contents of a CD consisting of a sequence of exactly five instrumental pieces—Reciprocity, Salammbo, Trapezoid, Vancouver, and Wisteria. To create and sustain certain moods, the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_4",
+    "question": "If Trapezoid is the second piece on the CD, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since Trapezoid is the second piece on the CD, Salammbo must be earlier than Vancouver. Therefore, Salammbo must be the first piece on the CD. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA record producer is planning the contents of a CD consisting of a sequence of exactly five instrumental pieces—Reciprocity, Salammbo, Trapezoid, Vancouver, and Wister",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_5",
+    "question": "The first and second pieces on the CD, listed in order, could be",
+    "answer": "E",
+    "predicted_reasoning": "Salammbo must be earlier than Vancouver, so we rule out option A. Trapezoid must either be earlier than both Reciprocity and Salammbo or later than both Reciprocity and Salammbo. Wisteria must either be earlier than both Reciprocity and Trapezoid or later than both Reciprocity and Trapezoid. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_6",
+    "question": "If Vancouver is the second piece on the CD, then which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since Vancouver is the second piece on the CD, Salammbo must be the first piece on the CD. Since Trapezoid must either be earlier than both Reciprocity and Salammbo or later than both Reciprocity and Salammbo, Trapezoid must be the last piece on the CD. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_1_7",
+    "question": "If Wisteria is the first piece on the CD, then which one of the following CANNOT be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Wisteria is the first piece on the CD, we can rule out option A and B. Since Salammbo must be earlier than Vancouver, we can rule out option C. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA record producer is planning the contents of a CD consisting of a sequence of exactly five instrumental pieces—Reciprocity, Salam",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_8",
+    "question": "Which one of the following could be the speeches given in each room, listed in the order in which they occur?",
+    "answer": "A",
+    "predicted_reasoning": "Molina's speech must be earlier than Long's, and in the same room. Neither Xiao's speech nor Yoshida's speech can be earlier than Zimmerman's. If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, the final answer is A.\n\nThe correct",
+    "predicted_answer": "Molina's speech must be earlier than Long's, and in the same room. Neither Xiao's speech nor Yoshida's speech can be earlier than Zimmerman's. If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, the final answer is A.\n\nThe correct",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_9",
+    "question": "Which one of the following pairs of speeches CANNOT be given at the same time?",
+    "answer": "B",
+    "predicted_reasoning": "Long's speech must be later than Molina's speech. Therefore, Long's speech cannot be at 1 P.M. in the Gold Room. If Long's speech is at 2 P.M. in the Gold Room, then Xiao's and Zimmerman's speeches must be at 1 P.M. and 2 P.M. in the Rose Room. Therefore",
+    "predicted_answer": "Long's speech must be later than Molina's speech. Therefore, Long's speech cannot be at 1 P.M. in the Gold Room. If Long's speech is at 2 P.M. in the Gold Room, then Xiao's and Zimmerman's speeches must be at 1 P.M. and 2 P.M. in the Rose Room. Therefore",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_10",
+    "question": "If Xiao's speech is at 3 P.M., which one of the following CANNOT be true?",
+    "answer": "A",
+    "predicted_reasoning": "If Xiao's speech is at 3 P.M., then Long's speech must be in the Rose Room. Therefore, Molina's speech must be in the Rose Room. Since Molina's speech must be earlier than Long's, Molina's speech must be at 1 P.M. and Long's speech must be at 2 P.M. Since Long's speech is",
+    "predicted_answer": "If Xiao's speech is at 3 P.M., then Long's speech must be in the Rose Room. Therefore, Molina's speech must be in the Rose Room. Since Molina's speech must be earlier than Long's, Molina's speech must be at 1 P.M. and Long's speech must be at 2 P.M. Since Long's speech is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_11",
+    "question": "Which one of the following could be a complete and accurate list of the speeches given in the Gold Room, in the order in which they occur?",
+    "answer": "C",
+    "predicted_reasoning": "If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, we rule out option A. If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, we rule out option C. If Long's speech is",
+    "predicted_answer": "If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, we rule out option A. If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, we rule out option C. If Long's speech is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_12",
+    "question": "If Yoshida's speech is at 1 P.M., which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "If Yoshida's speech is at 1 P.M., then Zimmerman's speech must be at 2 P.M. in the same room. If Long's speech is at 1 P.M., then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, Long's speech cannot be at 1 P.M. in the Gold Room. If Long's speech is at 2 P.M., then Molina's speech must be at 1 P.M. in the Gold Room. Therefore, Long's speech cannot be at 2 P.M. in the Rose Room. If Molina's speech is at 2 P.M. in the Gold Room, then Long's speech must be at 1 P.M. in the Gold Room. Therefore, Molina's speech cannot be at 2 P.M. in the Gold Room. If Xiao's speech is at 3 P.M. in the Gold Room, then Long's speech must be at 1 P.M. in the Gold Room. Therefore, Xiao's speech cannot be at 3 P.M. in the Gold Room. If Xiao's speech is at 1 P.M. in the Rose Room, then Long's speech must be at 1 P.M. in the Gold Room. Therefore, Xiao's speech cannot be at 1 P.M. in the Rose Room. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_2_13",
+    "question": "Which one of the following, if substituted for the constraint that neither Xiao's speech nor Yoshida's speech can be earlier than Zimmerman's, would have the same effect in determining the schedule of speeches with regard to rooms and times?",
+    "answer": "E",
+    "predicted_reasoning": "If Long's speech is in the Gold Room, then Xiao's and Zimmerman's speeches must both be in the Rose Room. Therefore, if Long's speech is in the Gold Room, then Xiao's speech cannot be earlier than Zimmerman's. If Long's speech is in the Rose Room, then Xiao's speech cannot be earlier than Zimmerman's. Therefore, the final answer is C.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_3_14",
+    "question": "Which one of the following could be an accurate matching of each family to the building or buildings it owned?",
+    "answer": "A",
+    "predicted_reasoning": "The Williamses owned more of the buildings than the Yandells owned. Therefore, the Williamses owned at least three buildings. The Trents owned at least one building. The Yandells owned at least one building. The Williamses owned the inn and the mill. The Trents owned the granary and the stable. The Yandells owned the forge. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a member of the board of directors or not a member of the board of directors. The number of employees who are both managers and members of the board of directors is 10. The number of employees who are neither managers nor members of the board of directors is 20.\n\nQuestion: If the number of employees who are managers is 40, then the number of employees who are members of the board of directors is\n\nOptions:\nA) 20\nB) 30\nC) 40\nD) 50\nE) 60\n\nReasoning:\nThe number of employees who are managers is 40. The number of employees who are both managers and members of the board of directors is 10. Therefore, the number of employees who are managers but not members of the board of directors is 30. The number of employees who are neither managers nor members of the board of directors is 20. Therefore, the number of employees who are",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_3_15",
+    "question": "Which one of the following is a pair of buildings that CANNOT both have been owned by the Trents?",
+    "answer": "D",
+    "predicted_reasoning": "The Williamses owned more of the buildings than the Yandells owned. Therefore, the Trents owned less buildings than the Williamses. The Trents owned either the stable or the inn, or both. Therefore, the Trents owned at most two buildings. The Trents cannot own the forge and the granary, so we rule out option A. The Trents cannot own the granary and the mill, so we rule out option B. The Trents cannot own the granary and the stable, so we rule out option C. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either a full-time employee or a part-time employee. Each manager is a full-time employee. Each part-time employee is a nonmanager.\n\nQuestion: If 20 of the company's employees are full-time managers, then the number of the company's employees who are part-time nonmanagers is\n\nOptions:\nA) 20\nB) 40\nC) 60\nD) 80\nE) 100\n\nReasoning:\nThe company has 100 employees, including 20 managers. 20 of the company's employees are full-time managers. Therefore, the number of the company's employees who are part-time nonmanagers is 100 - 2",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_3_16",
+    "question": "If the Yandells owned the mill, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "If the Yandells owned the mill, then the Trents owned the stable. The Williamses owned more buildings than the Yandells, so the Williamses owned the forge and the granary. The inn cannot be owned by the Trents or the Yandells, so the Williamses owned the inn. Therefore, the final answer is E.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 100 employees, including 10 managers. Each employee is either a manager or a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_3_17",
+    "question": "If one of the families owned both the granary and the inn, which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "The Williamses owned more of the buildings than the Yandells owned. Therefore, the Williamses owned at least three buildings. The Trents owned at least one building. The Yandells owned at least one building. The Williamses owned the forge, the granary and the inn. The Trents owned the mill and the stable. The Yandells owned the forge and the inn. Therefore, the final answer is C.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_3_18",
+    "question": "If the Trents owned exactly one of the buildings, which one of the following is a complete and accurate list of the buildings any one of which could be the building that the Trents owned?",
+    "answer": "E",
+    "predicted_reasoning": "The Trents owned exactly one of the buildings, so we rule out option D and E. The Williamses owned more of the buildings than the Yandells owned, so we rule out option A. Either the Trents owned the stable or the Yandells owned the inn, or both, so we rule out option C. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_4_19",
+    "question": "Which one of the following could be a complete and accurate list of the kinds of flowers in each of the bouquets?",
+    "answer": "A",
+    "predicted_reasoning": "Bouquet 3 must have snapdragons. Bouquets 1 and 3 cannot have any kind of flower in common. Bouquets 2 and 3 must have exactly two kinds of flowers in common. Therefore, bouquet 1 cannot have snapdragons. Bouquet 3 must have snapdragons. Bouquets 1 and 3 cannot have any kind of flower in common. Therefore,",
+    "predicted_answer": "Bouquet 3 must have snapdragons. Bouquets 1 and 3 cannot have any kind of flower in common. Bouquets 2 and 3 must have exactly two kinds of flowers in common. Therefore, bouquet 1 cannot have snapdragons. Bouquet 3 must have snapdragons. Bouquets 1 and 3 cannot have any kind of flower in common. Therefore,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_4_20",
+    "question": "If lilies are in bouquet 1, which one of the following must",
+    "answer": "B",
+    "predicted_reasoning": "Since lilies are in bouquet 1, roses are also in bouquet 1. Since bouquets 1 and 3 cannot have any kind of flower in common, roses are not in bouquet 3. Since bouquets 2 and 3 must have exactly two kinds of flowers in common, roses are in bouquet 2. Therefore, the final answer is C.",
+    "predicted_answer": "Since lilies are in bouquet 1, roses are also in bouquet 1. Since bouquets 1 and 3 cannot have any kind of flower in common, roses are not in bouquet 3. Since bouquets 2 and 3 must have exactly two kinds of flowers in common, roses are in bouquet 2. Therefore, the final answer is C.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_4_21",
+    "question": "If tulips are in bouquet 1, which one of the following could be a complete and accurate list of the kinds of flowers in bouquet 2?",
+    "answer": "E",
+    "predicted_reasoning": "Since tulips are in bouquet 1, bouquet 3 cannot have tulips. Since bouquets 2 and 3 must have exactly two kinds of flowers in common, bouquet 2 must have tulips. Since bouquet 3 must have snapdragons, bouquet 2 cannot have snapdragons. Since bouquet 3 cannot have tulips, bouquet 2 must",
+    "predicted_answer": "Since tulips are in bouquet 1, bouquet 3 cannot have tulips. Since bouquets 2 and 3 must have exactly two kinds of flowers in common, bouquet 2 must have tulips. Since bouquet 3 must have snapdragons, bouquet 2 cannot have snapdragons. Since bouquet 3 cannot have tulips, bouquet 2 must",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_4_22",
+    "question": "Which one of the following CANNOT be a complete and accurate list of the kinds of flowers in bouquet 2?",
+    "answer": "A",
+    "predicted_reasoning": "Bouquet 2 must have peonies and tulips. It must also have roses since it has tulips. It cannot have lilies since it has tulips. It cannot have snapdragons since it has lilies. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201409_3-G_4_23",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "C",
+    "predicted_reasoning": "Bouquet 3 must have snapdragons. If a bouquet has lilies, that bouquet must also have roses but cannot have snapdragons. Therefore, bouquet 3 cannot have lilies. If a bouquet has tulips, that bouquet must also have peonies. Therefore, bouquet 3 cannot have tulips. Therefore, the final answer is E.",
+    "predicted_answer": "Bouquet 3 must have snapdragons. If a bouquet has lilies, that bouquet must also have roses but cannot have snapdragons. Therefore, bouquet 3 cannot have lilies. If a bouquet has tulips, that bouquet must also have peonies. Therefore, bouquet 3 cannot have tulips. Therefore, the final answer is E.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_1",
+    "question": "Which one of the following is an allowable distribution of bonuses to the seven employees?",
+    "answer": "C",
+    "predicted_reasoning": "No one in the Graphics department receives a $1,000 bonus, so we rule out option A. Only Lopez, Meng, and Xavier were rated Highly Effective, so we rule out option D. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_2",
+    "question": "If Lopez does not receive the same bonus as Meng, which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since Lopez and Meng are rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Since Lopez and Meng are in the Finance department, no one in the Finance department receives a $1,000 bonus. Therefore, Kimura,",
+    "predicted_answer": "Since Lopez and Meng are rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Since Lopez and Meng are in the Finance department, no one in the Finance department receives a $1,000 bonus. Therefore, Kimura,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_3",
+    "question": "If only one of the employees receives a $1,000 bonus, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since only one employee receives a $1,000 bonus, the other six employees receive either a $3,000 or a $5,000 bonus. Since only Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than the other four employees.",
+    "predicted_answer": "Since only one employee receives a $1,000 bonus, the other six employees receive either a $3,000 or a $5,000 bonus. Since only Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than the other four employees.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_4",
+    "question": "Which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "Since no one in the Graphics department receives a $1,000 bonus, we can rule out option A. Since Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Therefore, at least two",
+    "predicted_answer": "Since no one in the Graphics department receives a $1,000 bonus, we can rule out option A. Since Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Therefore, at least two",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_5",
+    "question": "If exactly two of the employees receive $5,000 bonuses, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since only Lopez, Meng, and Xavier were rated Highly Effective, they will receive a larger bonus than anyone in their department who was not rated Highly Effective. Since Lopez and Xavier are in the Graphics department, they cannot receive a $1,000 bonus. Therefore,",
+    "predicted_answer": "Since only Lopez, Meng, and Xavier were rated Highly Effective, they will receive a larger bonus than anyone in their department who was not rated Highly Effective. Since Lopez and Xavier are in the Graphics department, they cannot receive a $1,000 bonus. Therefore,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_1_6",
+    "question": "Any of the following could be true of the seven employees EXCEPT:",
+    "answer": "B",
+    "predicted_reasoning": "Since no one in the Graphics department receives a $1,000 bonus, we can rule out option A. Since Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Therefore, we can rule",
+    "predicted_answer": "Since no one in the Graphics department receives a $1,000 bonus, we can rule out option A. Since Lopez, Meng, and Xavier were rated Highly Effective, they receive a larger bonus than anyone in their department who was not rated Highly Effective. Therefore, we can rule",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_2_7",
+    "question": "Which one of the following could be the list of the trees that the landscaper plants on each of the lots today?",
+    "answer": "D",
+    "predicted_reasoning": "The hickory, oak and one other tree are planted on one lot. The maple is not planted on the same lot as the walnut. Either the larch or the walnut, but not both, is planted on lot 1. Either the maple or the oak, but not both, is planted on lot 2. More trees are planted on lot 3 than on lot 1. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_2_8",
+    "question": "If the hickory is planted on lot 2, then which one of the following trees must be planted on lot 3?",
+    "answer": "B",
+    "predicted_reasoning": "The hickory is planted on lot 2, so the oak and one other tree are planted on lot 1. The maple is not planted on the same lot as the walnut, so the maple is planted on lot 2. The larch or the walnut is planted on lot 1, so the sycamore is planted on lot 3.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees. Each",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_2_9",
+    "question": "Which one of the following is a complete and accurate list of the trees any of which could be planted on lot 1?",
+    "answer": "C",
+    "predicted_reasoning": "The hickory, the oak, and either the larch or the walnut are planted on lot 1. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a stockholder or a nonstockholder. The following statements describe the company's employees: Exactly 20 percent of the employees are nonman",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_2_10",
+    "question": "If the walnut is planted on lot 3, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "If the walnut is planted on lot 3, then the maple is planted on lot 2. The hickory, oak, and either the larch or the walnut are planted on lot 1. The sycamore, plum, and either the maple or the oak are planted on lot 3. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees. Each employee",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_2_11",
+    "question": "Where each of the trees is planted is completely determined if which one of the following trees is planted on lot 2?",
+    "answer": "A",
+    "predicted_reasoning": "The maple is not planted on the same lot as the walnut. Either the larch or the walnut, but not both, is planted on lot 1. Either the maple or the oak, but not both, is planted on lot 2. More trees are planted on lot 3 than on lot 1. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees, each of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_12",
+    "question": "Which one of the following is an acceptable schedule for the librarians, listed in order from Monday through Saturday?",
+    "answer": "A",
+    "predicted_reasoning": "Hill must be on desk duty earlier in the week than Leung. Both Hill and Moore must be on desk duty earlier in the week than Gomez. Flynn must be on desk duty earlier in the week than both Kitson and Moore. Kitson must be on desk duty earlier in the week than Zahn. Unless Leung is on desk duty on Saturday, Leung must be on desk duty earlier in the week than Flynn.",
+    "predicted_answer": "A",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_13",
+    "question": "Which one of the following CANNOT be on desk duty on Tuesday?",
+    "answer": "E",
+    "predicted_reasoning": "Hill must be on desk duty earlier in the week than Leung. Both Hill and Moore must be on desk duty earlier in the week than Gomez. Flynn must be on desk duty earlier in the week than both Kitson and Moore. Kitson must be on desk duty earlier in the week than Zahn. Unless Leung is on desk duty on Saturday, Leung must be on desk duty earlier in the week than Flynn.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_14",
+    "question": "If Kitson is on desk duty earlier in the week than Moore, which one of the following CANNOT be true?",
+    "answer": "B",
+    "predicted_reasoning": "If Kitson is on desk duty earlier in the week than Moore, then Flynn must be on desk duty earlier in the week than Moore. Therefore, Flynn must be on desk duty earlier in the week than Leung. Therefore, Leung must be on desk duty on Saturday. Therefore, the final answer is A.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has a total of 100 employees, including 10 managers. Each employee is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_15",
+    "question": "If Zahn is on desk duty on Thursday, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Zahn is on desk duty on Thursday, we can rule out option D. Since Hill must be on desk duty earlier in the week than Leung, we can rule out option A. Since both Hill and Moore must be on desk duty earlier in the week than Gomez, we can rule out option C. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees. Each employee is a member of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_16",
+    "question": "If Moore is on desk duty on Tuesday, which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since Moore is on desk duty on Tuesday, Hill must be on desk duty on Monday. Since Hill is on desk duty on Monday, Leung must be on desk duty on Saturday. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a non-manager. Each employee is either a stockholder or a non-stockholder. The following statements describe the company's",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_17",
+    "question": "If Flynn is on desk duty earlier in the week than Hill, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "If Flynn is on desk duty earlier in the week than Hill, then Flynn is on duty on Monday. Since Flynn must be on duty earlier in the week than both Kitson and Moore, Kitson and Moore are on duty on Tuesday and Wednesday respectively. Since Hill must be on duty earlier in the week than Leung, Hill is on duty on Thursday. Since Moore must be on duty earlier in the week than Gomez, Gomez is on duty on Friday. Since Le",
+    "predicted_answer": "If Flynn is on desk duty earlier in the week than Hill, then Flynn is on duty on Monday. Since Flynn must be on duty earlier in the week than both Kitson and Moore, Kitson and Moore are on duty on Tuesday and Wednesday respectively. Since Hill must be on duty earlier in the week than Leung, Hill is on duty on Thursday. Since Moore must be on duty earlier in the week than Gomez, Gomez is on duty on Friday. Since Le",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_3_18",
+    "question": "Which one of the following, if substituted for the constraint that Flynn must be on desk duty earlier in the week than both Kitson and Moore, would have the same effect in determining the schedule for the librarians?",
+    "answer": "C",
+    "predicted_reasoning": "The constraint that Flynn must be on desk duty earlier in the week than both Kitson and Moore is redundant. If Flynn is on desk duty on Monday, then Hill must be on desk duty on Tuesday, Leung on Wednesday, and Moore on Thursday. If Flynn is on desk duty on Tuesday, then Hill must be on desk duty on Wednesday, Leung on Thursday, and Moore on Friday. If Flynn is on desk duty on Wednesday, then Hill must be on desk duty",
+    "predicted_answer": "The constraint that Flynn must be on desk duty earlier in the week than both Kitson and Moore is redundant. If Flynn is on desk duty on Monday, then Hill must be on desk duty on Tuesday, Leung on Wednesday, and Moore on Thursday. If Flynn is on desk duty on Tuesday, then Hill must be on desk duty on Wednesday, Leung on Thursday, and Moore on Friday. If Flynn is on desk duty on Wednesday, then Hill must be on desk duty",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_4_19",
+    "question": "Which one of the following is an allowable structure for an issue of the newsletter?",
+    "answer": "D",
+    "predicted_reasoning": "The first slot must be occupied by a finance or technology feature. The second slot can be occupied by a graphic or a second finance or technology feature. The third slot can be occupied by a graphic or a second industry feature. The fourth slot can be occupied by a graphic or a second marketing feature. The fifth slot can be occupied by a graphic or a second finance or technology feature. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_4_20",
+    "question": "If an issue of the newsletter has no technology feature and if there is a finance feature that occupies both slots 4 and 5, then which one of the following is required for that issue?",
+    "answer": "A",
+    "predicted_reasoning": "Since there is a finance feature that occupies both slots 4 and 5, there is no technology feature. Therefore, the issue must have at least three features. Since there is no technology feature, the issue must have at least one industry feature. Since there is no technology feature, the issue must have at least one marketing feature. Since there is no technology feature, the issue must have at least one finance feature. Since there is no technology feature, the issue must",
+    "predicted_answer": "Since there is a finance feature that occupies both slots 4 and 5, there is no technology feature. Therefore, the issue must have at least three features. Since there is no technology feature, the issue must have at least one industry feature. Since there is no technology feature, the issue must have at least one marketing feature. Since there is no technology feature, the issue must have at least one finance feature. Since there is no technology feature, the issue must",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_4_21",
+    "question": "Which one of the following is NOT allowed for an issue of the newsletter?",
+    "answer": "E",
+    "predicted_reasoning": "If there is exactly one industry feature, then it must occupy slot 1. Therefore, option A is not allowed.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a full-time employee or a part-time employee. The following statements describe the company's employees.\n\nQuestion: If 10 of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_4_22",
+    "question": "If, in a particular issue of the newsletter, slot 1 is occupied by the only industry feature in that issue, then which one of the following is required for that issue?",
+    "answer": "D",
+    "predicted_reasoning": "Since slot 1 is occupied by the only industry feature in that issue, there is no finance or technology feature in that issue. Therefore, there is no feature that occupies slot 1. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a full-time employee or a part-",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201506_4-G_4_23",
+    "question": "Any of the following is allowed for an issue of the newsletter EXCEPT:",
+    "answer": "D",
+    "predicted_reasoning": "If there is exactly one finance feature, then it must occupy slot 1. If there is no industry or marketing feature, then the remaining three slots can be occupied by graphics. Therefore, option A is allowed. If there is exactly one industry feature, then it can occupy any of the five slots. If there is no finance or marketing feature, then the remaining four slots can be occupied by graphics. Therefore, option B is allowed. If there is exactly one",
+    "predicted_answer": "If there is exactly one finance feature, then it must occupy slot 1. If there is no industry or marketing feature, then the remaining three slots can be occupied by graphics. Therefore, option A is allowed. If there is exactly one industry feature, then it can occupy any of the five slots. If there is no finance or marketing feature, then the remaining four slots can be occupied by graphics. Therefore, option B is allowed. If there is exactly one",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_1_1",
+    "question": "Which one of the following could be the order, from first to last, in which the entertainers are scheduled to perform?",
+    "answer": "A",
+    "predicted_reasoning": "Robinson must perform at some time before Zane. Yeaton's performance must be the next performance after Wu's. Tigay must perform in the afternoon. Zane must perform in the morning. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 1,000 employees, including 100 managers. Each employee is either a manager or a non",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_1_2",
+    "question": "If Wu is scheduled to perform in the morning, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "If Wu is scheduled to perform in the morning, then Yeaton must perform at 2:00 P.M. and Robinson must perform at 9:00 A.M. Since Tigay must perform in the afternoon, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_1_3",
+    "question": "Shahpari CANNOT be scheduled to perform at which one of the following times?",
+    "answer": "D",
+    "predicted_reasoning": "Robinson must perform before Zane, so we rule out option A. Yeaton's performance must be the next performance after Wu's, so we rule out option B. Tigay must perform in the afternoon, so we rule out option C. Zane must perform in the morning, so we rule out",
+    "predicted_answer": "Robinson must perform before Zane, so we rule out option A. Yeaton's performance must be the next performance after Wu's, so we rule out option B. Tigay must perform in the afternoon, so we rule out option C. Zane must perform in the morning, so we rule out",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_1_4",
+    "question": "What is the earliest time that Wu could be scheduled to perform?",
+    "answer": "C",
+    "predicted_reasoning": "Since Zane must perform in the morning, we can rule out options D and E. Since Tigay must perform in the afternoon, we can rule out option C. Since Yeaton's performance must be the next performance after Wu's, we can rule out option A. Therefore, the final answer is B",
+    "predicted_answer": "Since Zane must perform in the morning, we can rule out options D and E. Since Tigay must perform in the afternoon, we can rule out option C. Since Yeaton's performance must be the next performance after Wu's, we can rule out option A. Therefore, the final answer is B",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_1_5",
+    "question": "Which one of the following is a complete and accurate list of the entertainers who must be scheduled to perform in the afternoon?",
+    "answer": "C",
+    "predicted_reasoning": "Zane must perform in the morning, so we rule out option E. Yeaton's performance must be the next performance after Wu's, so we rule out option A. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_6",
+    "question": "Which one of the following could be the display of bowls, listed by potters name, in order from position 1 through position 6?",
+    "answer": "E",
+    "predicted_reasoning": "Since Neiman's bowl can be displayed only in position 5, we rule out option A. Since Reigel's bowl can be displayed only in either position 1 or position 6, we rule out option B. Since Serra's bowl cannot be displayed in either position 2 or position",
+    "predicted_answer": "Since Neiman's bowl can be displayed only in position 5, we rule out option A. Since Reigel's bowl can be displayed only in either position 1 or position 6, we rule out option B. Since Serra's bowl cannot be displayed in either position 2 or position",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_7",
+    "question": "If Neiman's bowl and Park's bowl are both displayed, which one of the following is a potter whose bowl could be displayed in position 1?",
+    "answer": "D",
+    "predicted_reasoning": "Since Neiman's bowl is displayed in position 5, Park's bowl is displayed in position 4. Since Park's bowl is displayed, Olivera's bowl is displayed in position 3 and Serra's bowl is displayed in position 2. Since Serra's bowl is displayed",
+    "predicted_answer": "Since Neiman's bowl is displayed in position 5, Park's bowl is displayed in position 4. Since Park's bowl is displayed, Olivera's bowl is displayed in position 3 and Serra's bowl is displayed in position 2. Since Serra's bowl is displayed",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_8",
+    "question": "If Larsen's bowl is displayed in position 6 and Olivera's bowl is displayed in position 2, which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since Larsen's bowl is displayed in position 6, Mills's bowl cannot be displayed. Since Olivera's bowl is displayed in position 2, Park's bowl cannot be displayed. Since Serra's bowl cannot be displayed in position 4, it must be displayed in position 1. Since Neiman's bowl can be displayed only in position 5, Vance's bowl must be displayed in position 3. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_9",
+    "question": "If Park's bowl is displayed in position 4, then the bowl displayed in position 2 must be",
+    "answer": "A",
+    "predicted_reasoning": "Park's bowl can be displayed only if it is next to Olivera's bowl and next to Serra's bowl. Since Park's bowl is displayed in position 4, Olivera's bowl must be displayed in position 3 and Serra's bowl must be displayed in position 5. Neiman's bowl can be displayed only in position 5, so we rule out option B. Larsen's bowl cannot be displayed, so we rule out option A. Therefore, the final answer is E.",
+    "predicted_answer": "Park's bowl can be displayed only if it is next to Olivera's bowl and next to Serra's bowl. Since Park's bowl is displayed in position 4, Olivera's bowl must be displayed in position 3 and Serra's bowl must be displayed in position 5. Neiman's bowl can be displayed only in position 5, so we rule out option B. Larsen's bowl cannot be displayed, so we rule out option A. Therefore, the final answer is E.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_10",
+    "question": "If Larsen's bowl is displayed in position 1 and Olivera's bowl is displayed in position 4, which one of the following is a potter whose bowl CANNOT be displayed?",
+    "answer": "B",
+    "predicted_reasoning": "Since Larsen's bowl is displayed in position 1, Mills's bowl cannot be displayed. Since Olivera's bowl is displayed in position 4, Park's bowl cannot be displayed. Since Serra's bowl cannot be displayed in position 4, it cannot be displayed at all. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees, including Smith. If the company is to assign exactly five of its employees to lots",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_11",
+    "question": "Which one of the following is a potter whose bowl must be displayed?",
+    "answer": "B",
+    "predicted_reasoning": "Neiman's bowl must be displayed in position 5, so we rule out option A. Park's bowl can be displayed only if it is next to Olivera's bowl and next to Serra's bowl, so we rule out option C. Reigel's bowl can be displayed only in either position 1 or position 6, so we rule out option D. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_2_12",
+    "question": "If Neiman's bowl, Park's bowl, and Reigel's bowl are all displayed, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Neiman's bowl is displayed in position 5, Serra's bowl cannot be displayed in position 4. Therefore, Serra's bowl is displayed in position 6. Since Reigel's bowl is displayed in position 1, Park's bowl is displayed in position 2. Since Park's bowl is displayed, Olivera's bowl is displayed in position 3. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_3_13",
+    "question": "Which one of the following is a possible matching of employees with the offices they select?",
+    "answer": "B",
+    "predicted_reasoning": "The first employee to select an office is Jackson. Jackson ranks Y as his first choice, so he selects Y. The second employee to select an office is Larabee. Larabee ranks X as his first choice, so he selects X. The third employee to select an office is Paulson. Paulson ranks Y as his first choice, but Y has already been selected, so he selects Z. The fourth employee to select an office is Torillo. Torillo ranks X as his first choice, but X has already been selected,",
+    "predicted_answer": "The first employee to select an office is Jackson. Jackson ranks Y as his first choice, so he selects Y. The second employee to select an office is Larabee. Larabee ranks X as his first choice, so he selects X. The third employee to select an office is Paulson. Paulson ranks Y as his first choice, but Y has already been selected, so he selects Z. The fourth employee to select an office is Torillo. Torillo ranks X as his first choice, but X has already been selected,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_3_14",
+    "question": "Which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "The first employee to select an office is Jackson. He selects Y, which is his first choice. The second employee to select an office is Larabee. He selects X, which is his first choice. The third employee to select an office is Paulson. He selects Z, which is his first choice. The fourth employee to select an office is Torillo. He selects Y, which is his second choice. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_3_15",
+    "question": "Which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "The first employee to select an office is Jackson. He selects Y, which is his first choice. The second employee to select an office is Larabee. He selects X, which is his first choice. The third employee to select an office is Paulson. He selects Z, which is his first choice. The fourth employee to select an office is Torillo. He selects X, which is his second choice. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_3_16",
+    "question": "If Paulson selects office W, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "If Paulson selects office W, then the remaining offices are X, Y, and Z. Since each employee selects the office that he or she ranks highest among the unselected offices, Jackson selects office Y, Larabee selects office X, and Torillo selects office Z. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_3_17",
+    "question": "Which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "The order of selection is decided by a random drawing. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's five departments, and there are at least 10 employees in each department. Each employee is also a member of exactly one of the company's six committees, and there are at least 10 employees in each committee. The number",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_18",
+    "question": "Which one of the following could be the assignment of volunteers to Z?",
+    "answer": "E",
+    "predicted_reasoning": "Since Joslin must be the secretary for Y, we rule out option A. Since Kwon must be assigned to Y, we rule out option C. Since Molina must be assigned to exactly one committee, we rule out option D. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a member of the board of directors or a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_19",
+    "question": "If Kwon is assigned to be treasurer for exactly two of the committees, then any of the following could be true EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to Z. Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to Z. Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to",
+    "predicted_answer": "Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to Z. Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to Z. Since Kwon must be assigned to Y, and Joslin must be assigned to Y, the only remaining volunteer is Molina. Therefore, Molina must be assigned to",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_20",
+    "question": "Each of the following must be true EXCEPT:",
+    "answer": "B",
+    "predicted_reasoning": "Since Joslin must be the secretary for Y, we rule out option A. Since Kwon must be assigned to Y, we rule out option C. Since Molina must be assigned to exactly one committee, we rule out option D. Since Nash must be assigned to a committee, we rule out option E. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_21",
+    "question": "If Kwon is assigned to be leader for exactly one of the committees, then for which of the committees is the assignment of volunteers to positions fully determined?",
+    "answer": "B",
+    "predicted_reasoning": "If Kwon is assigned to be leader for exactly one of the committees, then Kwon must be assigned to Y. Since Joslin must be the secretary for Y, Joslin must be assigned to Y. Since Kwon must be assigned to Y but cannot be assigned to Z, Molina must be assigned to Z. Since Molina must be assigned to exactly one committee, Molina must",
+    "predicted_answer": "If Kwon is assigned to be leader for exactly one of the committees, then Kwon must be assigned to Y. Since Joslin must be the secretary for Y, Joslin must be assigned to Y. Since Kwon must be assigned to Y but cannot be assigned to Z, Molina must be assigned to Z. Since Molina must be assigned to exactly one committee, Molina must",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_22",
+    "question": "The assignment of volunteers to committees and positions is fully determined if which one of the following is true?",
+    "answer": "C",
+    "predicted_reasoning": "If Haddad is assigned to be leader for exactly one of the committees, then Haddad is assigned to committee X. If Haddad is assigned to committee X, then Joslin is assigned to committee Y. If Joslin is assigned to committee Y, then Kwon is assigned to committee Z. If Kwon is assigned to committee Z, then Molina is assigned to committee",
+    "predicted_answer": "If Haddad is assigned to be leader for exactly one of the committees, then Haddad is assigned to committee X. If Haddad is assigned to committee X, then Joslin is assigned to committee Y. If Joslin is assigned to committee Y, then Kwon is assigned to committee Z. If Kwon is assigned to committee Z, then Molina is assigned to committee",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201512_3-G_4_23",
+    "question": "Which one of the following, if substituted for the condition that Molina must be assigned to exactly one committee, would have the same effect in determining the assignment of volunteers to committees?",
+    "answer": "C",
+    "predicted_reasoning": "Molina must be assigned to exactly one committee, so we rule out option A, B, C and E. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has a total of 100 employees, including 20 managers. Each employee is either a manager or a nonmanager. Each employee is either a",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_1_1",
+    "question": "The five neighborhoods visited by the bookmobile, listed in order from Monday through Friday, could be",
+    "answer": "B",
+    "predicted_reasoning": "Since Hidden Hills is visited, but not on Friday, we can rule out option A. Since Nottingham and Sunnyside are both visited, but not on consecutive days, we can rule out option C. Since Lakeville is visited on Wednesday, we can rule out option D. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_1_2",
+    "question": "Which one of the following neighborhoods CANNOT be visited on Thursday?",
+    "answer": "C",
+    "predicted_reasoning": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Wednesday, the Lakeville neighborhood is toured since that neighborhood is toured on only one day, i.e Wednesday. On Tuesday, the Nottingham neighborhood is toured since that neighborhood is toured on only one day, i.e Tuesday. On Monday, the Oldtown neighborhood",
+    "predicted_answer": "Since Thursday and Friday already have tours planned, only Monday, Tuesday and Wednesday tours need to be determined. On Wednesday, the Lakeville neighborhood is toured since that neighborhood is toured on only one day, i.e Wednesday. On Tuesday, the Nottingham neighborhood is toured since that neighborhood is toured on only one day, i.e Tuesday. On Monday, the Oldtown neighborhood",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_1_3",
+    "question": "If Hidden Hills is visited on Monday, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Hidden Hills is visited on Monday, Oldtown cannot be visited on Tuesday. Since Lakeville is visited on Wednesday, Nottingham and Sunnyside cannot be visited on Tuesday. Therefore, Park Plaza is visited on Tuesday. Since Nottingham and Sunnyside are visited on consecutive days, Sunnyside is visited on Wednesday. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_1_4",
+    "question": "If Hidden Hills is visited on Wednesday, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "Since Hidden Hills is visited on Wednesday, Oldtown cannot be visited on Tuesday. Therefore, we rule out option B. Since Hidden Hills is visited on Wednesday, Nottingham and Sunnyside cannot be visited on Tuesday and Wednesday. Therefore, we rule out option A and D. Since Hidden Hills is visited on Wednesday, Park Plaza cannot be visited on Friday. Therefore, we rule out option C. Therefore, the",
+    "predicted_answer": "Since Hidden Hills is visited on Wednesday, Oldtown cannot be visited on Tuesday. Therefore, we rule out option B. Since Hidden Hills is visited on Wednesday, Nottingham and Sunnyside cannot be visited on Tuesday and Wednesday. Therefore, we rule out option A and D. Since Hidden Hills is visited on Wednesday, Park Plaza cannot be visited on Friday. Therefore, we rule out option C. Therefore, the",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_1_5",
+    "question": "If Nottingham is visited on Thursday, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since Nottingham is visited on Thursday, Sunnyside is visited on Tuesday. Since Nottingham and Sunnyside are visited, they cannot be visited on consecutive days. Therefore, Hidden Hills is visited on Wednesday.",
+    "predicted_answer": "A\n------\nContext:\nA certain company has 100 employees. Each employee is a member of exactly one of the company's five departments, and there",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_6",
+    "question": "Which one of the following is a permissible assignment of rangers to park areas?",
+    "answer": "E",
+    "predicted_reasoning": "Mendez is assigned to area 3, so we rule out option A. Olsen and Pruitt are not assigned to area 1, so we rule out option B. Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both, so we rule out option C. Jefferson is assigned to a different area than Koguchi, so we",
+    "predicted_answer": "Mendez is assigned to area 3, so we rule out option A. Olsen and Pruitt are not assigned to area 1, so we rule out option B. Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both, so we rule out option C. Jefferson is assigned to a different area than Koguchi, so we",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_7",
+    "question": "If Olsen is the sole ranger assigned to area 2, then which one of the following could be the complete assignment of rangers to area 3?",
+    "answer": "C",
+    "predicted_reasoning": "If Olsen is the sole ranger assigned to area 2, then Jefferson is assigned to a different area than Koguchi. Therefore, Jefferson is assigned to area 3. Since Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both, Larson is assigned to area 3. Therefore, the final answer is D.\n\nThe correct",
+    "predicted_answer": "If Olsen is the sole ranger assigned to area 2, then Jefferson is assigned to a different area than Koguchi. Therefore, Jefferson is assigned to area 3. Since Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both, Larson is assigned to area 3. Therefore, the final answer is D.\n\nThe correct",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_8",
+    "question": "If exactly one ranger is assigned to area 1, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "If exactly one ranger is assigned to area 1, then Olsen is assigned to area 2. Therefore, Jefferson is assigned to the same area as Koguchi. Since Mendez is assigned to area 3, Larson is assigned to area 2. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_9",
+    "question": "Which one of the following rangers CANNOT be assigned to area 3?",
+    "answer": "D",
+    "predicted_reasoning": "Mendez is assigned to area 3. Olsen and Pruitt are not assigned to area 1. Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both. If Olsen is assigned to area 2, then Jefferson is assigned to the same area as Koguchi; otherwise, Jefferson is assigned to a different area than Koguchi. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_10",
+    "question": "If Koguchi is assigned to area 2, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "If Koguchi is assigned to area 2, then Jefferson is assigned to area 2. Larson is assigned to the same area as either Koguchi or Mendez but not to the same area as both. Therefore, Larson is assigned to area 3. Olsen is assigned to area 2. Pruitt is assigned to area 3. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_11",
+    "question": "If Larson and Olsen are assigned to the same area, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "If Larson and Olsen are assigned to the same area, then Larson is assigned to area 3. Therefore, Koguchi is assigned to area 1. Therefore, Jefferson is assigned to area 2. Therefore, Pruitt is assigned to area 3. Therefore, the final answer is D.",
+    "predicted_answer": "D\n------\nContext:\nA certain company has 100 employees, each of whom is either a manager or a nonmanager. Each employee is also either a member",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_2_12",
+    "question": "If Jefferson is assigned to area 2, then which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "If Jefferson is assigned to area 2, then Koguchi is assigned to area 2. Therefore, Larson is assigned to area 1. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has 100 employees. Each employee is either a manager or a nonmanager. Each employee is either a full-time employee or a part-time employee. The following statements describe the company's employees.\n\nQuestion: If the number of full",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_3_13",
+    "question": "Which one of the following could be the complete assignment of assistants to Pricing?",
+    "answer": "A",
+    "predicted_reasoning": "Since Markets must have exactly two assistants assigned to it, we can rule out option A and B. Since Vogel and Yi cannot be assigned to the same course as each other, we can rule out option E. Since Yi and Zane must both be assigned to Pricing if either one of them is, we can rule out option D. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------\nContext:\nA certain company has a total of 100 employees,",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_3_14",
+    "question": "Which one of the following CANNOT be the complete assignment of assistants to Labor?",
+    "answer": "B",
+    "predicted_reasoning": "Since Markets must have exactly two assistants assigned to it, we can rule out option A. Since Smith and Taj must be assigned to the same course as each other, we can rule out option C. Since Vogel and Yi cannot be assigned to the same course as each other, we can rule out option D. Since Yi and Zane must both be assigned to Pricing if either one of them is, we can rule out option E. Therefore, the final answer is B.\n\nThe correct option is",
+    "predicted_answer": "Since Markets must have exactly two assistants assigned to it, we can rule out option A. Since Smith and Taj must be assigned to the same course as each other, we can rule out option C. Since Vogel and Yi cannot be assigned to the same course as each other, we can rule out option D. Since Yi and Zane must both be assigned to Pricing if either one of them is, we can rule out option E. Therefore, the final answer is B.\n\nThe correct option is",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_3_15",
+    "question": "Which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since Markets must have exactly two assistants assigned to it, we can rule out option A and B. Since Vogel and Yi cannot be assigned to the same course as each other, we can rule out option C. Since Yi and Zane must both be assigned to Pricing if either one of them is, we can rule out option D. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_3_16",
+    "question": "If Vogel is assigned to the same course as Zane, which one of the following CANNOT be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since Vogel and Yi cannot be assigned to the same course as each other, and Yi and Zane must both be assigned to Pricing if either one of them is, Vogel and Zane must be assigned to the same course. Since Markets must have exactly two assistants assigned to it, and Smith and Taj must be assigned to the same course as each other, Smith and Taj must be assigned to Markets.",
+    "predicted_answer": "Since Vogel and Yi cannot be assigned to the same course as each other, and Yi and Zane must both be assigned to Pricing if either one of them is, Vogel and Zane must be assigned to the same course. Since Markets must have exactly two assistants assigned to it, and Smith and Taj must be assigned to the same course as each other, Smith and Taj must be assigned to Markets.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_3_17",
+    "question": "If no other assistant is assigned to the same course as Ramos, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "Since no other assistant is assigned to the same course as Ramos, Ramos must be assigned to Pricing. Since Smith and Taj must be assigned to the same course as each other, they must be assigned to Pricing. Since Yi and Zane must both be assigned to Pricing if either one of them is, they must be assigned to Pricing. Since Markets must have exactly two assistants assigned to it, V",
+    "predicted_answer": "Since no other assistant is assigned to the same course as Ramos, Ramos must be assigned to Pricing. Since Smith and Taj must be assigned to the same course as each other, they must be assigned to Pricing. Since Yi and Zane must both be assigned to Pricing if either one of them is, they must be assigned to Pricing. Since Markets must have exactly two assistants assigned to it, V",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_18",
+    "question": "One possible route of the virus from the first computer in the network infected to Q is",
+    "answer": "D",
+    "predicted_reasoning": "Since S transmitted the virus to exactly one other computer on the network, we can rule out option A and B. Since either R or T transmitted the virus to Q, we can rule out option D. Since either T or U transmitted the virus to P, we can rule out option C. Therefore, the final answer is E.",
+    "predicted_answer": "E\n------\nContext:\nA certain company has 100 employees",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_19",
+    "question": "Which one of the following could be the computer that was infected from outside the network?",
+    "answer": "E",
+    "predicted_reasoning": "Since S transmitted the virus to exactly one other computer on the network, it cannot be the computer that was infected from outside the network. Since R transmitted the virus to S, R cannot be the computer that was infected from outside the network. Since either R or T transmitted the virus to Q, Q cannot be the computer that was infected from outside the network. Since either T or U transmitted the virus to P, P cannot be the computer that",
+    "predicted_answer": "Since S transmitted the virus to exactly one other computer on the network, it cannot be the computer that was infected from outside the network. Since R transmitted the virus to S, R cannot be the computer that was infected from outside the network. Since either R or T transmitted the virus to Q, Q cannot be the computer that was infected from outside the network. Since either T or U transmitted the virus to P, P cannot be the computer that",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_20",
+    "question": "If T did not transmit the virus to any other computer on the network, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "Since T did not transmit the virus to any other computer on the network, the computer that transmitted the virus to R also transmitted it to S. Therefore, R transmitted the virus to S. Since S transmitted the virus to exactly one other computer on the network, S transmitted the virus to Q. Therefore, the final answer is B.",
+    "predicted_answer": "B\n------\nContext:\nA certain company has a total of",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_21",
+    "question": "Any of the following computers could have transmitted the virus to two other computers on the network EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "S transmitted the virus to exactly one other computer on the network. The computer that transmitted the virus to R also transmitted it to S. Either R or T transmitted the virus to Q. Either T or U transmitted the virus to P. Therefore, the final answer is C.",
+    "predicted_answer": "C\n------",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_22",
+    "question": "The spread of the virus among the computers is completely determined if which one of the following is true?",
+    "answer": "C",
+    "predicted_reasoning": "Since S transmitted the virus to exactly one other computer on the network, we can rule out option A and B. Since either R or T transmitted the virus to Q, we can rule out option C. Since either T or U transmitted the virus to P, we can rule out option D. Therefore, the final answer is E.",
+    "predicted_answer": "Since S transmitted the virus to exactly one other computer on the network, we can rule out option A and B. Since either R or T transmitted the virus to Q, we can rule out option C. Since either T or U transmitted the virus to P, we can rule out option D. Therefore, the final answer is E.",
+    "flag": "CoT"
+  },
+  {
+    "id": "ar_lsat_201609_3-G_4_23",
+    "question": "If P is the only computer that transmitted the virus to two other computers on the network, which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "Since P is the only computer that transmitted the virus to two other computers on the network, it must have received the virus from either T or U. If P received the virus from T, then T must have received the virus from U. But then U would have transmitted the virus to two other computers on the network, which is not possible",
+    "predicted_answer": "Since P is the only computer that transmitted the virus to two other computers on the network, it must have received the virus from either T or U. If P received the virus from T, then T must have received the virus from U. But then U would have transmitted the virus to two other computers on the network, which is not possible",
+    "flag": "CoT"
+  }
+]

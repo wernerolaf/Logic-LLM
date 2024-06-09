@@ -7,13 +7,13 @@ execution using backup strategies. Saves outputs to file after inference.
 import json
 import os
 from tqdm import tqdm
-from symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
-from symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
-from symbolic_solvers.csp_solver.csp_solver import CSP_Program
-from symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
+from models.symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
+from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
+from models.symbolic_solvers.csp_solver.csp_solver import CSP_Program
+from models.symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 import argparse
 import random
-from backup_answer_generation import Backup_Answer_Generator
+from models.backup_answer_generation import Backup_Answer_Generator
 
 class LogicInferenceEngine:
     def __init__(self, args):
@@ -36,7 +36,9 @@ class LogicInferenceEngine:
         self.backup_generator = Backup_Answer_Generator(args.mode, self.dataset_name, args.split, args.model_name, self.backup_strategy, self.args.backup_LLM_result_path)
 
     def load_logic_programs(self):
-        if self.refiment == 0:
+        if self.refiment == -1:
+            dataset = {}
+        elif self.refiment == 0:
             with open(os.path.join('./outputs/logic_programs', f'{self.dataset_name}_{self.split}_{self.model_name}.json')) as f:
                 dataset = json.load(f)
         else:
@@ -57,6 +59,9 @@ class LogicInferenceEngine:
                 json.dump(outputs, f, indent=2, ensure_ascii=False)
 
     def safe_execute_program(self, id, logic_program):
+
+        # preprocess string as ------ means end of problem
+        logic_program = logic_program.replace("------","").strip()
         program = self.program_executor(logic_program, self.dataset_name)
         # cannot parse the program
         if program.flag == False:
@@ -98,8 +103,31 @@ class LogicInferenceEngine:
     def cleanup(self):
         complied_krb_dir = './models/compiled_krb'
         if os.path.exists(complied_krb_dir):
-            print('removing compiled_krb')
+            # print('removing compiled_krb')
             os.system(f'rm -rf {complied_krb_dir}')
+
+    def cleanup_partial(self):
+        complied_krb_dir = './models/compiled_krb'
+        if os.path.exists(complied_krb_dir):
+            # print('removing compiled_krb')
+            os.system(f'rm -rf {complied_krb_dir}/*')
+            
+    def inference_on_text(self, texts):
+        outputs = []
+        
+        for text in texts:
+            # execute the logic program
+            answer, flag, error_message = self.safe_execute_program('text', text)
+            
+            # create output
+            output = {'text': text,
+                    'flag': flag,
+                    'predicted_answer': answer}
+            outputs.append(output)
+
+        self.cleanup_partial()
+            
+        return outputs
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -108,6 +136,8 @@ def parse_args():
     parser.add_argument('--save_path', type=str, default='./outputs/logic_inference')
     parser.add_argument('--backup_strategy', type=str, default='random', choices=['random', 'LLM'])
     parser.add_argument('--backup_LLM_result_path', type=str, default='./outputs/results')
+    parser.add_argument('--use_fine_tuned', type=int, default=0)
+    parser.add_argument('--model_path', type=str, default='/mnt/evafs/groups/luckner-lab/models/')
     parser.add_argument('--model_name', type=str, default='text-davinci-003')
     parser.add_argument('--timeout', type=int, default=60)
     parser.add_argument('--mode', type=str, default='CoT')

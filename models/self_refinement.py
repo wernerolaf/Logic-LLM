@@ -8,14 +8,14 @@ Loads logic programs from a previous round. For programs that resulted in errors
 import json
 import os
 from tqdm import tqdm
-from symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
-from symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
-from symbolic_solvers.csp_solver.csp_solver import CSP_Program
-from symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
+from models.symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
+from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
+from models.symbolic_solvers.csp_solver.csp_solver import CSP_Program
+from models.symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 import argparse
 import random
-from backup_answer_generation import Backup_Answer_Generator
-from utils import OpenAIModel, HuggingFaceModel, LLMClass
+from models.backup_answer_generation import Backup_Answer_Generator
+from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
 
 class SelfRefinementEngine:
     def __init__(self, args, current_round, llm_model = None):

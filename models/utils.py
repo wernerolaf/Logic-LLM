@@ -159,7 +159,7 @@ class HuggingFaceModel(LLMClass):
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
-        
+    
         if is_AWQ == "auto":
             if "AWQ" in model_id:
                 is_AWQ = True
@@ -169,16 +169,16 @@ class HuggingFaceModel(LLMClass):
             is_AWQ = bool(is_AWQ)
 
         if is_AWQ:
-            model = AutoAWQForCausalLM.from_quantized(model_id, fuse_layers=True, device_map = 'auto',
+            model = AutoAWQForCausalLM.from_quantized(model_id, fuse_layers=True, device_map = 'balanced',
                                           trust_remote_code=False, safetensors=True)
             self.model = model.model
         else:
-            self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto", torch_dtype="auto")
+            self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="balanced", torch_dtype="auto")
 
         stop_token_ids = [self.tokenizer.convert_tokens_to_ids(stop_token) for stop_token in stop_words.split(" ")]
         stopping_criteria = StoppingCriteriaList([StoppingCriteriaToken(stops=stop_token_ids)])
 
-        self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="auto", do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria)
+        self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced", do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria)
         if self.pipe.tokenizer.pad_token_id is None:
             self.pipe.tokenizer.pad_token_id = self.pipe.model.config.eos_token_id
 

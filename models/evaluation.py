@@ -1,3 +1,16 @@
+"""
+evaluate_sample computes exact match and F1 score for a single prediction-truth pair.
+
+compute_exact_match and compute_f1 are helper functions to compute exact match and F1.
+
+evaluate_QA computes accuracy over a list of QA prediction samples.
+
+full_evaluation runs evaluation over a results JSON file and prints overall accuracy, executable rate, and accuracy over executable samples.
+
+parse_args parses command line arguments.
+
+Main calls full_evaluation on the parsed args result file path.
+"""
 import re
 import json
 import os

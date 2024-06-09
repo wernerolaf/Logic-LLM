@@ -11,7 +11,7 @@ import os
 from tqdm import tqdm
 from collections import OrderedDict
 from typing import Dict, List, Tuple
-from utils import OpenAIModel, HuggingFaceModel, LLMClass
+from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
 import argparse
 
 class LogicProgramGenerator:
@@ -21,6 +21,8 @@ class LogicProgramGenerator:
         self.dataset_name = args.dataset_name
         self.split = args.split
         self.model_name = args.model_name
+        if args.use_fine_tuned == 1:
+            self.model_name = args.model_path + args.model_name
         self.save_path = args.save_path
         self.framework_to_use = args.framework_to_use
         if llm_model is None:
@@ -33,6 +35,9 @@ class LogicProgramGenerator:
         else:
             self.llm_model = llm_model
 
+        if args.use_fine_tuned == 1:
+            self.model_name = args.model_name
+            
         self.model_name=self.model_name.replace("/","-")
 
         self.prompt_creator = {'FOLIO': self.prompt_folio,
@@ -43,9 +48,9 @@ class LogicProgramGenerator:
         self.load_prompt_templates()
     
     def load_prompt_templates(self):
-        prompt_file = f'./models/prompts/{self.dataset_name}.txt'
+        prompt_file = './models/prompts/{}.txt'.format(self.dataset_name)
         if self.dataset_name == 'AR-LSAT' and self.model_name == 'gpt-4':
-            prompt_file = f'./models/prompts/{self.dataset_name}-long.txt'
+            prompt_file = './models/prompts/{}-long.txt'.format(self.dataset_name)
         with open(prompt_file, 'r') as f:
             self.prompt_template = f.read()
 
@@ -58,7 +63,7 @@ class LogicProgramGenerator:
     def prompt_arlsat(self, test_data):
         problem = test_data['context']
         question = test_data['question'].strip()
-        choices_str = '\n'.join([f'({choice.strip()}' for choice in test_data['options']]).strip()
+        choices_str = '\n'.join(['{}'.format(choice.strip()) for choice in test_data['options']]).strip()
         full_prompt = self.prompt_template.replace('[[PROBLEM]]', problem).replace('[[QUESTION]]', question)
         full_prompt = full_prompt.replace('[[CHOICES]]', choices_str)
         return full_prompt
@@ -78,20 +83,20 @@ class LogicProgramGenerator:
     def prompt_logicaldeduction(self, test_data):
         problem = test_data['context']
         question = test_data['question'].strip()
-        choices_str = '\n'.join([f'({choice.strip()}' for choice in test_data['options']]).strip()
+        choices_str = '\n'.join(['{}'.format(choice.strip()) for choice in test_data['options']]).strip()
         full_prompt = self.prompt_template.replace('[[PROBLEM]]', problem).replace('[[QUESTION]]', question)
         full_prompt = full_prompt.replace('[[CHOICES]]', choices_str)
         return full_prompt
 
     def load_raw_dataset(self, split):
-        with open(os.path.join(self.data_path, self.dataset_name, f'{split}.json')) as f:
+        with open(os.path.join(self.data_path, self.dataset_name, '{}.json'.format(split))) as f:
             raw_dataset = json.load(f)
         return raw_dataset
 
     def logic_program_generation(self):
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
-        print(f"Loaded {len(raw_dataset)} examples from {self.split} split.")
+        print("Loaded {} examples from {} split.".format(len(raw_dataset),self.split))
 
         outputs = []
         for example in tqdm(raw_dataset):
@@ -115,7 +120,7 @@ class LogicProgramGenerator:
                 print('Error in generating logic programs for example: ', example['id'])
 
         # save outputs        
-        with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
+        with open(os.path.join(self.save_path, '{}_{}_{}.json'.format(self.dataset_name,self.split,self.model_name,)), 'w') as f:
             json.dump(outputs, f, indent=2, ensure_ascii=False)
 
     '''
@@ -124,7 +129,7 @@ class LogicProgramGenerator:
     def batch_logic_program_generation(self, batch_size = 10):
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
-        print(f"Loaded {len(raw_dataset)} examples from {self.split} split.")
+        print("Loaded {} examples from {} split.".format(len(raw_dataset),self.split))
 
         outputs = []
         # split dataset into chunks
@@ -163,13 +168,13 @@ class LogicProgramGenerator:
 
         # remove examples with duplicate ids from the result
         outputs = list({output['id']: output for output in outputs}.values())
-        print(f"Generated {len(outputs)} examples.")
+        print("Generated {} examples.".format(len(outputs)))
         
         # save outputs
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
         
-        with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
+        with open(os.path.join(self.save_path, '{}_{}_{}.json'.format(self.dataset_name,self.split,self.model_name,)), 'w') as f:
             json.dump(outputs, f, indent=2, ensure_ascii=False)
 
 def parse_args():
@@ -180,6 +185,8 @@ def parse_args():
     parser.add_argument('--save_path', type=str, default='./outputs/logic_programs')
     parser.add_argument('--api_key', type=str, default='KEY')
     parser.add_argument('--model_name', type=str, default='text-davinci-003')
+    parser.add_argument('--model_path', type=str, default='/mnt/evafs/groups/luckner-lab/models/')
+    parser.add_argument('--use_fine_tuned', type=int, default=0)
     parser.add_argument('--framework_to_use', type=str, default='HuggingFace')
     parser.add_argument('--stop_words', type=str, default='------')
     parser.add_argument('--max_new_tokens', type=int, default=1024)

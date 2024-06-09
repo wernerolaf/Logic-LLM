@@ -81,35 +81,38 @@ class CSP_Program:
         return parsed_constraint
 
     def execute_program(self, debug_mode = False):
-        # parse the logic program into CSP python program
-        python_program_list = ['from constraint import *', 'problem = Problem()']
-        # add variables
-        for variable in self.Variables:
-            variable_name, variable_domain = variable.split('[IN]')
-            variable_name, variable_domain = variable_name.strip(), variable_domain.strip()
-            # variable_domain = ast.literal_eval(variable_domain)
-            python_program_list.append(f'problem.addVariable("{variable_name}", {variable_domain})')
-        
-        # add constraints
-        for rule in self.Constraints:
-            rule = rule.strip()
-            parsed_constraint = None
-            if rule.startswith('AllDifferentConstraint'):
-                parsed_constraint = self.parse_all_different_constraint(rule)
-            else:
-                parsed_constraint = self.parse_numeric_constraint(rule)
-            # create the constraint
-            python_program_list.append(f'problem.addConstraint({parsed_constraint})')
-        
-        # solve the problem
-        python_program_list.append(f'ans = problem.getSolutions()')
-        # execute the python program
-        py_program_str = '\n'.join(python_program_list)
-        if debug_mode:
-            print(py_program_str)
-        
-        ans, err_msg = self.safe_execute(py_program_str, debug_mode=debug_mode)
-        return ans, err_msg
+        try:
+            # parse the logic program into CSP python program
+            python_program_list = ['from constraint import *', 'problem = Problem()']
+            # add variables
+            for variable in self.Variables:
+                variable_name, variable_domain = variable.split('[IN]')
+                variable_name, variable_domain = variable_name.strip(), variable_domain.strip()
+                # variable_domain = ast.literal_eval(variable_domain)
+                python_program_list.append(f'problem.addVariable("{variable_name}", {variable_domain})')
+            
+            # add constraints
+            for rule in self.Constraints:
+                rule = rule.strip()
+                parsed_constraint = None
+                if rule.startswith('AllDifferentConstraint'):
+                    parsed_constraint = self.parse_all_different_constraint(rule)
+                else:
+                    parsed_constraint = self.parse_numeric_constraint(rule)
+                # create the constraint
+                python_program_list.append(f'problem.addConstraint({parsed_constraint})')
+            
+            # solve the problem
+            python_program_list.append(f'ans = problem.getSolutions()')
+            # execute the python program
+            py_program_str = '\n'.join(python_program_list)
+            if debug_mode:
+                print(py_program_str)
+            
+            ans, err_msg = self.safe_execute(py_program_str, debug_mode=debug_mode)
+            return ans, err_msg
+        except:
+            return None, "execution failed"
     
     def answer_mapping(self, answer):
         self.option_pattern = r'^\w+\)'

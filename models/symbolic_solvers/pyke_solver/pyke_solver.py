@@ -1,6 +1,10 @@
 import os
+import pyke
 from pyke import knowledge_engine
 import re
+
+
+import traceback
 
 class Pyke_Program:
     def __init__(self, logic_program:str, dataset_name = 'ProntoQA') -> None:
@@ -139,16 +143,19 @@ class Pyke_Program:
             raise ValueError(f'Invalid query: {query}')
 
     def execute_program(self):
+
         # delete the compiled_krb dir
         complied_krb_dir = './models/compiled_krb'
+        # complied_krb_dir = './compiled_krb'
         if os.path.exists(complied_krb_dir):
-            print('removing compiled_krb')
+            # print('removing compiled_krb')
             os.system(f'rm -rf {complied_krb_dir}/*')
+            
 
         # absolute_path = os.path.abspath(complied_krb_dir)
         # print(absolute_path)
         try:
-            engine = knowledge_engine.engine(self.cache_dir)
+            engine = pyke.knowledge_engine.engine(self.cache_dir)
             engine.reset()
             engine.activate('rules')
             engine.get_kb('facts')
@@ -158,6 +165,8 @@ class Pyke_Program:
             result = self.check_specific_predicate(subject, predicate, engine)
             answer = self.answer_map[self.dataset_name](result, value_to_check)
         except Exception as e:
+            print(traceback.format_exc())
+            print(e)
             return None, e
         
         return answer, ""
@@ -269,21 +278,14 @@ Query:
 Green(Harry, False) ::: Harry is not green."""
 
     # tests = [logic_program1, logic_program2, logic_program3, logic_program4, logic_program5, logic_program6]
-
-    tests = [logic_program7]
-    
+    tests = [logic_program1, logic_program7]
     for test in tests:
         pyke_program = Pyke_Program(test, 'ProofWriter')
-        print(pyke_program.flag)
-        # print(pyke_program.Rules)
-        # print(pyke_program.Facts)
-        # print(pyke_program.Query)
-        # print(pyke_program.Predicates)
-
         result, error_message = pyke_program.execute_program()
         print(result)
 
-    complied_krb_dir = './compiled_krb'
+    complied_krb_dir = './models/compiled_krb'
+    print(os.path.exists(complied_krb_dir))
     if os.path.exists(complied_krb_dir):
         print('removing compiled_krb')
         os.system(f'rm -rf {complied_krb_dir}')

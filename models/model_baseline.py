@@ -9,7 +9,7 @@ import os
 from tqdm import tqdm
 from collections import OrderedDict
 from typing import Dict, List, Tuple
-from utils import OpenAIModel, HuggingFaceModel, LLMClass
+from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
 import argparse
 
 class Model_Baseline:

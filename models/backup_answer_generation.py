@@ -28,7 +28,7 @@ class Backup_Answer_Generator:
             return random.choice(['A', 'B'])
         elif self.dataset_name == 'ProofWriter' or self.dataset_name == 'FOLIO':
             return random.choice(['A', 'B', 'C'])
-        elif self.dataset_name == 'AR-LSAT':
+        elif self.dataset_name == 'AR-LSAT' or self.dataset_name == 'LogicalDeduction':
             return random.choice(['A', 'B', 'C', 'D', 'E'])
         else:
             raise ValueError(f'Invalid dataset name: {self.dataset_name}')

@@ -1,0 +1,1842 @@
+[
+  {
+    "id": "ar_lsat_200010_3-G_1_1",
+    "question": "Which one of the following could be the schedule of the students' reports?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_1_2",
+    "question": "If Kyle and Lenore do not give reports, then the morning reports on Monday, Tuesday, and Wednesday, respectively, could be given by",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_1_3",
+    "question": "Which one of the following is a pair of students who, if they give reports on the same day as each other, must give reports on Wednesday?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_1_4",
+    "question": "If George, Nina, and Robert give reports and they do so on different days from one another, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_1_5",
+    "question": "If Kyle gives the afternoon report on Tuesday, and Helen gives the afternoon report on Wednesday, which one of the following could be the list of the students who give the morning reports on Monday, Tuesday, and Wednesday, respectively?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_1_6",
+    "question": "If Helen, Kyle, and Lenore, not necessarily in that order, give the three morning reports, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_2_7",
+    "question": "Which one of the following could be the organizer's selection of works?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_2_8",
+    "question": "Which one of the following could be true about the organizer's selection of works?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_2_9",
+    "question": "If the works selected include three French novels, which one of the following could be a complete and accurate list of the remaining works selected?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_2_10",
+    "question": "The organizer must at least select",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_2_11",
+    "question": "Any one of the following could be true about the organizer's selections of works EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_12",
+    "question": "Which one of the following lists the compositions in an order in which they could be performed during the concert, from first through eighth?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_13",
+    "question": "P CANNOT be performed",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_14",
+    "question": "If T is performed fifth and F is performed sixth, then S must be performed either",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_15",
+    "question": "If O is performed immediately after T, then F must be performed either",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_16",
+    "question": "If S is performed fourth, which one of the following could be an accurate list of the compositions performed first, second, and third, respectively?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_17",
+    "question": "If P is performed third and S is performed sixth, the composition performed fifth must be either",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_3_18",
+    "question": "If exactly two compositions are performed after F but before O, then R must be performed",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_19",
+    "question": "Which one of the following could be the order in which the breeds of kitten are featured in the pet shop, from day 1 though day 7?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_20",
+    "question": "If Himalayans are not featured on day 2, which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_21",
+    "question": "Which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_22",
+    "question": "If Himalayans are not featured on day 7, then which one of the following pairs of days CANNOT feature both the same breed of kitten and the same breed of puppy?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_23",
+    "question": "Which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200010_3-G_4_24",
+    "question": "If Himalayans are not featured on day 7, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_1_1",
+    "question": "Which one of the following is an acceptable selection of scientists for the panel?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_1_2",
+    "question": "If M is the only chemist selected for the panel, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_1_3",
+    "question": "If four of the scientists selected are F, L, Q, and R, which one of the following must be the fifth scientist selected?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_1_4",
+    "question": "If P is the only zoologist selected, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_1_5",
+    "question": "If both G and H are among the scientists selected, then the panel must include either",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_6",
+    "question": "Which one of the following lists could accurately identify the cargo held in each of the loading dock's first three bays, listed in order from bay 1 to bay 3?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_7",
+    "question": "Which one of the following CANNOT be the type of cargo held in bay 4?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_8",
+    "question": "If there is exactly one bay between the bay holding machinery and the bay holding grain, then for exactly how many of the six bays is the type of cargo that bay is holding completely determined?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_9",
+    "question": "Which one of the following could be the bay holding livestock?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_10",
+    "question": "Which one of the following must be false?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_11",
+    "question": "If the bay holding produce is next to the bay holding livestock, then each of the following could be true EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_2_12",
+    "question": "If bay 4 is holding produce, then for exactly how many of the six bays is the type of cargo that bay is holding completely determined?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_13",
+    "question": "Which one of the following could be a complete and accurate list of the days on which the batches of each kind of cookie are made?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_14",
+    "question": "How many of the days, Monday through Friday, are such that at most two batches of cookies could be made on that day?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_15",
+    "question": "If the first batch of peanut butter cookies is made on Tuesday, then each of the following could be true EXCEPT:",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_16",
+    "question": "If no batch of cookies is made on Wednesday, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_17",
+    "question": "If the number of batches made on Friday is exactly one, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_3_18",
+    "question": "If one kind of cookie's first batch is made on the same day as another kind of cookie's third batch, then which one of the following could be false?",
+    "answer": "E",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_4_19",
+    "question": "Which one of the following could be an accurate and complete list of the students who review only Sunset?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_4_20",
+    "question": "Which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_4_21",
+    "question": "If exactly three of the students review Undulation, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_4_22",
+    "question": "Which one of the following could be an accurate and complete list of the students who review Tamerlane?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_200312_1-G_4_23",
+    "question": "If Jiang does not review Tamerlane, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_1",
+    "question": "Which one of the following could be the assignment of parking spaces to the new employees?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_2",
+    "question": "If Togowa is assigned a higher-numbered parking space than Souza, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_3",
+    "question": "The assignment of parking spaces to each of the new employees is fully and uniquely determined if which one of the following is true?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_4",
+    "question": "For how many of the six new employees is the assignment of a parking space limited to one of only two possible spaces?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_5",
+    "question": "If Young is assigned a higher-numbered parking space than Souza, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_1_6",
+    "question": "If Robertson is assigned parking space #3, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_7",
+    "question": "Which one of the following could be the assignment of the ambassadors?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_8",
+    "question": "The pair of candidates who are not assigned to ambassadorships could be",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_9",
+    "question": "If Ong is assigned as ambassador to Venezuela, then the other two ambassadors assigned could be",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_10",
+    "question": "If Kayne is assigned as ambassador to Yemen, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_11",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_2_12",
+    "question": "Which one of the following, if substituted for the constraint that if Jaramillo is assigned to one of the ambassadorships, then so is Kayne, would have the same effect in determining the assignment of the ambassadors?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_13",
+    "question": "Which one of the following is a possible assignment of riders to bicycles, with the riders for each bicycle listed in the order in which they test the bicycle?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_14",
+    "question": "If Theresa tests G on the second day, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_15",
+    "question": "Any of the following could be true EXCEPT:",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_16",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "C",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_17",
+    "question": "If Theresa tests J on the first day, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_3_18",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_4_19",
+    "question": "Which one of the following could be a complete and accurate list of the books placed on the bottom shelf?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_4_20",
+    "question": "It is fully determined which of the shelves each of the books is placed on if which one of the following is true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_4_21",
+    "question": "Which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_4_22",
+    "question": "If G is placed on the top shelf, then which one of the following could be a complete and accurate list of the books placed on the middle shelf?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201110_2-G_4_23",
+    "question": "If L is placed on a shelf higher than the shelf H is placed on, then which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_1_1",
+    "question": "Which one of the following could he an accurate assignment of lab assistants to morning and afternoon sessions, respectively, on the three days?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_1_2",
+    "question": "If Lan does not lead a Wednesday session, then which one of the following lab assistants must lead a Thursday session?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_1_3",
+    "question": "If Kevin's session meets on the day before Nessa's, then which one of the following is a complete and accurate list of lab assistants any one of whom could lead the Thursday afternoon session?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_1_4",
+    "question": "If Julio and Kevin both lead morning sessions, then any of the following could be true EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_1_5",
+    "question": "If Julio leads the Thursday afternoon session, then for how many of the other lab assistants can one determine which sessions they lead?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_6",
+    "question": "Which one of the following could be the order of the businesses in spaces 1 through 7 respectively?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_7",
+    "question": "If the shoe store is in space 2, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_8",
+    "question": "If the veterinarian is in space 5, which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_9",
+    "question": "If the optometrist is next to the shoe store, the businesses immediately on either side of this pair must be",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_10",
+    "question": "If the shoe store is in space 4, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_2_11",
+    "question": "Which one of the following, if substituted for the constraint that the two restaurants must be separated by at least two other businesses, would have the same effect in determining the locations of the businesses?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_12",
+    "question": "Which one of the following could be an accurate matching of the sales representatives to the sales zones in which they work?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_13",
+    "question": "If more sales representatives work in Zone 1 than in Zone 3, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_14",
+    "question": "Which one of the following must be false?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_15",
+    "question": "Which one of the following could be a complete and accurate list of the sales representatives working in Zone 3?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_16",
+    "question": "Quinn CANNOT work in the same sales zone as which one of the following?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_3_17",
+    "question": "If Mahr and Stuckey work in the same sales zone, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_4_18",
+    "question": "Which one of the following could be all of the solos that are traditional pieces?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_4_19",
+    "question": "What is the minimum number of solos in which Wayne performs a traditional piece?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_4_20",
+    "question": "If the pianist who performs the first solo also performs the second solo, then which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_4_21",
+    "question": "If the fifth solo is a traditional piece, then for exactly determined?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201206_3-G_4_22",
+    "question": "If in the fifth solo Wayne performs a traditional piece, which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_1_1",
+    "question": "Which one of the following could be the order, from first through seventh, in which the realtor shows the houses?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_1_2",
+    "question": "Which one of the following is a pair of houses that CANNOT be shown consecutively in either order?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_1_3",
+    "question": "Which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_1_4",
+    "question": "Which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_1_5",
+    "question": "If P is shown in the afternoon, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_2_6",
+    "question": "Which one of the following is an acceptable schedule of witnesses?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_2_7",
+    "question": "Which one of the following CANNOT be true of the schedule?",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_2_8",
+    "question": "If Jackson is scheduled to testify on Wednesday, which one of the following must be true of the schedule?",
+    "answer": "C",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_2_9",
+    "question": "If Jackson is the only witness scheduled to testify on Monday, which one of the following must be true of the schedule?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_2_10",
+    "question": "If Franco is scheduled to testify on the same day as Hong, which one of the following must be true of the schedule?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_11",
+    "question": "If none of the clients has a voicemail target of 3 days, then each of the following must be true EXCEPT:",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_12",
+    "question": "If Truvest's website target is shorter than its voicemail target, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_13",
+    "question": "If Image's website target is 2 days, which one of the following targets must also be 2 days?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_14",
+    "question": "If Solide's voicemail target is shorter than Truvest's website target, which one of the following targets could be 2 days?",
+    "answer": "C",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_15",
+    "question": "Which one of the following targets CANNOT be set for more than one of the clients?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_3_16",
+    "question": "If none of the clients has a website target of 2 days, which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_17",
+    "question": "Which one of the following is an acceptable order for editing the articles, from first through seventh?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_18",
+    "question": "If Y is fourth, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_19",
+    "question": "If G is fourth, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_20",
+    "question": "Which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_21",
+    "question": "If J is third, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_22",
+    "question": "In the order in which the articles are edited, S could be in any of the following positions EXCEPT:",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201212_4-G_4_23",
+    "question": "The order in which the articles are edited is fully determined if which one of the following is true?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_1",
+    "question": "Which one of the following CANNOT be the band that performs in slot five?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_2",
+    "question": "If Zircon performs in an earlier slot than Yardsign, which one of the following is the earliest slot in which Wellspring could perform?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_3",
+    "question": "If Veqemite performs in slot three, which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_4",
+    "question": "If Zircon performs immediately before Wellspring, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_5",
+    "question": "Which one of the following is a complete and accurate list of bands any one of which could be the band that performs in slot one?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_6",
+    "question": "If Wellspring performs immediately before Xpert, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_1_7",
+    "question": "Which one of the following, if substituted for the constraint that Wellspring and Zircon each perform in an earlier slot than Xpert, would have the same effect in determining the order in which the bands perform?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_2_8",
+    "question": "Which one of the following is a possible selection of employees for the team?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_2_9",
+    "question": "Which one of the following is a pair of employees who CANNOT be on the team together?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_2_10",
+    "question": "If Yoder is not on the team, then any of the following could be on the team EXCEPT:",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_2_11",
+    "question": "If Paine is not on the team, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_2_12",
+    "question": "Which one of the following is a pair of employees at least one of whom must be on the team?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_13",
+    "question": "Which one of the following is an acceptable schedule of the movies for this evening?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_14",
+    "question": "Which one of the following CANNOT be an accurate list of the movies scheduled to be shown on screen 2 this evening, listing the 7 P.M. movie first?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_15",
+    "question": "If the western and the sci-fi film are scheduled to be shown on the same screen, then which one of the following could be true of this evening's schedule?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_16",
+    "question": "If the romance is scheduled to begin before the western does, then which one of the following must be true of this evening's schedule?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_17",
+    "question": "Which one of the following CANNOT be an accurate list of the movies scheduled to be shown on screen 1 this evening, listing the 7 P.M. movie first?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_3_18",
+    "question": "If the sci-fi film and the romance are to be shown on the same screen, then which one of the following must be true of this evening's schedule?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_4_19",
+    "question": "Which one of the following is an acceptable order for the lectures, from first to fifth?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_4_20",
+    "question": "Which one of the following must be false?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_4_21",
+    "question": "If the lecture on terns is given in Howard Auditorium, which one of the following could be true of the third lecture?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_4_22",
+    "question": "Which one of the following could be true of the fifth lecture?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201310_3-G_4_23",
+    "question": "If the third lecture is on sandpipers, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_1_1",
+    "question": "Which one of the following is an acceptable ordering of solos from first to last?",
+    "answer": "C",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_1_2",
+    "question": "If the percussionist performs a solo at some time before the saxophonist does, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_1_3",
+    "question": "Each of the following must be false EXCEPT:",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_1_4",
+    "question": "Which one of the following CANNOT perform the third",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_1_5",
+    "question": "If the violinist performs the fourth solo, then each of the following must be true EXCEPT:",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_2_6",
+    "question": "Which one of the following is an acceptable ordering of the lectures, from first to fourth?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_2_7",
+    "question": "Which one of the following must be true?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_2_8",
+    "question": "If the watercolors lecture is third, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_2_9",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "A",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_2_10",
+    "question": "If Garcia gives the sculptures lecture, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_11",
+    "question": "Which one of the following could be the colors of the three rugs?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_12",
+    "question": "Which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_13",
+    "question": "If one of the rugs is solid peach, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_14",
+    "question": "If there are exactly two solid rugs, then the colors of those two rugs CANNOT be",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_15",
+    "question": "If forest and peach are used together in a rug, which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_3_16",
+    "question": "If one of the rugs is solid yellow, then any of the following could be true EXCEPT:",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_17",
+    "question": "Which one of the following is an acceptable assignment of photographers to the two graduation ceremonies?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_18",
+    "question": "If Heideck is assigned to the same graduation ceremony as Lai, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_19",
+    "question": "Which one of the following could be the complete assignment of photographers to the Silva University ceremony?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_20",
+    "question": "Which one of the following is a complete and accurate list of all of the photographers who must be assigned?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_21",
+    "question": "If exactly four of the photographers are assigned to the graduation ceremonies, then which one of the following must be assigned to the Silva University ceremony?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_22",
+    "question": "Which one of the following CANNOT be the complete assignment of photographers to the Thorne University ceremony?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201412_2-G_4_23",
+    "question": "Which one of the following, if substituted for the constraint that if Knutson is not assigned to the Thorne University ceremony, then both Heideck and Mays must be assigned to it, would have the same effect in determining the assignment of photographers to the graduation ceremonies?",
+    "answer": "C",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_1",
+    "question": "Which one of the following could be the order in which the accomplices were recruited, from first to last?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_2",
+    "question": "Which one of the following could be the list of the middle five accomplices, in the order in which they were recruited, from second to sixth?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_3",
+    "question": "If Tao was recruited second, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_4",
+    "question": "f Quinn was recruited immediately before Rovero, then Stanton CANNOT have been recruited",
+    "answer": "B",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_5",
+    "question": "If White was recruited earlier than Rovero and if Rovero was recruited earlier than Tao, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_1_6",
+    "question": "If White was recruited immediately before Quinn, which one of the following must have been recruited sixth?",
+    "answer": "B",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_7",
+    "question": "which one of the following could be an acceptable selection of the photographs to appear?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_8",
+    "question": "If both photographs in the Lifestyle section are by Hue, then which one of the following must be true of the six photographs?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_9",
+    "question": "If one photograph in the Lifestyle section is by Gagnon and one is by Hue, then which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_10",
+    "question": "Which one of the following could be true of the photographs by Fuentes appearing in tomorrows paper?",
+    "answer": "A",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_11",
+    "question": "If one photograph in the Lifestyle section is by Fuentes and one is by Hue, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_12",
+    "question": "If both photographs in one of the three sections are by Gagnon, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_2_13",
+    "question": "If one photograph in the Metro section is by Fuentes and one is by Hue, then which one of the following could be true?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_14",
+    "question": "Which one of the following could be the list of the students who work the second shifts at the gallery, in order from Monday through Friday?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_15",
+    "question": "Which one of the following must be true?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_16",
+    "question": "If Hakeem works at the gallery on Wednesday, then Joe must work at the gallery on which one of the following pairs of days?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_17",
+    "question": "If there is at least one day on which Grecia and Joe both work at the gallery, then which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_18",
+    "question": "If Katya works the second shift on Tuesday at the gallery, then which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_3_19",
+    "question": "Which one of the following is an acceptable schedule for the publication of the cookbooks?",
+    "answer": "E",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_4_20",
+    "question": "If M is published in the fall, which one of the following is a pair of cookbooks that could both be published in the fall along with M?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_4_21",
+    "question": "If N is published in the fall, which one of the following could be true",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_4_22",
+    "question": "The schedule for the publication of the cookbooks is fully determined if which one of the following is true?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201510_3-G_4_23",
+    "question": "Which one of the following, if substituted for the condition that if M is published in the fall, N must be published in the spring, would have the same effect in determining the schedule for the publication of the cookbooks?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_1_1",
+    "question": "Which one of the following is an acceptable selection for the project?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_1_2",
+    "question": "If Taylor is the project leader and Wells is a project member, then the third project member must be either",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_1_3",
+    "question": "Verma could be the project leader if which one of the following is true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_1_4",
+    "question": "If Taylor is not a project member, which one of the following workers must be a project member?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_1_5",
+    "question": "The selection for the project is completely determined if which one of the following is true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_6",
+    "question": "Which one of the following could be an accurate assignment of students, in order from the earliest year to the latest?",
+    "answer": "C",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_7",
+    "question": "Mollie must be assigned to 1922 if which one of the following is true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_8",
+    "question": "If both Ryan and Yoshio are assigned to the project, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_9",
+    "question": "How many of the students are there who could be the one assigned to 1921?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_10",
+    "question": "If Yoshio is not assigned to the project, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_2_11",
+    "question": "Which one of the following students CANNOT be assigned to 1922?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_12",
+    "question": "Which one of the following could be an accurate list of the six antiques, in the order in which they are auctioned, from June 1st through June 6th?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_13",
+    "question": "Which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_14",
+    "question": "If the table is auctioned on a date that is later than both the date on which the mirror is auctioned and the date on which the vase is auctioned, then which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_15",
+    "question": "Which one of the following CANNOT be the antique auctioned on the day immediately preceding the day on which the vase is auctioned?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_16",
+    "question": "Which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_3_17",
+    "question": "Which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_18",
+    "question": "Which one of the following could be the order of the auditions, from first to last?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_19",
+    "question": "Which one of the following CANNOT be the second audition?",
+    "answer": "C",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_20",
+    "question": "Which one of the following could be the sixth audition?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_21",
+    "question": "If Kammer's audition is immediately before Yoshida's, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_22",
+    "question": "Yoshida's audition could be",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201606_2-G_4_23",
+    "question": "Which one of the following, if substituted for the condition that Waite's audition must take place earlier than the two recorded auditions, would have the same effect in determining the order of the auditions?",
+    "answer": "A",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_1_1",
+    "question": "Which one of the following could be an accurate listing of the members and facilitators of the two research teams?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_1_2",
+    "question": "Which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_1_3",
+    "question": "Which one of the following must be false?",
+    "answer": "B",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_1_4",
+    "question": "If Lateefah is a facilitator, then which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_1_5",
+    "question": "If Mei is assigned to the green team, then which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_6",
+    "question": "Which one of the following could be the order in which the clues are mentioned, from the first chapter through the seventh?",
+    "answer": "C",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_7",
+    "question": "If X is mentioned in chapter 1, which one of the following could be true?",
+    "answer": "E",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_8",
+    "question": "If U is mentioned in chapter 3, which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_9",
+    "question": "If Z is mentioned in chapter 7, which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_10",
+    "question": "Which one of the following could be true?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_2_11",
+    "question": "Which one of the following, if substituted for the constraint that T cannot be mentioned in chapter 1, would have the same effect in determining the order in which the clues are mentioned?",
+    "answer": "B",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_12",
+    "question": "Which one of the following could be an accurate list of the paintings displayed in the lower position on walls 1 through 4, listed in that order?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_13",
+    "question": "If Isaacs's watercolor is displayed on wall 2 and Franz's oil is displayed on wall 3, which one of the following must be displayed on wall 1?",
+    "answer": "A",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_14",
+    "question": "If Hidalgo's oil is displayed on wall 2, which one of the following could also be displayed on wall 2?",
+    "answer": "E",
+    "predicted_reasoning": "D\n------",
+    "predicted_answer": "D\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_15",
+    "question": "If Greene's oil is displayed on the same wall as Franz's watercolor, which one of the following must be true?",
+    "answer": "D",
+    "predicted_reasoning": "B\n------",
+    "predicted_answer": "B\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_16",
+    "question": "If Franz's oil is displayed on wall 1, which one of the following could be true?",
+    "answer": "B",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_17",
+    "question": "Which one of the following could be true?",
+    "answer": "D",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_3_18",
+    "question": "Which one of the following CANNOT be true?",
+    "answer": "D",
+    "predicted_reasoning": "C\n------",
+    "predicted_answer": "C\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_4_19",
+    "question": "Which one of the following could be the buildings owned by the three companies after only one trade is made?",
+    "answer": "C",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_4_20",
+    "question": "Which one of the following CANNOT be true, no matter how many trades are made?",
+    "answer": "A",
+    "predicted_reasoning": "E\n------",
+    "predicted_answer": "E\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_4_21",
+    "question": "If RealProp owns only class 2 buildings after some number of trades, which one of the following must be true?",
+    "answer": "A",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_4_22",
+    "question": "If Trustcorp owns no class 2 buildings after some number of trades, which one of the following must be true?",
+    "answer": "E",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  },
+  {
+    "id": "ar_lsat_201612_3-G_4_23",
+    "question": "Which one of the following CANNOT be true, no matter how many trades are made?",
+    "answer": "D",
+    "predicted_reasoning": "A\n------",
+    "predicted_answer": "A\n------",
+    "flag": "Direct"
+  }
+]
