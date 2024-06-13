@@ -175,7 +175,7 @@ if __name__ == "__main__":
     args = parse_args()
     model_name = args.train_model_name
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side='right')
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 

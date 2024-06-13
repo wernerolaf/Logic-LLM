@@ -236,6 +236,12 @@ if __name__ == "__main__":
             #### Compute reward score
             results = logic_engine.inference_on_text(batch["response"])
             rewards = reward_model(results, batch["labels"], answer_map)
+
+            print(rewards[0].device)
+            print(query_tensors[0].device)
+            print(response_tensors[0].device)
+
+            # rewards = [reward.to("cuda:0") for reward in rewards]
             #### Run PPO step
             stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
             ppo_trainer.log_stats(stats, batch, rewards)
