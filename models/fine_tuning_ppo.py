@@ -26,6 +26,7 @@ import argparse
 import time
 from tqdm import tqdm
 import models.logic_inference as logic_inference
+from models.utils import print_gpu_utilization
 
 def tokenize_function(examples):
     results = tokenizer(examples['query'])
@@ -68,18 +69,6 @@ def tokenize_dataset(df, answer_map):
     tokenized_dataset = tokenized_dataset.remove_columns(df.columns.drop("label"))
     return tokenized_dataset
 
-from pynvml import *
-
-
-def print_gpu_utilization():
-    nvmlInit()
-    gpus = nvmlDeviceGetCount()
-    for g in range(gpus):
-        handle = nvmlDeviceGetHandleByIndex(g)
-        info = nvmlDeviceGetMemoryInfo(handle)
-        print(f"GPU {g} memory occupied: {info.used//1024**2} MB.")
-        print(f"GPU {g} memory occupied: {info.used/info.total*100:.2f} %.")
-
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -100,6 +89,8 @@ def parse_args():
     parser.add_argument('--use_ada', type=int, default=0)
     parser.add_argument('--load_in_8bit', type=int, default=1)
     parser.add_argument('--lora_r', type=int, default=16)
+    parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_return_sequences', type=int, default=1)
     args, unknown = parser.parse_known_args()
     return args
 
@@ -237,10 +228,6 @@ if __name__ == "__main__":
             results = logic_engine.inference_on_text(batch["response"])
             rewards = reward_model(results, batch["labels"], answer_map)
 
-            print(rewards[0].device)
-            print(query_tensors[0].device)
-            print(response_tensors[0].device)
-
             # rewards = [reward.to("cuda:0") for reward in rewards]
             #### Run PPO step
             stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
@@ -252,3 +239,5 @@ if __name__ == "__main__":
     ppo_trainer.save_pretrained(os.path.join(args.result_path, model_name, args.dataset_name,"ppo","last"))
 
     print(f"Total time: {time.time() - overall_start:.2f} secs")
+
+    print_gpu_utilization()

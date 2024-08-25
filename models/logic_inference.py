@@ -14,6 +14,8 @@ from models.symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 import argparse
 import random
 from models.backup_answer_generation import Backup_Answer_Generator
+from models.utils import print_gpu_utilization
+import time
 
 class LogicInferenceEngine:
     def __init__(self, args):
@@ -25,6 +27,11 @@ class LogicInferenceEngine:
         self.save_path = args.save_path
         self.backup_strategy = args.backup_strategy
         self.refiment = args.refiment
+        self.num_beams = args.num_beams
+        self.num_return_sequences = args.num_return_sequences
+
+        if self.num_beams>1:
+            self.model_name = self.model_name + "-beam" + str(self.num_beams)
 
         self.dataset = self.load_logic_programs()
         program_executor_map = {'FOLIO': FOL_Prover9_Program, 
@@ -45,6 +52,25 @@ class LogicInferenceEngine:
             with open(os.path.join('./outputs/logic_programs', f'self-refine-{self.refiment}_{self.dataset_name}_{self.split}_{self.model_name}.json')) as f:
                 dataset = json.load(f)
         print(f"Loaded {len(dataset)} examples from {self.split} split.")
+        return dataset
+
+    def load_logic_programs(self):
+        dataset = {}
+        if self.refiment == -1:
+            return dataset
+        
+        if self.refiment == 0:
+            file_path = os.path.join('./outputs/logic_programs', f'{self.dataset_name}_{self.split}_{self.model_name}.json')
+        else:
+            file_path = os.path.join('./outputs/logic_programs', f'self-refine-{self.refiment}_{self.dataset_name}_{self.split}_{self.model_name}.json')
+        
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as f:
+                dataset = json.load(f)
+            print(f"Loaded {len(dataset)} examples from {self.split} split.")
+        else:
+            print(f"Dataset file not found: {file_path}")
+        
         return dataset
     
     def save_results(self, outputs):
@@ -82,19 +108,29 @@ class LogicInferenceEngine:
         error_count = 0
         
         for example in tqdm(self.dataset):
-            # execute the logic program
-            answer, flag, error_message = self.safe_execute_program(example['id'], example['raw_logic_programs'][0].strip())
-            if not flag == 'success':
-                error_count += 1
+            answers = []
+            flags = []
+            error_messages = []
+            
+            for program in example['raw_logic_programs']:
+                # execute each logic program
+                answer, flag, error_message = self.safe_execute_program(example['id'], program.strip())
+                answers.append(answer)
+                flags.append(flag)
+                error_messages.append(error_message)
+                if flag != 'success':
+                    error_count += 1
 
-            # create output
-            output = {'id': example['id'], 
-                    'context': example['context'],
-                    'question': example['question'], 
-                    'answer': example['answer'],
-                    'flag': flag,
-                    'predicted_answer': answer}
-            outputs.append(output)
+                # create output
+                output = {'id': example['id'], 
+                        'context': example['context'],
+                        'question': example['question'], 
+                        'answer': example['answer'],
+                        'program': program,
+                        'flag': flag,
+                        'predicted_answer': answer,
+                        'error_message': error_message}
+                outputs.append(output)
         
         print(f"Error count: {error_count}")
         self.save_results(outputs)
@@ -142,10 +178,15 @@ def parse_args():
     parser.add_argument('--timeout', type=int, default=60)
     parser.add_argument('--mode', type=str, default='CoT')
     parser.add_argument('--refiment', type=int, default=0)
+    parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_return_sequences', type=int, default=1)
     args = parser.parse_args()
     return args
 
 if __name__ == "__main__":
+    overall_start = time.time()
     args = parse_args()
     engine = LogicInferenceEngine(args)
     engine.inference_on_dataset()
+    print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()

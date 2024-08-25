@@ -15,6 +15,7 @@ import re
 import json
 import os
 import argparse
+import time
 
 # these functions are heavily influenced by the HF squad_metrics.py script
 def normalize_text(s):
@@ -77,9 +78,25 @@ def get_choice(answer_str):
     return None
 
 def evaluate_QA(QA_results):
-    total_em = 0.0
-    count = 0
+    total_first_em = 0.0
+    total_any_em = 0.0
+    sample_count = 0
+    current_id = None
+    current_answers = []
+
     for sample in QA_results:
+        if sample['id'] != current_id:
+            if current_id is not None:
+                first_correct = current_answers[0] == gold_answer
+                any_correct = any([answer ==  gold_answer for answer in current_answers])
+                total_first_em += 1.0 if first_correct else 0.0
+                total_any_em += 1.0 if any_correct else 0.0
+                sample_count += 1
+
+            current_id = sample['id']
+            current_answers = []
+            sample_count += 1
+
         gold_answer = sample['answer'].replace('(', '').replace(')', '').strip()
         answer_str = sample['predicted_answer'].strip() if sample['predicted_answer'] is not None else ''
         prediction = get_choice(answer_str)
@@ -94,24 +111,37 @@ def evaluate_QA(QA_results):
                     prediction = get_choice(answer_str)
                     break
         
-        em_score = 1.0 if prediction == gold_answer else 0.0
-        total_em += em_score
-        count += 1
-    
-    if count!=0:
-        avg_em = total_em / count
+        current_answers.append(prediction)
+
+    if current_id is not None:
+        first_correct = current_answers[0] == gold_answer
+        any_correct = any([answer ==  gold_answer for answer in current_answers])
+        total_first_em += 1.0 if first_correct else 0.0
+        total_any_em += 1.0 if any_correct else 0.0
+        sample_count += 1
+
+    if sample_count != 0:
+        first_answer_accuracy = total_first_em / sample_count
+        any_answer_accuracy = total_any_em / sample_count
     else:
-        avg_em = 0
-    return avg_em
+        first_answer_accuracy = 0
+        any_answer_accuracy = 0
+
+    return first_answer_accuracy, any_answer_accuracy
 
 def full_evaluation(result_file):
     with open(result_file, 'r') as f:
         all_samples = json.load(f)
 
     executable_samples = [sample for sample in all_samples if sample['flag'] == 'success']
-    print(f"Overall accuracy: {evaluate_QA(all_samples)}")
+    first_acc, any_acc = evaluate_QA(all_samples)
+    exe_first_acc, exe_any_acc = evaluate_QA(executable_samples)
+    
+    print(f"Overall first answer accuracy: {first_acc}")
+    print(f"Overall any answer accuracy: {any_acc}")
     print(f'Executable rate (Exe_Rate): {len(executable_samples)/len(all_samples)}')
-    print(f"Executable accuracy (Exe_Acc): {evaluate_QA(executable_samples)}")
+    print(f"Executable first answer accuracy: {exe_first_acc}")
+    print(f"Executable any answer accuracy: {exe_any_acc}")
 
 
 def parse_args():
@@ -123,18 +153,25 @@ def parse_args():
     parser.add_argument('--result_path', type=str, default='./outputs/logic_inference')
     parser.add_argument('--mode', type=str, default='')
     parser.add_argument('--refiment', type=int, default=0)
+    parser.add_argument('--num_beams', type=int, default=1)
     args = parser.parse_args()
     return args
 
 if __name__ == "__main__":
     args = parse_args()
+    model_name=args.model_name.replace("/","-")
+    num_beams = args.num_beams
+
+    if num_beams>1:
+        model_name = model_name + "-beam" + str(num_beams)
+
     if args.mode == '':
         if args.refiment == 0:
-            result_file = os.path.join(args.result_path, f'{args.dataset_name}_{args.split}_{args.model_name.replace("/","-")}_backup-{args.backup}.json')
+            result_file = os.path.join(args.result_path, f'{args.dataset_name}_{args.split}_{model_name}_backup-{args.backup}.json')
         else:
-            result_file = os.path.join(args.result_path, f'self-refine-{args.refiment}_{args.dataset_name}_{args.split}_{args.model_name.replace("/","-")}_backup-{args.backup}.json')
+            result_file = os.path.join(args.result_path, f'self-refine-{args.refiment}_{args.dataset_name}_{args.split}_{model_name}_backup-{args.backup}.json')
     else:
-        result_file = os.path.join(args.result_path, f'{args.mode}_{args.dataset_name}_{args.split}_{args.model_name.replace("/","-")}.json')
+        result_file = os.path.join(args.result_path, f'{args.mode}_{args.dataset_name}_{args.split}_{model_name}.json')
     
     print(f'Evaluating {result_file}')
     full_evaluation(result_file)

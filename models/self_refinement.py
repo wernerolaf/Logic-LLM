@@ -16,6 +16,8 @@ import argparse
 import random
 from models.backup_answer_generation import Backup_Answer_Generator
 from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
+from models.utils import print_gpu_utilization
+import time
 
 class SelfRefinementEngine:
     def __init__(self, args, current_round, llm_model = None):
@@ -189,9 +191,13 @@ def parse_args():
     return args
 
 if __name__ == "__main__":
+    overall_start = time.time()
     args = parse_args()
     engine = SelfRefinementEngine(args, 1)
     for round in range(1, args.maximum_rounds+1):
         print(f"Round {round} self-refinement")
         engine.single_round_self_refinement()
         engine.current_round += 1
+
+    print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()

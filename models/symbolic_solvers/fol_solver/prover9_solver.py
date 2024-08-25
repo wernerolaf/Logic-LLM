@@ -48,7 +48,7 @@ class FOL_Prover9_Program:
         try:
             goal = Expression.fromstring(self.prover9_conclusion)
             assumptions = [Expression.fromstring(a) for a in self.prover9_premises]
-            timeout = 10
+            timeout = 20
             #prover = Prover9()
             #result = prover.prove(goal, assumptions)
             
@@ -79,7 +79,7 @@ class FOL_Prover9_Program:
         elif answer == 'Unknown':
             return 'C'
         else:
-            raise Exception("Answer not recognized")
+            return None
         
 if __name__ == "__main__":
     ## ¬∀x (Movie(x) → HappyEnding(x))

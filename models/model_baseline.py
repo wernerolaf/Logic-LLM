@@ -11,6 +11,8 @@ from collections import OrderedDict
 from typing import Dict, List, Tuple
 from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
 import argparse
+from models.utils import print_gpu_utilization
+import time
 
 class Model_Baseline:
     def __init__(self, args, llm_model=None):
@@ -159,6 +161,9 @@ def parse_args():
     return args
 
 if __name__ == '__main__':
+    overall_start = time.time()
     args = parse_args()
     model_problem_reduction = Model_Baseline(args)
     model_problem_reduction.batch_reasoning_graph_generation(batch_size=10)
+    print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()

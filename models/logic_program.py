@@ -13,6 +13,8 @@ from collections import OrderedDict
 from typing import Dict, List, Tuple
 from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
 import argparse
+from models.utils import print_gpu_utilization
+import time
 
 class LogicProgramGenerator:
     def __init__(self, args, llm_model = None):
@@ -25,11 +27,15 @@ class LogicProgramGenerator:
             self.model_name = args.model_path + args.model_name
         self.save_path = args.save_path
         self.framework_to_use = args.framework_to_use
+        self.num_beams = args.num_beams
+        self.num_return_sequences = args.num_return_sequences
         if llm_model is None:
             if self.framework_to_use == "OpenAI":
                 self.llm_model = OpenAIModel(args.api_key, 'gpt-4', args.stop_words, args.max_new_tokens)
             elif self.framework_to_use == "HuggingFace":
-                self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens, is_AWQ=args.is_AWQ)
+                self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
+                 is_AWQ=args.is_AWQ, timeout_time=args.timeout_time, batch_size=args.batch_size,
+                 num_beams=args.num_beams, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping))
             else:
                 self.llm_model = LLMClass()
         else:
@@ -103,10 +109,7 @@ class LogicProgramGenerator:
             # create prompt
             try:
                 full_prompt = self.prompt_creator[self.dataset_name](example)
-                output = self.llm_model.generate(full_prompt)
-                # print(full_prompt)
-                programs = [output]
-
+                programs = self.llm_model.generate(full_prompt)
                 # create output
                 output = {'id': example['id'], 
                         'context': example['context'],
@@ -140,8 +143,7 @@ class LogicProgramGenerator:
             try:
                 batch_outputs = self.llm_model.batch_generate(full_prompts)
                 # create output
-                for sample, output in zip(chunk, batch_outputs):
-                    programs = [output]
+                for sample, programs in zip(chunk, batch_outputs):
                     output = {'id': sample['id'], 
                             'context': sample['context'],
                             'question': sample['question'], 
@@ -154,7 +156,7 @@ class LogicProgramGenerator:
                 for sample, full_prompt in zip(chunk, full_prompts):
                     try:
                         output = self.llm_model.generate(full_prompt)
-                        programs = [output]
+                        programs = output
                         output = {'id': sample['id'], 
                                 'context': sample['context'],
                                 'question': sample['question'], 
@@ -174,8 +176,12 @@ class LogicProgramGenerator:
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
         
-        with open(os.path.join(self.save_path, '{}_{}_{}.json'.format(self.dataset_name,self.split,self.model_name,)), 'w') as f:
-            json.dump(outputs, f, indent=2, ensure_ascii=False)
+        if self.num_beams > 1:
+            with open(os.path.join(self.save_path, '{}_{}_{}-beam{}.json'.format(self.dataset_name,self.split,self.model_name,self.num_beams)), 'w') as f:
+                json.dump(outputs, f, indent=2, ensure_ascii=False)
+        else:
+            with open(os.path.join(self.save_path, '{}_{}_{}.json'.format(self.dataset_name,self.split,self.model_name,)), 'w') as f:
+                json.dump(outputs, f, indent=2, ensure_ascii=False)
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -191,10 +197,18 @@ def parse_args():
     parser.add_argument('--stop_words', type=str, default='------')
     parser.add_argument('--max_new_tokens', type=int, default=1024)
     parser.add_argument('--is_AWQ', type=str, default="auto")
+    parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_return_sequences', type=int, default=1)
+    parser.add_argument('--early_stopping', type=int, default=1)
+    parser.add_argument('--batch_size', type=int, default=10)
+    parser.add_argument('--timeout_time', type=int, default=600)
     args = parser.parse_args()
     return args
 
 if __name__ == '__main__':
+    overall_start = time.time()
     args = parse_args()
     logic_program_generator = LogicProgramGenerator(args)
-    logic_program_generator.batch_logic_program_generation()
+    logic_program_generator.batch_logic_program_generation(batch_size = args.batch_size)
+    print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()

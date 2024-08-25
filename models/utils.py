@@ -123,6 +123,19 @@ class Timeout:
         signal(SIGALRM, self.handler)
 
 
+from pynvml import *
+
+def print_gpu_utilization():
+    try:
+        nvmlInit()
+        gpus = nvmlDeviceGetCount()
+        for g in range(gpus):
+            handle = nvmlDeviceGetHandleByIndex(g)
+            info = nvmlDeviceGetMemoryInfo(handle)
+            print(f"GPU {g} memory occupied: {info.used//1024**2} MB.")
+            print(f"GPU {g} memory occupied: {info.used/info.total*100:.2f} %.")
+    except Exception as e:
+        print("problems with reading GPU")
 
 from typing import List
 
@@ -155,10 +168,13 @@ class StoppingCriteriaToken(StoppingCriteria):
         return False
 
 class HuggingFaceModel(LLMClass):
-    def __init__(self, model_id, stop_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10) -> None:
+    def __init__(self, model_id, stop_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_return_sequences=1, early_stopping = True) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
+        self.num_beams = num_beams
+        self.num_return_sequences = num_return_sequences
+        self.early_stopping = early_stopping
     
         if is_AWQ == "auto":
             if "AWQ" in model_id:
@@ -178,7 +194,9 @@ class HuggingFaceModel(LLMClass):
         stop_token_ids = [self.tokenizer.convert_tokens_to_ids(stop_token) for stop_token in stop_words.split(" ")]
         stopping_criteria = StoppingCriteriaList([StoppingCriteriaToken(stops=stop_token_ids)])
 
-        self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced", do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria)
+        self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced",
+         do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria,
+          num_beams=self.num_beams, num_return_sequences=self.num_return_sequences, early_stopping=self.early_stopping)
         if self.pipe.tokenizer.pad_token_id is None:
             self.pipe.tokenizer.pad_token_id = self.pipe.model.config.eos_token_id
 
@@ -186,7 +204,7 @@ class HuggingFaceModel(LLMClass):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
                 response = self.pipe(input_string, temperature=temperature)
-                generated_text = response[0]["generated_text"].strip()
+                generated_text = [response[i]["generated_text"].strip() for i in range(len(response))]
                 return generated_text
             except TimeoutError as e:
                 print(e)
@@ -197,7 +215,7 @@ class HuggingFaceModel(LLMClass):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
                 responses = self.pipe(messages_list, temperature=temperature)
-                generated_text = [response[0]["generated_text"].strip() for response in responses]
+                generated_text = [[response[i]["generated_text"].strip() for i in range(len(response))] for response in responses]
                 return generated_text
             except TimeoutError as e:
                 print(e)

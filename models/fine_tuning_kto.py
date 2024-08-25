@@ -15,6 +15,7 @@ import json
 import argparse
 import time
 from sklearn.model_selection import train_test_split
+from models.utils import print_gpu_utilization
 
 def get_choice(answer_str):
     choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A)', 'B)', 'C)', 'D)', 'E)', 'F)', 'G)', 'H)', 
@@ -76,6 +77,15 @@ def get_prompt(x):
         full_prompt = full_prompt.replace('[[CHOICES]]', choices_str)
 
     return full_prompt
+
+def get_program(x):
+    if 'program' not in x.index:
+        return x['raw_logic_programs'][0]
+    else:
+        if x['program'] is None:
+            return x['raw_logic_programs'][0]
+        else:
+            return x['program']
 
 def prepare_data(model_name, split, logic_inference, logic_programs, dataset_name):
     df_logic=[]
@@ -145,9 +155,11 @@ def prepare_data(model_name, split, logic_inference, logic_programs, dataset_nam
     # df_logic3 = df_logic2.loc[(df_logic2.flag == "success") & (df_logic2.is_correct) & (df_logic2.dataset==dataset_name)]
     df_logic3 = df_logic2.loc[(df_logic2.dataset==dataset_name)]
     df_merged = pd.merge(df_logic3, df_programs2, how="inner", on=["id","model","split","refiment"])
+    # to handle legacy save setting
+    df_merged["raw_logic_programs"] = df_merged.apply(lambda x: get_program(x), axis=1)
+
     df_merged["query"] = df_merged.apply(lambda x: get_prompt(x), axis=1)
     df_merged["label"] = (df_merged.flag == "success") & (df_merged.is_correct)
-    df_merged["raw_logic_programs"] = df_merged.apply(lambda x: x['raw_logic_programs'][0], axis=1)
     return df_merged
 
 def parse_args():
@@ -220,7 +232,7 @@ if __name__ == "__main__":
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config = quantization_config,
-    device_map="auto",
+    device_map="balanced",
     torch_dtype="auto",)
 
     model.config.use_cache = False
@@ -245,3 +257,4 @@ if __name__ == "__main__":
     trainer.save_model(os.path.join(args.result_path, model_name, args.dataset_name,"kto","best"))
 
     print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()

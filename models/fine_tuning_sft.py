@@ -14,7 +14,9 @@ import re
 import json
 import argparse
 import time
+import datetime
 from sklearn.model_selection import train_test_split
+from models.utils import print_gpu_utilization
 
 def get_choice(answer_str):
     choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A)', 'B)', 'C)', 'D)', 'E)', 'F)', 'G)', 'H)', 
@@ -52,20 +54,6 @@ def load_prompt_templates(dataset):
         f.close()
     return prompt_template
 
-
-def get_prompt_answer(x):
-    problem = x['context']
-    question = x['question'].strip()
-    full_prompt = template.replace('[[PROBLEM]]', problem).replace('[[QUESTION]]', question)
-
-    if 'options' in x.keys():
-        choices_str = '\n'.join([f'({choice.strip()}' for choice in x['options']]).strip()
-        full_prompt = full_prompt.replace('[[CHOICES]]', choices_str)
-        
-    answer = x['raw_logic_programs']
-    text = full_prompt + answer
-    return text
-
 def get_prompt(x):
     problem = x['context']
     question = x['question'].strip()
@@ -76,6 +64,25 @@ def get_prompt(x):
         full_prompt = full_prompt.replace('[[CHOICES]]', choices_str)
 
     return full_prompt
+
+def ensure_chat_template(tokenizer, model_name):
+    if not tokenizer.chat_template:
+        print(f"No chat template found for {model_name}. Applying a default template.")
+        default_template = "{% for message in messages %}"
+        default_template += "{% if message['role'] == 'user' %}Human: {{ message['content'] }}\n{% elif message['role'] == 'assistant' %}Assistant: {{ message['content'] }}\n{% elif message['role'] == 'system' %}System: {{ message['content'] }}\n{% endif %}"
+        default_template += "{% endfor %}"
+        default_template += "{% if add_generation_prompt %}Assistant: {% endif %}"
+        tokenizer.chat_template = default_template
+    return tokenizer
+
+def get_program(x):
+    if 'program' not in x.index:
+        return x['raw_logic_programs'][0]
+    else:
+        if x['program'] is None:
+            return x['raw_logic_programs'][0]
+        else:
+            return x['program']
 
 def prepare_data(model_name, split, logic_inference, logic_programs, dataset_name):
     df_logic=[]
@@ -146,8 +153,11 @@ def prepare_data(model_name, split, logic_inference, logic_programs, dataset_nam
     # df_logic3 = df_logic2.loc[(df_logic2.dataset==dataset_name)]
     df_merged = pd.merge(df_logic3, df_programs2, how="inner", on=["id","model","split","refiment"])
     df_merged["query"] = df_merged.apply(lambda x: get_prompt(x), axis=1)
-    df_merged["raw_logic_programs"] = df_merged.apply(lambda x: x['raw_logic_programs'][0], axis=1)
+    # to handle legacy save setting
+    df_merged["raw_logic_programs"] = df_merged.apply(lambda x: get_program(x), axis=1)
     return df_merged
+
+
 
 
 def parse_args():
@@ -179,11 +189,21 @@ if __name__ == "__main__":
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
+    tokenizer = ensure_chat_template(tokenizer, model_name)
+
     template = load_prompt_templates(args.dataset_name)
     df_merged = prepare_data(args.benchmark_model_name, args.split, args.logic_inference, args.logic_programs, args.dataset_name)    
     df_merged = df_merged.rename(columns={"query": "prompt", "raw_logic_programs": "completion"})
     df_merged = df_merged.drop(columns = df_merged.columns.drop(["prompt", "completion"]))
     df_merged = df_merged.drop_duplicates()
+
+    # Get current date
+    current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    # Save df_merged to a CSV file
+    output_file = os.path.join('./outputs/prepared_data',f"{args.dataset_name}_{args.split}_merged_data_sft_{current_date}.csv")
+    df_merged.to_csv(output_file, index=False)
+    print(f"Merged data saved to {output_file}")
 
     if args.resume_from_checkpoint == "resume":
         resume_from_checkpoint = True
@@ -243,5 +263,9 @@ if __name__ == "__main__":
 
     trainer.train()
     trainer.save_model(os.path.join(args.result_path, model_name, args.dataset_name,"sft","best"))
+    output_file = os.path.join(args.result_path, model_name, args.dataset_name,"sft","best",f"{args.dataset_name}_{args.split}_merged_data_sft_{current_date}.csv")
+    df_merged.to_csv(output_file, index=False)
+    
 
     print(f"Total time: {time.time() - overall_start:.2f} secs")
+    print_gpu_utilization()
