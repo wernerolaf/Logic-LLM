@@ -8,7 +8,7 @@ class CSP_Program:
         self.logic_program = logic_program
         self.flag = self.parse_logic_program()
         self.dataset_name = dataset_name
-        self.timeout = 20
+        self.timeout = 30
 
     def parse_logic_program(self):
         keywords = ['Query:', 'Constraints:', 'Variables:', 'Domain:']

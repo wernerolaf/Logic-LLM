@@ -73,7 +73,7 @@ def tokenize_dataset(df, answer_map):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_name', type=str, default="ProntoQA")
-    parser.add_argument('--split', type=str, default='dev')
+    parser.add_argument('--split', type=str, default='train')
     parser.add_argument('--train_model_name', type=str, default="trl-internal-testing/tiny-random-LlamaForCausalLM")
     parser.add_argument('--model_path', type=str, default='/mnt/evafs/groups/luckner-lab/models/')
     parser.add_argument('--use_fine_tuned', type=int, default=1)
@@ -194,7 +194,7 @@ if __name__ == "__main__":
         "do_sample": False,
         "pad_token_id": tokenizer.eos_token_id,
         "batch_size": batch_size,
-        "max_new_tokens": 1024,
+        "max_new_tokens": 2048,
         "tokenizer":tokenizer,
         "stop_strings": ["------","-----","----"]
         }
@@ -216,24 +216,28 @@ if __name__ == "__main__":
     print_gpu_utilization()
 
     epochs = args.epochs
-    for epoch in tqdm(range(epochs), "epoch: "):
-        for batch in tqdm(ppo_trainer.dataloader): 
-            query_tensors = list(batch["input_ids"])
-        
-            #### Get response from SFTModel
-            response_tensors = ppo_trainer.generate(query_tensors, return_prompt=False, **generation_kwargs)
-            batch["response"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
-        
-            #### Compute reward score
-            results = logic_engine.inference_on_text(batch["response"])
-            rewards = reward_model(results, batch["labels"], answer_map)
+    try:
+        for epoch in tqdm(range(epochs), "epoch: "):
+            for batch in tqdm(ppo_trainer.dataloader): 
+                query_tensors = list(batch["input_ids"])
+            
+                #### Get response from SFTModel
+                response_tensors = ppo_trainer.generate(query_tensors, return_prompt=False, **generation_kwargs)
+                batch["response"] = [tokenizer.decode(r.squeeze()) for r in response_tensors]
+            
+                #### Compute reward score
+                results = logic_engine.inference_on_text(batch["response"])
+                rewards = reward_model(results, batch["labels"], answer_map)
 
-            # rewards = [reward.to("cuda:0") for reward in rewards]
-            #### Run PPO step
-            stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
-            ppo_trainer.log_stats(stats, batch, rewards)
-            mean_reward = torch.mean(torch.stack(rewards))
-            print(f"Mean reward in batch: {mean_reward}")
+                # rewards = [reward.to("cuda:0") for reward in rewards]
+                #### Run PPO step
+                stats = ppo_trainer.step(query_tensors, response_tensors, rewards)
+                ppo_trainer.log_stats(stats, batch, rewards)
+                mean_reward = torch.mean(torch.stack(rewards))
+                print(f"Mean reward in batch: {mean_reward}")
+    except Exception as e:
+        print(e)
+        print(traceback.format_exc())
 
     print_gpu_utilization()
     ppo_trainer.save_pretrained(os.path.join(args.result_path, model_name, args.dataset_name,"ppo","last"))

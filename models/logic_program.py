@@ -6,8 +6,8 @@ and saves the outputs. Includes batch generation for efficiency.
 """
 # generate facts and rules based on the problem description
 
-import json
 import os
+import json
 from tqdm import tqdm
 from collections import OrderedDict
 from typing import Dict, List, Tuple
@@ -195,13 +195,13 @@ def parse_args():
     parser.add_argument('--use_fine_tuned', type=int, default=0)
     parser.add_argument('--framework_to_use', type=str, default='HuggingFace')
     parser.add_argument('--stop_words', type=str, default='------')
-    parser.add_argument('--max_new_tokens', type=int, default=1024)
+    parser.add_argument('--max_new_tokens', type=int, default=2048)
     parser.add_argument('--is_AWQ', type=str, default="auto")
     parser.add_argument('--num_beams', type=int, default=1)
     parser.add_argument('--num_return_sequences', type=int, default=1)
     parser.add_argument('--early_stopping', type=int, default=1)
     parser.add_argument('--batch_size', type=int, default=10)
-    parser.add_argument('--timeout_time', type=int, default=600)
+    parser.add_argument('--timeout_time', type=int, default=1200)
     args = parser.parse_args()
     return args
 

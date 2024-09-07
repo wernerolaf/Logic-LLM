@@ -155,7 +155,7 @@ def parse_args():
     parser.add_argument('--framework_to_use', type=str, default='HuggingFace')
     parser.add_argument('--stop_words', type=str, default='------')
     parser.add_argument('--mode', type=str)
-    parser.add_argument('--max_new_tokens', type=int, default=1024)
+    parser.add_argument('--max_new_tokens', type=int, default=2048)
     parser.add_argument('--is_AWQ', type=str, default="auto")
     args = parser.parse_args()
     return args

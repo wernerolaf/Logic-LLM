@@ -163,7 +163,7 @@ def prepare_data(model_name, split, logic_inference, logic_programs, dataset_nam
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_name', type=str, default="ProntoQA")
-    parser.add_argument('--split', type=str, default='dev')
+    parser.add_argument('--split', type=str, default='train')
     parser.add_argument('--train_model_name', type=str, default="mistralai/Mistral-7B-v0.1")
     parser.add_argument('--benchmark_model_name', type=str, default='')
     parser.add_argument('--resume_from_checkpoint', type=str, default="no")
@@ -242,7 +242,8 @@ if __name__ == "__main__":
     model_name,
     quantization_config = quantization_config,
     device_map="balanced",
-    torch_dtype="auto",)
+    # torch_dtype=auto,
+    )
 
     model.config.use_cache = False
     model.generation_config.pad_token_id=tokenizer.pad_token_id

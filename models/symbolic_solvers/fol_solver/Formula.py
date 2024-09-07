@@ -1,34 +1,43 @@
+import signal
 from nltk.tree import Tree
 from .fol_parser import FOL_Parser
-from concurrent.futures import ThreadPoolExecutor, TimeoutError, ProcessPoolExecutor
-import signal
 
-# def handler(signum, frame):
-#     raise Exception("Timeout!")
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException("Parsing timed out")
+
+def parse_with_timeout(parser, str_fol, timeout=30):
+    # Set the signal handler and a 30-second alarm
+    signal.signal(signal.SIGALRM, timeout_handler)
+    signal.alarm(timeout)
+    
+    try:
+        result = parser.parse_text_FOL_to_tree(str_fol)
+        signal.alarm(0)  # Disable the alarm
+        return result
+    except TimeoutException:
+        return None
+    finally:
+        signal.alarm(0)  # Ensure the alarm is disabled
 
 class FOL_Formula:
     def __init__(self, str_fol) -> None:
         self.parser = FOL_Parser()
 
-        def handler(signum, frame):
-            raise Exception("Timeout!")
-
-        # Set the signal handler and a 5-second alarm
-        signal.signal(signal.SIGALRM, handler)
-        signal.alarm(120)
         try:
-            tree = self.parser.parse_text_FOL_to_tree(str_fol)
+            tree = parse_with_timeout(self.parser, str_fol)
+            if tree is None:
+                self.is_valid = False
+            else:
+                self.is_valid = True
+                self.variables, self.constants, self.predicates = self.parser.symbol_resolution(tree)
         except Exception as exc:
             tree = None
             self.is_valid = False
-            return
-    
+
         self.tree = tree
-        if tree is None:
-            self.is_valid = False
-        else:
-            self.is_valid = True
-            self.variables, self.constants, self.predicates = self.parser.symbol_resolution(tree)
     
     def __str__(self) -> str:
         _, rule_str = self.parser.msplit(''.join(self.tree.leaves()))

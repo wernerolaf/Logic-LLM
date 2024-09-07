@@ -95,7 +95,6 @@ def evaluate_QA(QA_results):
 
             current_id = sample['id']
             current_answers = []
-            sample_count += 1
 
         gold_answer = sample['answer'].replace('(', '').replace(')', '').strip()
         answer_str = sample['predicted_answer'].strip() if sample['predicted_answer'] is not None else ''

@@ -195,7 +195,7 @@ class HuggingFaceModel(LLMClass):
         stopping_criteria = StoppingCriteriaList([StoppingCriteriaToken(stops=stop_token_ids)])
 
         self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced",
-         do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria,
+         do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria, stop_strings = stop_words.split(" "),
           num_beams=self.num_beams, num_return_sequences=self.num_return_sequences, early_stopping=self.early_stopping)
         if self.pipe.tokenizer.pad_token_id is None:
             self.pipe.tokenizer.pad_token_id = self.pipe.model.config.eos_token_id
@@ -203,18 +203,18 @@ class HuggingFaceModel(LLMClass):
     def generate(self, input_string, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                response = self.pipe(input_string, temperature=temperature)
+                response = self.pipe(input_string, temperature=temperature, tokenizer=self.tokenizer)
                 generated_text = [response[i]["generated_text"].strip() for i in range(len(response))]
                 return generated_text
             except TimeoutError as e:
                 print(e)
-                print(input_string)
+                # print(input_string)
                 return 'Time out!'
 
     def batch_generate(self, messages_list, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                responses = self.pipe(messages_list, temperature=temperature)
+                responses = self.pipe(messages_list, temperature=temperature, tokenizer=self.tokenizer)
                 generated_text = [[response[i]["generated_text"].strip() for i in range(len(response))] for response in responses]
                 return generated_text
             except TimeoutError as e:

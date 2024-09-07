@@ -146,7 +146,6 @@ class Pyke_Program:
 
         # delete the compiled_krb dir
         complied_krb_dir = './models/compiled_krb'
-        # complied_krb_dir = './compiled_krb'
         if os.path.exists(complied_krb_dir):
             # print('removing compiled_krb')
             os.system(f'rm -rf {complied_krb_dir}/*')
@@ -165,7 +164,7 @@ class Pyke_Program:
             result = self.check_specific_predicate(subject, predicate, engine)
             answer = self.answer_map[self.dataset_name](result, value_to_check)
         except Exception as e:
-            print(traceback.format_exc())
+            # print(traceback.format_exc())
             print(e)
             return None, e
         

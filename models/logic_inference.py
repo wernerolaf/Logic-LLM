@@ -6,6 +6,20 @@ execution using backup strategies. Saves outputs to file after inference.
 """
 import json
 import os
+
+# clean Pyke temporary library
+complied_krb_dir = './models/compiled_krb'
+if os.path.exists(complied_krb_dir):
+    os.system(f'rm -rf {complied_krb_dir}')
+
+complied_krb_dir = './compiled_krb'
+if os.path.exists(complied_krb_dir):
+    os.system(f'rm -rf {complied_krb_dir}')
+
+complied_krb_dir = './models/symbolic_solvers/pyke_solver/.cache_program'
+if os.path.exists(complied_krb_dir):
+    os.system(f'rm -rf {complied_krb_dir}')
+
 from tqdm import tqdm
 from models.symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
 from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
@@ -16,6 +30,7 @@ import random
 from models.backup_answer_generation import Backup_Answer_Generator
 from models.utils import print_gpu_utilization
 import time
+import shutil
 
 class LogicInferenceEngine:
     def __init__(self, args):
@@ -95,10 +110,23 @@ class LogicInferenceEngine:
             return answer, 'parsing error', ''
         # execuate the program
         answer, error_message = program.execute_program()
+
+        #Clean up the directory again and wait in case of Pyke
+        if 'spec not found for the module' in str(error_message):
+            self.cleanup_partial()
+            time.sleep(1)
+            program = self.program_executor(logic_program, self.dataset_name)
+            # cannot parse the program
+            if program.flag == False:
+                answer = self.backup_generator.get_backup_answer(id)
+                return answer, 'parsing error', ''
+            # execuate the program
+            answer, error_message = program.execute_program()
+
         # not executable
         if answer is None:
             answer = self.backup_generator.get_backup_answer(id)
-            return answer, 'execution error', error_message
+            return answer, 'execution error', str(error_message)
         # successfully executed
         answer = program.answer_mapping(answer)
         return answer, 'success', ''
@@ -131,22 +159,48 @@ class LogicInferenceEngine:
                         'predicted_answer': answer,
                         'error_message': error_message}
                 outputs.append(output)
+                self.cleanup_partial()
         
         print(f"Error count: {error_count}")
         self.save_results(outputs)
         self.cleanup()
 
+    def robust_cleanup(self, path, max_attempts=3, delay=1):
+        for attempt in range(max_attempts):
+            try:
+                if os.path.exists(path):
+                    if os.path.isdir(path):
+                        shutil.rmtree(path)
+                    else:
+                        os.remove(path)
+                    if attempt > 1:
+                        time.sleep(delay)
+                else:
+                    return True
+            except Exception as e:
+                print(f"Cleanup attempt {attempt + 1} failed: {str(e)}")
+                time.sleep(delay)
+        print(f"Failed to clean up {path} after {max_attempts} attempts")
+        return False
+
     def cleanup(self):
-        complied_krb_dir = './models/compiled_krb'
-        if os.path.exists(complied_krb_dir):
-            # print('removing compiled_krb')
-            os.system(f'rm -rf {complied_krb_dir}')
+        directories_to_clean = [
+            './models/compiled_krb',
+            './models/symbolic_solvers/pyke_solver/.cache_program'
+        ]
+        for directory in directories_to_clean:
+            self.robust_cleanup(directory)
 
     def cleanup_partial(self):
-        complied_krb_dir = './models/compiled_krb'
-        if os.path.exists(complied_krb_dir):
-            # print('removing compiled_krb')
-            os.system(f'rm -rf {complied_krb_dir}/*')
+        directories_to_clean = [
+            './models/compiled_krb',
+            './models/symbolic_solvers/pyke_solver/.cache_program'
+        ]
+        for directory in directories_to_clean:
+            if os.path.exists(directory):
+                for item in os.listdir(directory):
+                    item_path = os.path.join(directory, item)
+                    self.robust_cleanup(item_path)
             
     def inference_on_text(self, texts):
         outputs = []
