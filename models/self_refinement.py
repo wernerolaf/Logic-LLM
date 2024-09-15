@@ -184,7 +184,7 @@ def parse_args():
     parser.add_argument('--timeout', type=int, default=60)
     parser.add_argument('--api_key', type=str, default='KEY')
     parser.add_argument('--stop_words', type=str, default='------')
-    parser.add_argument('--max_new_tokens', type=int, default=2048)
+    parser.add_argument('--max_new_tokens', type=int, default=1024)
     parser.add_argument('--is_AWQ', type=str, default="auto")
     parser.add_argument('--mode', type=str, default='CoT')
     args = parser.parse_args()

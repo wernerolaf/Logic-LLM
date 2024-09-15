@@ -1,8 +1,13 @@
-Task Description: You are given a problem description and a question. The task is to: 
-1) define all the predicates in the problem
-2) parse the problem into logic rules based on the defined predicates
-3) write all the facts mentioned in the problem
-4) parse the question into the logic form
+Given a problem description and a question. The task is to parse the problem and the question into first-order logic formulars.
+The grammar of the first-order logic formular is defined as follows:
+1) logical conjunction of expr1 and expr2: expr1 ∧ expr2
+2) logical disjunction of expr1 and expr2: expr1 ∨ expr2
+3) logical exclusive disjunction of expr1 and expr2: expr1 ⊕ expr2
+4) logical negation of expr1: ¬expr1
+5) expr1 implies expr2: expr1 → expr2
+6) expr1 if and only if expr2: expr1 ↔ expr2
+7) logical universal quantification: ∀x
+8) logical existential quantification: ∃x
 ------
 Problem:
 Each jompus is fruity. Every jompus is a wumpus. Every wumpus is not transparent. Wumpuses are tumpuses. Tumpuses are mean. Tumpuses are vumpuses. Every vumpus is cold. Each vumpus is a yumpus. Yumpuses are orange. Yumpuses are numpuses. Numpuses are dull. Each numpus is a dumpus. Every dumpus is not shy. Impuses are shy. Dumpuses are rompuses. Each rompus is liquid. Rompuses are zumpuses. Alex is a tumpus.
@@ -10,46 +15,45 @@ Question:
 True or false: Alex is not shy.
 ###
 Predicates:
-Jompus($x, bool) ::: Does x belong to Jompus?
-Fruity($x, bool) ::: Is x fruity?
-Wumpus($x, bool) ::: Does x belong to Wumpus?
-Transparent($x, bool) ::: Is x transparent?
-Tumpuses($x, bool) ::: Does x belong to Tumpuses?
-Mean($x, bool) ::: Is x mean?
-Vumpuses($x, bool) ::: Does x belong to Vumpuses?
-Cold($x, bool) ::: Is x cold?
-Yumpus($x, bool) ::: Does x belong to Yumpus?
-Orange($x, bool) ::: Is x orange?
-Numpus($x, bool) ::: Does x belong to Numpus?
-Dull($x, bool) ::: Is x dull?
-Dumpus($x, bool) ::: Does x belong to Dumpus?
-Shy($x, bool) ::: Is x shy?
-Impuses($x, bool) ::: Does x belong to Impuses?
-Rompus($x, bool) ::: Does x belong to Rompus?
-Liquid($x, bool) ::: Is x liquid?
-Zumpus($x, bool) ::: Does x belong to Zumpus?
-Facts:
-Tumpuses(Alex, True)
-Rules:
-Jompus($x, True) >>> Fruity($x, True)
-Jompus($x, True) >>> Wumpus($x, True)
-Wumpus($x, True) >>> Transparent($x, False)
-Wumpuses($x, True) >>> Tumpuses($x, True)
-Tumpuses($x, True) >>> Mean($x, True)
-Tumpuses($x, True) >>> Vumpuses($x, True)
-Vumpuses($x, True) >>> Cold($x, True)
-Vumpuses($x, True) >>> Yumpus($x, True)
-Yumpus($x, True) >>> Orange($x, True)
-Yumpus($x, True) >>> Numpus($x, True)
-Numpus($x, True) >>> Dull($x, True)
-Numpus($x, True) >>> Dumpus($x, True)
-Dumpus($x, True) >>> Shy($x, False)
-Impuses($x, True) >>> Shy($x, True)
-Dumpus($x, True) >>> Rompus($x, True)
-Rompus($x, True) >>> Liquid($x, True)
-Rompus($x, True) >>> Zumpus($x, True)
-Query:
-Shy(Alex, False)
+Jompus(x) ::: x is a jompus
+Fruity(x) ::: x is fruity
+Wumpus(x) ::: x is a wumpus
+Transparent(x) ::: x is transparent
+Tumpus(x) ::: x is a tumpus
+Mean(x) ::: x is mean
+Vumpus(x) ::: x is a vumpus
+Cold(x) ::: x is cold
+Yumpus(x) ::: x is a yumpus
+Orange(x) ::: x is orange
+Numpus(x) ::: x is a numpus
+Dull(x) ::: x is dull
+Dumpus(x) ::: x is a dumpus
+Shy(x) ::: x is shy
+Impus(x) ::: x is an impus
+Rompus(x) ::: x is a rompus
+Liquid(x) ::: x is liquid
+Zumpus(x) ::: x is a zumpus
+Premises:
+∀x (Jompus(x) → Fruity(x)) ::: Each jompus is fruity.
+∀x (Jompus(x) → Wumpus(x)) ::: Every jompus is a wumpus.
+∀x (Wumpus(x) → ¬Transparent(x)) ::: Every wumpus is not transparent.
+∀x (Wumpus(x) → Tumpus(x)) ::: Wumpuses are tumpuses.
+∀x (Tumpus(x) → Mean(x)) ::: Tumpuses are mean.
+∀x (Tumpus(x) → Vumpus(x)) ::: Tumpuses are vumpuses.
+∀x (Vumpus(x) → Cold(x)) ::: Every vumpus is cold.
+∀x (Vumpus(x) → Yumpus(x)) ::: Each vumpus is a yumpus.
+∀x (Yumpus(x) → Orange(x)) ::: Yumpuses are orange.
+∀x (Yumpus(x) → Numpus(x)) ::: Yumpuses are numpuses.
+∀x (Numpus(x) → Dull(x)) ::: Numpuses are dull.
+∀x (Numpus(x) → Dumpus(x)) ::: Each numpus is a dumpus.
+∀x (Dumpus(x) → ¬Shy(x)) ::: Every dumpus is not shy.
+∀x (Impus(x) → Shy(x)) ::: Impuses are shy.
+∀x (Dumpus(x) → Rompus(x)) ::: Dumpuses are rompuses.
+∀x (Rompus(x) → Liquid(x)) ::: Each rompus is liquid.
+∀x (Rompus(x) → Zumpus(x)) ::: Rompuses are zumpuses.
+Tumpus(alex) ::: Alex is a tumpus.
+Conclusion:
+¬Shy(alex) ::: Alex is not shy.
 ------
 Problem:
 [[PROBLEM]]

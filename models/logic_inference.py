@@ -6,23 +6,9 @@ execution using backup strategies. Saves outputs to file after inference.
 """
 import json
 import os
-
-# clean Pyke temporary library
-complied_krb_dir = './models/compiled_krb'
-if os.path.exists(complied_krb_dir):
-    os.system(f'rm -rf {complied_krb_dir}')
-
-complied_krb_dir = './compiled_krb'
-if os.path.exists(complied_krb_dir):
-    os.system(f'rm -rf {complied_krb_dir}')
-
-complied_krb_dir = './models/symbolic_solvers/pyke_solver/.cache_program'
-if os.path.exists(complied_krb_dir):
-    os.system(f'rm -rf {complied_krb_dir}')
-
 from tqdm import tqdm
 from models.symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
-from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
+# from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
 from models.symbolic_solvers.csp_solver.csp_solver import CSP_Program
 from models.symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 import argparse
@@ -43,15 +29,19 @@ class LogicInferenceEngine:
         self.backup_strategy = args.backup_strategy
         self.refiment = args.refiment
         self.num_beams = args.num_beams
+        self.num_beam_groups = args.num_beam_groups
         self.num_return_sequences = args.num_return_sequences
+        self.zero_shot = args.zero_shot
 
         if self.num_beams>1:
-            self.model_name = self.model_name + "-beam" + str(self.num_beams)
+            self.model_name = f"{self.model_name}-beam{self.num_beams}-group{self.num_beam_groups}"
+
+        self.model_name=self.model_name+f"-zero-{self.zero_shot}"
 
         self.dataset = self.load_logic_programs()
         program_executor_map = {'FOLIO': FOL_Prover9_Program, 
-                                'ProntoQA': Pyke_Program, 
-                                'ProofWriter': Pyke_Program,
+                                'ProntoQA': FOL_Prover9_Program,  # Changed from Pyke_Program
+                                'ProofWriter': FOL_Prover9_Program,  # Changed from Pyke_Program
                                 'LogicalDeduction': CSP_Program,
                                 'AR-LSAT': LSAT_Z3_Program}
         self.program_executor = program_executor_map[self.dataset_name]
@@ -102,6 +92,7 @@ class LogicInferenceEngine:
     def safe_execute_program(self, id, logic_program):
 
         # preprocess string as ------ means end of problem
+        logic_program = logic_program.rsplit("------", 1)[0]
         logic_program = logic_program.replace("------","").strip()
         program = self.program_executor(logic_program, self.dataset_name)
         # cannot parse the program
@@ -110,18 +101,6 @@ class LogicInferenceEngine:
             return answer, 'parsing error', ''
         # execuate the program
         answer, error_message = program.execute_program()
-
-        #Clean up the directory again and wait in case of Pyke
-        if 'spec not found for the module' in str(error_message):
-            self.cleanup_partial()
-            time.sleep(1)
-            program = self.program_executor(logic_program, self.dataset_name)
-            # cannot parse the program
-            if program.flag == False:
-                answer = self.backup_generator.get_backup_answer(id)
-                return answer, 'parsing error', ''
-            # execuate the program
-            answer, error_message = program.execute_program()
 
         # not executable
         if answer is None:
@@ -159,13 +138,11 @@ class LogicInferenceEngine:
                         'predicted_answer': answer,
                         'error_message': error_message}
                 outputs.append(output)
-                self.cleanup_partial()
         
         print(f"Error count: {error_count}")
         self.save_results(outputs)
-        self.cleanup()
 
-    def robust_cleanup(self, path, max_attempts=3, delay=1):
+    def robust_cleanup(self, path, max_attempts=3, delay=0.5):
         for attempt in range(max_attempts):
             try:
                 if os.path.exists(path):
@@ -182,25 +159,6 @@ class LogicInferenceEngine:
                 time.sleep(delay)
         print(f"Failed to clean up {path} after {max_attempts} attempts")
         return False
-
-    def cleanup(self):
-        directories_to_clean = [
-            './models/compiled_krb',
-            './models/symbolic_solvers/pyke_solver/.cache_program'
-        ]
-        for directory in directories_to_clean:
-            self.robust_cleanup(directory)
-
-    def cleanup_partial(self):
-        directories_to_clean = [
-            './models/compiled_krb',
-            './models/symbolic_solvers/pyke_solver/.cache_program'
-        ]
-        for directory in directories_to_clean:
-            if os.path.exists(directory):
-                for item in os.listdir(directory):
-                    item_path = os.path.join(directory, item)
-                    self.robust_cleanup(item_path)
             
     def inference_on_text(self, texts):
         outputs = []
@@ -231,8 +189,10 @@ def parse_args():
     parser.add_argument('--model_name', type=str, default='text-davinci-003')
     parser.add_argument('--timeout', type=int, default=60)
     parser.add_argument('--mode', type=str, default='CoT')
+    parser.add_argument('--zero_shot', type=int, default=0)
     parser.add_argument('--refiment', type=int, default=0)
     parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_beam_groups', type=int, default=1)
     parser.add_argument('--num_return_sequences', type=int, default=1)
     args = parser.parse_args()
     return args

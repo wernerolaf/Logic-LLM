@@ -17,7 +17,7 @@ from models.utils import print_gpu_utilization
 import time
 
 class LogicProgramGenerator:
-    def __init__(self, args, llm_model = None):
+    def __init__(self, args, llm_model=None):
         self.args = args
         self.data_path = args.data_path
         self.dataset_name = args.dataset_name
@@ -28,6 +28,8 @@ class LogicProgramGenerator:
         self.save_path = args.save_path
         self.framework_to_use = args.framework_to_use
         self.num_beams = args.num_beams
+        self.num_beam_groups = args.num_beam_groups
+        self.diversity_penalty = args.diversity_penalty
         self.num_return_sequences = args.num_return_sequences
         if llm_model is None:
             if self.framework_to_use == "OpenAI":
@@ -35,7 +37,7 @@ class LogicProgramGenerator:
             elif self.framework_to_use == "HuggingFace":
                 self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
                  is_AWQ=args.is_AWQ, timeout_time=args.timeout_time, batch_size=args.batch_size,
-                 num_beams=args.num_beams, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping))
+                 num_beams=args.num_beams, num_beam_groups=args.num_beam_groups, diversity_penalty=args.diversity_penalty, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping))
             else:
                 self.llm_model = LLMClass()
         else:
@@ -43,14 +45,15 @@ class LogicProgramGenerator:
 
         if args.use_fine_tuned == 1:
             self.model_name = args.model_name
-            
+        
         self.model_name=self.model_name.replace("/","-")
 
         self.prompt_creator = {'FOLIO': self.prompt_folio,
-                               'ProntoQA': self.prompt_prontoqa,
-                               'ProofWriter': self.prompt_proofwriter,
-                               'LogicalDeduction': self.prompt_logicaldeduction, 
-                               'AR-LSAT': self.prompt_arlsat}
+                           'ProntoQA': self.prompt_prontoqa,
+                           'ProofWriter': self.prompt_proofwriter,
+                           'LogicalDeduction': self.prompt_logicaldeduction, 
+                           'AR-LSAT': self.prompt_arlsat}
+        self.zero_shot = args.zero_shot
         self.load_prompt_templates()
     
     def load_prompt_templates(self):
@@ -59,6 +62,8 @@ class LogicProgramGenerator:
             prompt_file = './models/prompts/{}-long.txt'.format(self.dataset_name)
         with open(prompt_file, 'r') as f:
             self.prompt_template = f.read()
+        if self.zero_shot:
+            self.prompt_template = self.prompt_template.split("------", 1)[0] + "------" + self.prompt_template.rsplit("------", 1)[-1]
 
     def prompt_folio(self, test_data):
         problem = test_data['context']
@@ -175,14 +180,13 @@ class LogicProgramGenerator:
         # save outputs
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
-        
         if self.num_beams > 1:
-            with open(os.path.join(self.save_path, '{}_{}_{}-beam{}.json'.format(self.dataset_name,self.split,self.model_name,self.num_beams)), 'w') as f:
+            filename = f'{self.dataset_name}_{self.split}_{self.model_name}-beam{self.num_beams}-group{self.num_beam_groups}-zero-{self.zero_shot}.json'
+            with open(os.path.join(self.save_path, filename), 'w') as f:
                 json.dump(outputs, f, indent=2, ensure_ascii=False)
         else:
-            with open(os.path.join(self.save_path, '{}_{}_{}.json'.format(self.dataset_name,self.split,self.model_name,)), 'w') as f:
+            with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}-zero-{self.zero_shot}.json'), 'w') as f:
                 json.dump(outputs, f, indent=2, ensure_ascii=False)
-
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', type=str, default='./data')
@@ -195,9 +199,12 @@ def parse_args():
     parser.add_argument('--use_fine_tuned', type=int, default=0)
     parser.add_argument('--framework_to_use', type=str, default='HuggingFace')
     parser.add_argument('--stop_words', type=str, default='------')
-    parser.add_argument('--max_new_tokens', type=int, default=2048)
+    parser.add_argument('--max_new_tokens', type=int, default=1024)
     parser.add_argument('--is_AWQ', type=str, default="auto")
+    parser.add_argument('--zero_shot', type=int, default=0)
     parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_beam_groups', type=int, default=1)
+    parser.add_argument('--diversity_penalty', type=float, default=1.0)
     parser.add_argument('--num_return_sequences', type=int, default=1)
     parser.add_argument('--early_stopping', type=int, default=1)
     parser.add_argument('--batch_size', type=int, default=10)

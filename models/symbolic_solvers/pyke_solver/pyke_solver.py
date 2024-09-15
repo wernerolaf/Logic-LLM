@@ -2,9 +2,7 @@ import os
 import pyke
 from pyke import knowledge_engine
 import re
-
-
-import traceback
+import shutil
 
 class Pyke_Program:
     def __init__(self, logic_program:str, dataset_name = 'ProntoQA') -> None:
@@ -16,6 +14,15 @@ class Pyke_Program:
         cache_dir = os.path.join(os.path.dirname(__file__), '.cache_program')
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
+
+        # remove all files and directories from cache_dir
+        for filename in os.listdir(cache_dir):
+            file_path = os.path.join(cache_dir, filename)
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.remove(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+
         self.cache_dir = cache_dir
 
         # prepare the files for facts and rules
@@ -164,7 +171,6 @@ class Pyke_Program:
             result = self.check_specific_predicate(subject, predicate, engine)
             answer = self.answer_map[self.dataset_name](result, value_to_check)
         except Exception as e:
-            # print(traceback.format_exc())
             print(e)
             return None, e
         

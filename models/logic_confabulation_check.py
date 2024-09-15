@@ -20,13 +20,14 @@ class LogicConfabulationChecker:
         self.save_path = args.save_path
         self.refiment = args.refiment
         self.num_beams = args.num_beams
+        self.num_beam_groups = args.num_beam_groups
         self.num_return_sequences = args.num_return_sequences
         
         if args.use_existing_programs:
             self.dataset = self.load_logic_programs()
 
-        if self.num_beams>1:
-            self.model_name = self.model_name + "-beam" + str(self.num_beams)
+        if self.num_beams > 1:
+            self.model_name = f"{self.model_name}-beam{self.num_beams}-group{self.num_beam_groups}"
 
     def load_trained_model(self):
         model_path = f"{self.args.result_path}/{self.args.train_model_name}/{self.args.dataset_name}/bert/best"
@@ -80,6 +81,7 @@ class LogicConfabulationChecker:
 
             
             results.append({
+                'id': example['id'],
                 'program': program,
                 'answer': answer,
                 'flag': flag,

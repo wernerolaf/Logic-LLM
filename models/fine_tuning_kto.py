@@ -80,12 +80,15 @@ def get_prompt(x):
 
 def get_program(x):
     if 'program' not in x.index:
-        return x['raw_logic_programs'][0]
+        program = x['raw_logic_programs'][0]
     else:
         if x['program'] is None:
-            return x['raw_logic_programs'][0]
+            program = x['raw_logic_programs'][0]
         else:
-            return x['program']
+            program = x['program']
+
+    program = program.rsplit("------", 1)[0]+"------"
+    return program
 
 def prepare_data(model_name, split, logic_inference, logic_programs, dataset_name):
     df_logic=[]
@@ -110,6 +113,8 @@ def prepare_data(model_name, split, logic_inference, logic_programs, dataset_nam
             f.close()
 
         df=pd.DataFrame(all_samples)
+        if len(df) == 0:
+            continue
         df["clean_answer"] = df.predicted_answer.apply(get_choice)
         df = df.drop(columns=["question", "predicted_answer","context"])
         df["answer"] = df.answer.str.replace('(', '').replace(')', '')
@@ -144,6 +149,8 @@ def prepare_data(model_name, split, logic_inference, logic_programs, dataset_nam
             f.close()
 
         df=pd.DataFrame(all_samples)
+        if len(df) == 0:
+            continue
         df["dataset"] = dataset
         df["split"] = split
         df["model"] = model[:-5]

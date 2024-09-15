@@ -153,6 +153,8 @@ def parse_args():
     parser.add_argument('--mode', type=str, default='')
     parser.add_argument('--refiment', type=int, default=0)
     parser.add_argument('--num_beams', type=int, default=1)
+    parser.add_argument('--num_beam_groups', type=int, default=1)
+    parser.add_argument('--zero_shot', type=int, default=-1)
     args = parser.parse_args()
     return args
 
@@ -161,8 +163,11 @@ if __name__ == "__main__":
     model_name=args.model_name.replace("/","-")
     num_beams = args.num_beams
 
-    if num_beams>1:
-        model_name = model_name + "-beam" + str(num_beams)
+    if num_beams > 1:
+        model_name = f"{model_name}-beam{num_beams}-group{args.num_beam_groups}"
+
+    if args.zero_shot >= 0:
+        model_name=model_name+f"-zero-{self.zero_shot}"
 
     if args.mode == '':
         if args.refiment == 0:

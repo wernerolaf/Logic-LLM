@@ -168,11 +168,13 @@ class StoppingCriteriaToken(StoppingCriteria):
         return False
 
 class HuggingFaceModel(LLMClass):
-    def __init__(self, model_id, stop_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_return_sequences=1, early_stopping = True) -> None:
+    def __init__(self, model_id, stop_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
         self.num_beams = num_beams
+        self.num_beam_groups = num_beam_groups
+        self.diversity_penalty = diversity_penalty
         self.num_return_sequences = num_return_sequences
         self.early_stopping = early_stopping
     
@@ -196,7 +198,7 @@ class HuggingFaceModel(LLMClass):
 
         self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced",
          do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria, stop_strings = stop_words.split(" "),
-          num_beams=self.num_beams, num_return_sequences=self.num_return_sequences, early_stopping=self.early_stopping)
+          num_beams=self.num_beams,num_beam_groups = self.num_beam_groups,diversity_penalty=self.diversity_penalty, num_return_sequences=self.num_return_sequences, early_stopping=self.early_stopping)
         if self.pipe.tokenizer.pad_token_id is None:
             self.pipe.tokenizer.pad_token_id = self.pipe.model.config.eos_token_id
 
