@@ -167,7 +167,7 @@ if __name__ == "__main__":
         model_name = f"{model_name}-beam{num_beams}-group{args.num_beam_groups}"
 
     if args.zero_shot >= 0:
-        model_name=model_name+f"-zero-{self.zero_shot}"
+        model_name=model_name+f"-zero-{args.zero_shot}"
 
     if args.mode == '':
         if args.refiment == 0:

@@ -134,10 +134,18 @@ class LogicProgramGenerator:
     '''
     Updated version of logic_program_generation; speed up the generation process by batching
     '''
-    def batch_logic_program_generation(self, batch_size = 10):
+    def batch_logic_program_generation(self, batch_size = 10, auto_batch_size=True):
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
         print("Loaded {} examples from {} split.".format(len(raw_dataset),self.split))
+        if auto_batch_size:
+            chunk = raw_dataset[:batch_size]
+            # create prompt
+            full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
+            batch_outputs = self.llm_model.batch_generate(full_prompts)
+            relative_increase = print_gpu_utilization()
+            batch_size = max(batch_size, int(0.9 * (batch_size * (1+relative_increase) - 1)))
+            print('New batch size: ', batch_size)
 
         outputs = []
         # split dataset into chunks

@@ -129,13 +129,19 @@ def print_gpu_utilization():
     try:
         nvmlInit()
         gpus = nvmlDeviceGetCount()
+        min_increase = 100
         for g in range(gpus):
             handle = nvmlDeviceGetHandleByIndex(g)
             info = nvmlDeviceGetMemoryInfo(handle)
             print(f"GPU {g} memory occupied: {info.used//1024**2} MB.")
             print(f"GPU {g} memory occupied: {info.used/info.total*100:.2f} %.")
+            if info.used > 0:
+                possible_increase = (info.free / info.used)
+                min_increase = min(min_increase, possible_increase)
+        return min_increase
     except Exception as e:
         print("problems with reading GPU")
+        return 0
 
 from typing import List
 
@@ -172,10 +178,13 @@ class HuggingFaceModel(LLMClass):
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
-        self.num_beams = num_beams
-        self.num_beam_groups = num_beam_groups
+        self.num_beams = int(num_beams)
+        self.num_beam_groups = int(num_beam_groups)
         self.diversity_penalty = diversity_penalty
-        self.num_return_sequences = num_return_sequences
+        if num_beam_groups <= 1:
+            self.diversity_penalty = None
+
+        self.num_return_sequences = int(num_return_sequences)
         self.early_stopping = early_stopping
     
         if is_AWQ == "auto":
