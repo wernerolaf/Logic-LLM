@@ -157,24 +157,37 @@ from transformers import pipeline
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import StoppingCriteria, StoppingCriteriaList
+from transformers import LogitsProcessorList, LogitsProcessor
+
 from awq import AutoAWQForCausalLM
 
-class StoppingCriteriaToken(StoppingCriteria):
+class StoppingCriteriaSeq(StoppingCriteria):
 
-    def __init__(self, stops = []):
+    def __init__(self, tokenizer, stops = []):
         super().__init__()
         self.stops = stops
+        self.tokenizer = tokenizer
 
     def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor):
-        stop_count = 0
+        
+        generated_text = self.tokenizer.decode(input_ids[0][-5:], skip_special_tokens=True)
+
         for stop in self.stops:
-            if stop == int(input_ids[0][-1]):
+            if stop in generated_text:
                 return True
                 
         return False
 
+class IgnoreEOSLogitsProcessor(LogitsProcessor):
+    def __init__(self, eos_token_id):
+        self.eos_token_id = eos_token_id
+
+    def __call__(self, input_ids, scores):
+        scores[:, self.eos_token_id] = -float('inf')
+        return scores
+
 class HuggingFaceModel(LLMClass):
-    def __init__(self, model_id, stop_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
+    def __init__(self, model_id, stop_words, force_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
@@ -202,35 +215,76 @@ class HuggingFaceModel(LLMClass):
         else:
             self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="balanced", torch_dtype="auto")
 
-        stop_token_ids = [self.tokenizer.convert_tokens_to_ids(stop_token) for stop_token in stop_words.split(" ")]
-        stopping_criteria = StoppingCriteriaList([StoppingCriteriaToken(stops=stop_token_ids)])
+        if self.tokenizer.pad_token_id is None:
+            self.tokenizer.pad_token_id = self.model.config.eos_token_id
 
-        self.pipe = pipeline("text-generation", model=self.model, tokenizer=self.tokenizer, max_new_tokens=max_new_tokens, batch_size=batch_size, device_map="balanced",
-         do_sample=False, top_p = 1.0, return_full_text=False, stopping_criteria = stopping_criteria, stop_strings = stop_words.split(" "),
-          num_beams=self.num_beams,num_beam_groups = self.num_beam_groups,diversity_penalty=self.diversity_penalty, num_return_sequences=self.num_return_sequences, early_stopping=self.early_stopping)
-        if self.pipe.tokenizer.pad_token_id is None:
-            self.pipe.tokenizer.pad_token_id = self.pipe.model.config.eos_token_id
+        stopping_criteria = StoppingCriteriaList([StoppingCriteriaSeq(stops=stop_words.split(" "), tokenizer=self.tokenizer)])
+
+        self.force_words = force_words
+        if len(self.force_words) > 0:
+            self.force_words_ids = [self.tokenizer.encode(word, add_special_tokens=False) for word in force_words.split(" ")]
+            # Flatten the list of lists using list comprehension
+            self.force_words_ids = [item for sublist in self.force_words_ids for item in sublist]
+            print(self.force_words_ids)
+        else:
+            self.force_words_ids = None
+
+
+        pipeline_kwargs = {
+            "model": self.model,
+            "tokenizer": self.tokenizer,
+            "max_new_tokens": max_new_tokens,
+            "batch_size": batch_size,
+            "device_map": "balanced",
+            "do_sample": False,
+            "top_p": 1.0,
+            "return_full_text": False,
+            # "stopping_criteria": stopping_criteria,
+            "stop_strings": stop_words.split(" "),
+            "num_return_sequences": self.num_return_sequences,
+            "early_stopping": self.early_stopping,
+        }
+
+        if self.num_beams > 1:
+            pipeline_kwargs.update({
+                "num_beams": self.num_beams,
+                "num_beam_groups": self.num_beam_groups,
+                "diversity_penalty": self.diversity_penalty,
+                "force_words_ids": self.force_words_ids,
+            })
+
+        self.ignore_eos_processor = None
+        if len(self.force_words) > 0:
+            eos_token_id = self.tokenizer.eos_token_id
+            ignore_eos_processor = LogitsProcessorList([IgnoreEOSLogitsProcessor(eos_token_id)])
+            self.ignore_eos_processor = ignore_eos_processor
+            pipeline_kwargs.update({
+                "logits_processor": ignore_eos_processor,
+            })
+
+        self.pipe = pipeline("text-generation", **pipeline_kwargs)
+
 
     def generate(self, input_string, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                response = self.pipe(input_string, temperature=temperature, tokenizer=self.tokenizer)
+                response = self.pipe(input_string, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
                 generated_text = [response[i]["generated_text"].strip() for i in range(len(response))]
                 return generated_text
             except TimeoutError as e:
                 print(e)
                 # print(input_string)
-                return 'Time out!'
+                return ['Time out!']
 
     def batch_generate(self, messages_list, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                responses = self.pipe(messages_list, temperature=temperature, tokenizer=self.tokenizer)
+                responses = self.pipe(messages_list, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
                 generated_text = [[response[i]["generated_text"].strip() for i in range(len(response))] for response in responses]
                 return generated_text
             except TimeoutError as e:
                 print(e)
-                print(messages_list)
+                # print(messages_list)
                 return ['Time out!' for m in messages_list]
 
 

@@ -37,7 +37,8 @@ class LogicProgramGenerator:
             elif self.framework_to_use == "HuggingFace":
                 self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
                  is_AWQ=args.is_AWQ, timeout_time=args.timeout_time, batch_size=args.batch_size,
-                 num_beams=args.num_beams, num_beam_groups=args.num_beam_groups, diversity_penalty=args.diversity_penalty, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping))
+                 num_beams=args.num_beams, num_beam_groups=args.num_beam_groups, diversity_penalty=args.diversity_penalty, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping),
+                 force_words=args.force_words)
             else:
                 self.llm_model = LLMClass()
         else:
@@ -206,7 +207,8 @@ def parse_args():
     parser.add_argument('--model_path', type=str, default='/mnt/evafs/groups/luckner-lab/models/')
     parser.add_argument('--use_fine_tuned', type=int, default=0)
     parser.add_argument('--framework_to_use', type=str, default='HuggingFace')
-    parser.add_argument('--stop_words', type=str, default='------')
+    parser.add_argument('--stop_words', type=str, default='\n------')
+    parser.add_argument('--force_words', type=str, default='\n------')
     parser.add_argument('--max_new_tokens', type=int, default=1024)
     parser.add_argument('--is_AWQ', type=str, default="auto")
     parser.add_argument('--zero_shot', type=int, default=0)
