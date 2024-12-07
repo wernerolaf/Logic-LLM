@@ -9,6 +9,7 @@ __pycache__/
 debug/
 backupcodes/
 outputs/logic_inference/*
+outputs/experiments/*
 outputs/self_refine
 models/symbolic_solvers/swipl
 models/__pycache__/
