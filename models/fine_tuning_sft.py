@@ -191,6 +191,7 @@ def parse_args():
     parser.add_argument('--result_path', type=str, default="/mnt/evafs/groups/luckner-lab/models/")
     parser.add_argument('--save_dir', type=str, default="sft-full")
     parser.add_argument('--batch_size', type=int, default=4)
+    parser.add_argument('--auto_find_batch_size', type=int, default=1)
     parser.add_argument('--epochs', type=int, default=1)
     parser.add_argument('--ensure_chat_template', type=int, default=1)
     parser.add_argument('--zero_shot', type=int, default=0)
@@ -198,7 +199,9 @@ def parse_args():
     parser.add_argument('--fine_tune_all_modules', type=int, default=0)
     parser.add_argument('--lora_r', type=int, default=16)
     parser.add_argument('--lora_alpha', type=int, default=16)
-    parser.add_argument('--neftune_noise_alpha', type=int, default=5)
+    parser.add_argument('--neftune_noise_alpha', type=int, default=0)
+    parser.add_argument('--use_rslora', type=int, default=0)
+    parser.add_argument('--init_lora_weights', type=str, default='gaussian')
     args, unknown = parser.parse_known_args()
     return args
 
@@ -237,21 +240,39 @@ if __name__ == "__main__":
     else:
         resume_from_checkpoint = False
 
-    training_args = SFTConfig(output_dir=os.path.join(args.result_path, model_name, args.dataset_name, save_dir),
-                                    report_to="tensorboard",
-                                    load_best_model_at_end = True,
-                                    num_train_epochs = args.epochs,
-                                    logging_steps = 10,
-                                    save_total_limit = 2,
-                                    eval_strategy="epoch", save_strategy = "epoch",
-                                    save_safetensors=False,
-                                    fp16=False,
-                                    max_seq_length = 2048,
-                                    auto_find_batch_size=True,
-                                    neftune_noise_alpha=None if args.neftune_noise_alpha<=0 else args.neftune_noise_alpha,
-                                    )
-
-
+    training_args = SFTConfig(
+        output_dir=os.path.join(args.result_path, model_name, args.dataset_name, save_dir),
+        report_to="tensorboard",
+        load_best_model_at_end = True,
+        num_train_epochs = args.epochs,
+        logging_steps = 10,
+        save_total_limit = 2,
+        eval_strategy="epoch", 
+        save_strategy = "epoch",
+        save_safetensors=False,
+        gradient_checkpointing=True,
+        gradient_accumulation_steps=1,
+        fp16=True,
+        optim="adamw_torch_fused",
+        max_seq_length = 2048,
+        per_device_train_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
+        per_device_eval_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
+        auto_find_batch_size=bool(args.auto_find_batch_size),
+        neftune_noise_alpha=None if args.neftune_noise_alpha<=0 else args.neftune_noise_alpha,
+        deepspeed={
+        "zero_optimization": {
+            "stage": 2,
+            "offload_optimizer": {
+                "device": "cpu",
+                "pin_memory": True
+            },
+            "offload_param": {
+                "device": "cpu",
+                "pin_memory": True
+            }
+        }
+    },
+    )
     lora_config = LoraConfig(
     r=args.lora_r,
     lora_alpha=args.lora_alpha,
@@ -259,18 +280,35 @@ if __name__ == "__main__":
     bias="none",
     target_modules=None if args.fine_tune_all_modules==1 else "all-linear",
     task_type="CAUSAL_LM",
-    )
+    use_rslora=bool(args.use_rslora),
+    init_lora_weights=args.init_lora_weights,
+)
+    
 
     quantization_config =None
     if bool(args.load_in_8bit):
-        quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+        # quantization_config = BitsAndBytesConfig(load_in_8bit=True)
+        quantization_config = BitsAndBytesConfig(
+            load_in_8bit=True,
+            llm_int8_enable_fp32_cpu_offload=True,
+            # llm_int8_has_fp16_weight=True
+        )
+
+
+    # model = AutoModelForCausalLM.from_pretrained(
+    # model_name,
+    # quantization_config = quantization_config,
+    # device_map="balanced",
+    # # torch_dtype=auto,
+    # )
 
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config = quantization_config,
-    device_map="balanced",
-    # torch_dtype=auto,
-    )
+    # device_map="auto",
+    # offload_folder="offload_folder",
+    torch_dtype="auto",
+)
 
     model.config.use_cache = False
     model.generation_config.pad_token_id=tokenizer.pad_token_id

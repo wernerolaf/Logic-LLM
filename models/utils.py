@@ -187,7 +187,7 @@ class IgnoreEOSLogitsProcessor(LogitsProcessor):
         return scores
 
 class HuggingFaceModel(LLMClass):
-    def __init__(self, model_id, stop_words, force_words, max_new_tokens, is_AWQ, timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
+    def __init__(self, model_id, stop_words, force_words="", max_new_tokens=1024, is_AWQ = "auto", timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time

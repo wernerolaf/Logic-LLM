@@ -11,6 +11,7 @@ from models.symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Progra
 # from models.symbolic_solvers.pyke_solver.pyke_solver import Pyke_Program
 from models.symbolic_solvers.csp_solver.csp_solver import CSP_Program
 from models.symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
+from models.symbolic_solvers.lean_solver.lean_solver import Lean_Program
 import argparse
 import random
 from models.backup_answer_generation import Backup_Answer_Generator
@@ -43,7 +44,9 @@ class LogicInferenceEngine:
                                 'ProntoQA': FOL_Prover9_Program,  # Changed from Pyke_Program
                                 'ProofWriter': FOL_Prover9_Program,  # Changed from Pyke_Program
                                 'LogicalDeduction': CSP_Program,
-                                'AR-LSAT': LSAT_Z3_Program}
+                                'AR-LSAT': LSAT_Z3_Program,
+                                'Lean': Lean_Program,
+                                }
         self.program_executor = program_executor_map[self.dataset_name]
         self.backup_generator = Backup_Answer_Generator(args.mode, self.dataset_name, args.split, args.model_name, self.backup_strategy, self.args.backup_LLM_result_path)
 
