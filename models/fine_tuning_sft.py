@@ -250,28 +250,28 @@ if __name__ == "__main__":
         eval_strategy="epoch", 
         save_strategy = "epoch",
         save_safetensors=False,
-        gradient_checkpointing=True,
+        # gradient_checkpointing=True,
         gradient_accumulation_steps=1,
         fp16=True,
-        optim="adamw_torch_fused",
+        # optim="adamw_torch_fused",
         max_seq_length = 2048,
         per_device_train_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
         per_device_eval_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
         auto_find_batch_size=bool(args.auto_find_batch_size),
         neftune_noise_alpha=None if args.neftune_noise_alpha<=0 else args.neftune_noise_alpha,
-        deepspeed={
-        "zero_optimization": {
-            "stage": 2,
-            "offload_optimizer": {
-                "device": "cpu",
-                "pin_memory": True
-            },
-            "offload_param": {
-                "device": "cpu",
-                "pin_memory": True
-            }
-        }
-    },
+    #     deepspeed={
+    #     "zero_optimization": {
+    #         "stage": 2,
+    #         "offload_optimizer": {
+    #             "device": "cpu",
+    #             "pin_memory": True
+    #         },
+    #         "offload_param": {
+    #             "device": "cpu",
+    #             "pin_memory": True
+    #         }
+    #     }
+    # },
     )
     lora_config = LoraConfig(
     r=args.lora_r,
@@ -283,35 +283,29 @@ if __name__ == "__main__":
     use_rslora=bool(args.use_rslora),
     init_lora_weights=args.init_lora_weights,
 )
-    
+
+    OFFLOAD_FOLDER = './offload_folder'
 
     quantization_config =None
     if bool(args.load_in_8bit):
-        # quantization_config = BitsAndBytesConfig(load_in_8bit=True)
         quantization_config = BitsAndBytesConfig(
             load_in_8bit=True,
-            llm_int8_enable_fp32_cpu_offload=True,
+            # llm_int8_enable_fp32_cpu_offload=True,
             # llm_int8_has_fp16_weight=True
         )
-
-
-    # model = AutoModelForCausalLM.from_pretrained(
-    # model_name,
-    # quantization_config = quantization_config,
-    # device_map="balanced",
-    # # torch_dtype=auto,
-    # )
 
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config = quantization_config,
-    # device_map="auto",
-    # offload_folder="offload_folder",
-    torch_dtype="auto",
+    device_map="auto",
+    # offload_folder=OFFLOAD_FOLDER,
+    torch_dtype=torch.float16,
 )
 
     model.config.use_cache = False
     model.generation_config.pad_token_id=tokenizer.pad_token_id
+
+    print_gpu_utilization()
 
     data = df_merged.to_dict('records')
     train_data, val_data = train_test_split(data, test_size=0.15, random_state=42)
@@ -326,6 +320,8 @@ if __name__ == "__main__":
         eval_dataset=val_data,
         peft_config=lora_config,
     )
+
+    print_gpu_utilization()
 
     trainer.train()
     trainer.save_model(os.path.join(args.result_path, model_name, args.dataset_name,save_dir,"best"))
