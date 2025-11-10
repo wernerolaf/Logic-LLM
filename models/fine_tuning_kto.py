@@ -3,7 +3,6 @@ from transformers import pipeline
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from transformers import StoppingCriteria, StoppingCriteriaList
-from awq import AutoAWQForCausalLM
 from transformers import TrainingArguments, Trainer
 from transformers import DataCollatorForLanguageModeling
 from trl import KTOConfig, KTOTrainer

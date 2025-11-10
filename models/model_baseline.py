@@ -163,6 +163,7 @@ def parse_args():
 if __name__ == '__main__':
     overall_start = time.time()
     args = parse_args()
+    os.environ['LLM_CHAT_STYLE'] = args.mode
     model_problem_reduction = Model_Baseline(args)
     model_problem_reduction.batch_reasoning_graph_generation(batch_size=10)
     print(f"Total time: {time.time() - overall_start:.2f} secs")

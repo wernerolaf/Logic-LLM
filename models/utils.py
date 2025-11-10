@@ -14,75 +14,23 @@ The OpenAIModel and HuggingFaceModel classes handle generating text with differe
 The Timeout context manager allows limiting execution time.
 """
 import backoff  # for exponential backoff
-import openai
+import random
+import json
+# OpenAI SDK (new style)
+try:
+    from openai import (
+        OpenAI,
+        RateLimitError,
+        APIError,
+        APIConnectionError,
+        APITimeoutError,
+    )
+except Exception:
+    OpenAI = None  # Fallback handled in OpenAIModel
+    RateLimitError = APIError = APIConnectionError = APITimeoutError = Exception
 import os
 import asyncio
 from typing import Any
-
-@backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def completions_with_backoff(**kwargs):
-    return openai.Completion.create(**kwargs)
-
-@backoff.on_exception(backoff.expo, openai.error.RateLimitError)
-def chat_completions_with_backoff(**kwargs):
-    return openai.ChatCompletion.create(**kwargs)
-
-async def dispatch_openai_chat_requests(
-    messages_list: list[list[dict[str,Any]]],
-    model: str,
-    temperature: float,
-    max_tokens: int,
-    top_p: float,
-    stop_words: list[str]
-) -> list[str]:
-    """Dispatches requests to OpenAI API asynchronously.
-    
-    Args:
-        messages_list: List of messages to be sent to OpenAI ChatCompletion API.
-        model: OpenAI model to use.
-        temperature: Temperature to use for the model.
-        max_tokens: Maximum number of tokens to generate.
-        top_p: Top p to use for the model.
-        stop_words: List of words to stop the model from generating.
-    Returns:
-        List of responses from OpenAI API.
-    """
-    async_responses = [
-        openai.ChatCompletion.acreate(
-            model=model,
-            messages=x,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            top_p=top_p,
-            stop = stop_words
-        )
-        for x in messages_list
-    ]
-    return await asyncio.gather(*async_responses)
-
-async def dispatch_openai_prompt_requests(
-    messages_list: list[list[dict[str,Any]]],
-    model: str,
-    temperature: float,
-    max_tokens: int,
-    top_p: float,
-    stop_words: list[str]
-) -> list[str]:
-    async_responses = [
-        openai.Completion.acreate(
-            model=model,
-            prompt=x,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            top_p=top_p,
-            frequency_penalty = 0.0,
-            presence_penalty = 0.0,
-            stop = stop_words
-        )
-        for x in messages_list
-    ]
-    return await asyncio.gather(*async_responses)
-
 from signal import signal, alarm, SIGALRM
 import time
 
@@ -159,8 +107,6 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import StoppingCriteria, StoppingCriteriaList
 from transformers import LogitsProcessorList, LogitsProcessor
 
-from awq import AutoAWQForCausalLM
-
 class StoppingCriteriaSeq(StoppingCriteria):
 
     def __init__(self, tokenizer, stops = []):
@@ -199,24 +145,17 @@ class HuggingFaceModel(LLMClass):
 
         self.num_return_sequences = int(num_return_sequences)
         self.early_stopping = early_stopping
-    
-        if is_AWQ == "auto":
-            if "AWQ" in model_id:
-                is_AWQ = True
-            else:
-                is_AWQ = False
-        else:
-            is_AWQ = bool(is_AWQ)
 
-        if is_AWQ:
-            model = AutoAWQForCausalLM.from_quantized(model_id, fuse_layers=True, device_map = 'balanced',
-                                          trust_remote_code=False, safetensors=True)
-            self.model = model.model
-        else:
-            self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="balanced", torch_dtype="auto")
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="balanced", torch_dtype="auto")
 
         if self.tokenizer.pad_token_id is None:
             self.tokenizer.pad_token_id = self.model.config.eos_token_id
+
+        # Many causal models require left padding
+        try:
+            self.tokenizer.padding_side = "left"
+        except Exception:
+            pass
 
         stopping_criteria = StoppingCriteriaList([StoppingCriteriaSeq(stops=stop_words.split(" "), tokenizer=self.tokenizer)])
 
@@ -262,13 +201,53 @@ class HuggingFaceModel(LLMClass):
                 "logits_processor": ignore_eos_processor,
             })
 
+        # Detect instruction-tuned chat models and enable chat templating if available
+        self.use_chat_template = False
+        try:
+            if isinstance(self.model_id, str) and ("instruct" in self.model_id.lower()):
+                has_apply = hasattr(self.tokenizer, "apply_chat_template")
+                has_template = getattr(self.tokenizer, "chat_template", None) is not None
+                self.use_chat_template = bool(has_apply and has_template)
+        except Exception:
+            self.use_chat_template = False
+
         self.pipe = pipeline("text-generation", **pipeline_kwargs)
 
+
+    def _maybe_apply_chat_template(self, inp):
+        """If model is instruction-tuned and tokenizer defines a chat template,
+        wrap the plain string as a single user message and render it.
+        """
+        if not self.use_chat_template:
+            return inp
+        try:
+            style = os.getenv("LLM_CHAT_STYLE", "logic")  # or use args
+            if style == "CoT":
+                system_text = "Explain your reasoning step-by-step, then give the final answer."
+            elif style == "Direct":
+                system_text = "Return the answer immediately."
+            else:
+                system_text = "Return only the logic program in the correct format."
+
+            messages = [
+                {"role": "system", "content": system_text},
+                {"role": "user", "content": inp},
+            ]
+            rendered = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
+            return rendered
+        except Exception:
+            # Fallback to the raw input if templating fails for any reason
+            return inp
 
     def generate(self, input_string, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                response = self.pipe(input_string, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
+                to_generate = self._maybe_apply_chat_template(input_string)
+                response = self.pipe(to_generate, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
                 generated_text = [response[i]["generated_text"].strip() for i in range(len(response))]
                 return generated_text
             except TimeoutError as e:
@@ -279,7 +258,13 @@ class HuggingFaceModel(LLMClass):
     def batch_generate(self, messages_list, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
-                responses = self.pipe(messages_list, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
+                if self.use_chat_template:
+                    prepped = []
+                    for m in messages_list:
+                        prepped.append(self._maybe_apply_chat_template(m))
+                else:
+                    prepped = messages_list
+                responses = self.pipe(prepped, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
                 generated_text = [[response[i]["generated_text"].strip() for i in range(len(response))] for response in responses]
                 return generated_text
             except TimeoutError as e:
@@ -290,88 +275,311 @@ class HuggingFaceModel(LLMClass):
 
 class OpenAIModel(LLMClass):
     def __init__(self, API_KEY, model_name, stop_words, max_new_tokens) -> None:
-        openai.api_key = API_KEY
-        self.model_name = model_name
-        self.max_new_tokens = max_new_tokens
+        # Prefer the new OpenAI SDK client. If unavailable, raise a helpful error.
+        if OpenAI is None:
+            raise ImportError(
+                "OpenAI SDK v1+ is required. Install/update with `pip install --upgrade openai`."
+            )
+
+        # Initialize client using explicit key or env vars.
+        # Preference: provided API_KEY -> env OPENAI_KEY -> env OPENAI_API_KEY
+        # Treat placeholder values like "KEY" as unset and prefer env vars
+        provided_key = (str(API_KEY).strip() if API_KEY is not None else "")
+        use_provided = bool(provided_key) and provided_key.upper() != "KEY"
+        api_key = (provided_key if use_provided else None) \
+            or os.environ.get("OPENAI_KEY") \
+            or os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "OpenAI API key not found. Pass API_KEY or set OPENAI_KEY/OPENAI_API_KEY."
+            )
+        self.client = OpenAI(api_key=api_key)
+        self.model_name = str(model_name)
+        self.max_new_tokens = int(max_new_tokens) if max_new_tokens else None
         self.stop_words = stop_words
+        # Retry/backoff settings for rate limits and transient errors
+        self.batch_max_retries = 6
+        self.retry_base_seconds = 1.0
+        self.retry_max_sleep = 60.0
+
+    def _sleep_backoff(self, attempt: int):
+        base = self.retry_base_seconds
+        delay = min(self.retry_max_sleep, base * (2 ** attempt) + random.uniform(0, 0.25 * base))
+        time.sleep(delay)
+
+    def _with_retries(self, func, *args, **kwargs):
+        last_err = None
+        for attempt in range(self.batch_max_retries):
+            try:
+                return func(*args, **kwargs)
+            except (RateLimitError, APIConnectionError, APITimeoutError) as e:
+                last_err = e
+            except APIError as e:
+                # Retry only for 5xx API errors
+                status = getattr(e, "status_code", None)
+                if status is not None and int(status) < 500:
+                    raise
+                last_err = e
+            if attempt == self.batch_max_retries - 1:
+                break
+            self._sleep_backoff(attempt)
+        raise last_err
 
     # used for chat-gpt and gpt-4
     def chat_generate(self, input_string, temperature = 0.0):
-        response = chat_completions_with_backoff(
-                model = self.model_name,
-                messages=[
-                        {"role": "user", "content": input_string}
-                    ],
-                max_tokens = self.max_new_tokens,
-                temperature = temperature,
-                top_p = 1.0,
-                stop = self.stop_words
+        response = self._with_retries(
+            self.client.chat.completions.create,
+            model=self.model_name,
+            messages=[{"role": "user", "content": input_string}],
+            max_tokens=self.max_new_tokens,
+            temperature=temperature,
+            top_p=1.0,
+            stop=self.stop_words,
         )
-        generated_text = response['choices'][0]['message']['content'].strip()
-        return generated_text
+        return (response.choices[0].message.content or "").strip()
     
     # used for text/code-davinci
     def prompt_generate(self, input_string, temperature = 0.0):
-        response = completions_with_backoff(
-            model = self.model_name,
-            prompt = input_string,
-            max_tokens = self.max_new_tokens,
-            temperature = temperature,
-            top_p = 1.0,
-            frequency_penalty = 0.0,
-            presence_penalty = 0.0,
-            stop = self.stop_words
+        response = self._with_retries(
+            self.client.completions.create,
+            model=self.model_name,
+            prompt=input_string,
+            max_tokens=self.max_new_tokens,
+            temperature=temperature,
+            top_p=1.0,
+            frequency_penalty=0.0,
+            presence_penalty=0.0,
+            stop=self.stop_words,
         )
-        generated_text = response['choices'][0]['text'].strip()
-        return generated_text
+        return (response.choices[0].text or "").strip()
 
     def generate(self, input_string, temperature = 0.0):
-        if self.model_name in ['text-davinci-002', 'code-davinci-002', 'text-davinci-003']:
-            return self.prompt_generate(input_string, temperature)
-        elif self.model_name in ['gpt-4', 'gpt-3.5-turbo']:
+        name = self.model_name.lower()
+        # Use chat for modern models (e.g., gpt-4, gpt-4o, gpt-5, o-series)
+        if name.startswith("gpt-") or name.startswith("o"):
             return self.chat_generate(input_string, temperature)
-        else:
-            raise Exception("Model name not recognized")
+        # Fallback to legacy completions for non-chat base models
+        return self.prompt_generate(input_string, temperature)
     
     def batch_chat_generate(self, messages_list, temperature = 0.0):
-        open_ai_messages_list = []
-        for message in messages_list:
-            open_ai_messages_list.append(
-                [{"role": "user", "content": message}]
-            )
-        predictions = asyncio.run(
-            dispatch_openai_chat_requests(
-                    open_ai_messages_list, self.model_name, temperature, self.max_new_tokens, 1.0, self.stop_words
-            )
-        )
-        return [x['choices'][0]['message']['content'].strip() for x in predictions]
+        outputs = []
+        for idx, message in enumerate(messages_list):
+            try:
+                outputs.append(self.chat_generate(message, temperature))
+            except Exception as e:
+                outputs.append(f"<error at {idx}: {e}>")
+        return outputs
     
     def batch_prompt_generate(self, prompt_list, temperature = 0.0):
-        predictions = asyncio.run(
-            dispatch_openai_prompt_requests(
-                    prompt_list, self.model_name, temperature, self.max_new_tokens, 1.0, self.stop_words
-            )
-        )
-        return [x['choices'][0]['text'].strip() for x in predictions]
+        outputs = []
+        for idx, prompt in enumerate(prompt_list):
+            try:
+                outputs.append(self.prompt_generate(prompt, temperature))
+            except Exception as e:
+                outputs.append(f"<error at {idx}: {e}>")
+        return outputs
 
     def batch_generate(self, messages_list, temperature = 0.0):
-        if self.model_name in ['text-davinci-002', 'code-davinci-002', 'text-davinci-003']:
-            return self.batch_prompt_generate(messages_list, temperature)
-        elif self.model_name in ['gpt-4', 'gpt-3.5-turbo']:
+        name = self.model_name.lower()
+        if name.startswith("gpt-") or name.startswith("o"):
             return self.batch_chat_generate(messages_list, temperature)
-        else:
-            raise Exception("Model name not recognized")
+        return self.batch_prompt_generate(messages_list, temperature)
 
     def generate_insertion(self, input_string, suffix, temperature = 0.0):
-        response = completions_with_backoff(
-            model = self.model_name,
-            prompt = input_string,
-            suffix= suffix,
-            temperature = temperature,
-            max_tokens = self.max_new_tokens,
-            top_p = 1.0,
-            frequency_penalty = 0.0,
-            presence_penalty = 0.0
+        response = self._with_retries(
+            self.client.completions.create,
+            model=self.model_name,
+            prompt=input_string,
+            suffix=suffix,
+            temperature=temperature,
+            max_tokens=self.max_new_tokens,
+            top_p=1.0,
+            frequency_penalty=0.0,
+            presence_penalty=0.0,
         )
-        generated_text = response['choices'][0]['text'].strip()
-        return generated_text
+        return (response.choices[0].text or "").strip()
+
+    # =====================
+    # Batch API (JSONL flow)
+    # =====================
+    def _normalize_stop(self):
+        return self.stop_words
+
+    def write_batch_jsonl(
+        self,
+        items,
+        jsonl_path,
+        *,
+        endpoint = "/v1/chat/completions",
+        temperature: float = 0.0,
+        system_prompt = None,
+        metadata_per_item = None,
+    ):
+        """Writes a batch input JSONL file for the Batch API.
+
+        - items: list of prompts (strings). For chat endpoint, treated as user messages.
+        - jsonl_path: file to write.
+        - endpoint: one of "/v1/chat/completions" or "/v1/completions".
+        - returns: list of custom_ids (req-0, req-1, ...)
+        """
+        if endpoint not in {"/v1/chat/completions", "/v1/completions"}:
+            raise ValueError("Unsupported endpoint for batch input: " + endpoint)
+
+        stop = self._normalize_stop()
+        custom_ids = []
+        with open(jsonl_path, "w", encoding="utf-8") as f:
+            for i, item in enumerate(items):
+                cid = f"request-{i}"
+                custom_ids.append(cid)
+                if endpoint == "/v1/chat/completions":
+                    messages = []
+                    if system_prompt:
+                        messages.append({"role": "system", "content": system_prompt})
+                    messages.append({"role": "user", "content": item})
+                    body = {
+                        "model": self.model_name,
+                        "messages": messages,
+                        "max_tokens": self.max_new_tokens,
+                        "temperature": temperature,
+                        "top_p": 1.0,
+                    }
+                    if stop is not None:
+                        body["stop"] = stop
+                else:  # /v1/completions
+                    body = {
+                        "model": self.model_name,
+                        "prompt": item,
+                        "max_tokens": self.max_new_tokens,
+                        "temperature": temperature,
+                        "top_p": 1.0,
+                        "frequency_penalty": 0.0,
+                        "presence_penalty": 0.0,
+                    }
+                    if stop is not None:
+                        body["stop"] = stop
+
+                line = {
+                    "custom_id": cid,
+                    "method": "POST",
+                    "url": endpoint,
+                    "body": body,
+                }
+                if metadata_per_item and i < len(metadata_per_item) and metadata_per_item[i]:
+                    line["metadata"] = metadata_per_item[i]
+                f.write(json.dumps(line, ensure_ascii=False) + "\n")
+        return custom_ids
+
+    def create_batch(
+        self,
+        input_file_path,
+        *,
+        endpoint = "/v1/chat/completions",
+        completion_window = "24h",
+        metadata = None,
+    ):
+        """Uploads a JSONL file and creates a Batch job. Returns the Batch object."""
+        batch_input_file = self.client.files.create(
+            file=open(input_file_path, "rb"),
+            purpose="batch",
+        )
+        return self.client.batches.create(
+            input_file_id=batch_input_file.id,
+            endpoint=endpoint,
+            completion_window=completion_window,
+            metadata=metadata,
+        )
+
+    def wait_for_batch(self, batch_id, poll_seconds: int = 10):
+        """Polls the Batch until a terminal state. Returns final Batch object."""
+        running = {"validating", "in_progress", "finalizing", "cancelling"}
+        batch_obj = self.client.batches.retrieve(batch_id)
+        while batch_obj.status in running:
+            print(f"Current status: {batch_obj.status}")
+            time.sleep(poll_seconds)
+            batch_obj = self.client.batches.retrieve(batch_id)
+        print(f"Final status: {batch_obj.status}")
+        return batch_obj
+
+    def download_batch_output_text(self, output_file_id: str) -> str:
+        """Downloads the batch output file content as text."""
+        file_response = self.client.files.content(output_file_id)
+        # New SDK returns a response-like object with .text
+        return getattr(file_response, "text", str(file_response))
+
+    def parse_batch_output(self, output_text: str):
+        """Parses the output JSONL into a mapping by custom_id.
+
+        Returns a dict where each value is a dict with keys: response, error, and a
+        convenience 'content' field containing text content when available.
+        """
+        results = {}
+        for line in output_text.splitlines():
+            if not line.strip():
+                continue
+            obj = json.loads(line)
+            cid = obj.get("custom_id")
+            response = obj.get("response")
+            error = obj.get("error")
+            content_val = None
+            try:
+                if response and isinstance(response, dict):
+                    body = response.get("body") or {}
+                    # Chat completions
+                    choices = body.get("choices") or []
+                    if choices:
+                        msg = choices[0].get("message") if isinstance(choices[0], dict) else None
+                        if msg and isinstance(msg, dict):
+                            content_val = msg.get("content")
+                        # Completions legacy fallback
+                        if content_val is None:
+                            content_val = choices[0].get("text")
+            except Exception:
+                pass
+            results[cid] = {"response": response, "error": error, "content": content_val}
+        return results
+
+    def batch_chat_generate_via_batch_api(
+        self,
+        messages_list,
+        *,
+        jsonl_path,
+        temperature: float = 0.0,
+        system_prompt = None,
+        completion_window: str = "24h",
+        metadata = None,
+        poll_seconds: int = 10,
+    ):
+        """High-level convenience method to run a chat batch and return outputs in input order."""
+        # 1) Build JSONL
+        custom_ids = self.write_batch_jsonl(
+            messages_list,
+            jsonl_path,
+            endpoint="/v1/chat/completions",
+            temperature=temperature,
+            system_prompt=system_prompt,
+        )
+        # 2) Create batch
+        batch_obj = self.create_batch(
+            jsonl_path,
+            endpoint="/v1/chat/completions",
+            completion_window=completion_window,
+            metadata=metadata,
+        )
+        # 3) Wait for completion
+        batch_obj = self.wait_for_batch(batch_obj.id, poll_seconds=poll_seconds)
+        if getattr(batch_obj, "status", None) != "completed":
+            raise RuntimeError(f"Batch did not complete successfully: {getattr(batch_obj, 'status', None)}")
+        # 4) Download and parse output
+        out_text = self.download_batch_output_text(batch_obj.output_file_id)
+        mapping = self.parse_batch_output(out_text)
+        # 5) Return aligned outputs in input order
+        outputs = []
+        for cid in custom_ids:
+            entry = mapping.get(cid) or {}
+            content = entry.get("content")
+            if content is None:
+                err = entry.get("error")
+                outputs.append(f"<error: {err}>")
+            else:
+                outputs.append(str(content))
+        return outputs

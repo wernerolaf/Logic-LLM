@@ -14,7 +14,6 @@ from transformers import pipeline
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from transformers import StoppingCriteria, StoppingCriteriaList
-from awq import AutoAWQForCausalLM
 from transformers import TrainingArguments, Trainer, Adafactor
 from transformers import DataCollatorForLanguageModeling, DataCollatorWithPadding
 from trl import AutoModelForCausalLMWithValueHead, PPOConfig, PPOTrainer

@@ -3,7 +3,6 @@ from transformers import pipeline
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from transformers import StoppingCriteria, StoppingCriteriaList
-from awq import AutoAWQForCausalLM
 from transformers import TrainingArguments, Trainer
 from transformers import DataCollatorForLanguageModeling
 from trl import SFTConfig, SFTTrainer
@@ -240,39 +239,34 @@ if __name__ == "__main__":
     else:
         resume_from_checkpoint = False
 
-    training_args = SFTConfig(
-        output_dir=os.path.join(args.result_path, model_name, args.dataset_name, save_dir),
-        report_to="tensorboard",
-        load_best_model_at_end = True,
-        num_train_epochs = args.epochs,
-        logging_steps = 10,
-        save_total_limit = 2,
-        eval_strategy="epoch", 
-        save_strategy = "epoch",
-        save_safetensors=False,
-        # gradient_checkpointing=True,
-        gradient_accumulation_steps=1,
-        fp16=True,
-        # optim="adamw_torch_fused",
-        max_seq_length = 2048,
-        per_device_train_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
-        per_device_eval_batch_size=args.batch_size if not bool(args.auto_find_batch_size) else None,
-        auto_find_batch_size=bool(args.auto_find_batch_size),
-        neftune_noise_alpha=None if args.neftune_noise_alpha<=0 else args.neftune_noise_alpha,
-    #     deepspeed={
-    #     "zero_optimization": {
-    #         "stage": 2,
-    #         "offload_optimizer": {
-    #             "device": "cpu",
-    #             "pin_memory": True
-    #         },
-    #         "offload_param": {
-    #             "device": "cpu",
-    #             "pin_memory": True
-    #         }
-    #     }
-    # },
-    )
+    # Build SFTConfig with compatibility across TRL versions
+    def build_sft_config(include_neftune: bool):
+        kwargs = dict(
+            output_dir=os.path.join(args.result_path, model_name, args.dataset_name, save_dir),
+            report_to="tensorboard",
+            load_best_model_at_end=True,
+            num_train_epochs=args.epochs,
+            logging_steps=10,
+            save_total_limit=2,
+            eval_strategy="epoch",
+            save_strategy="epoch",
+            save_safetensors=False,
+            gradient_accumulation_steps=1,
+            fp16=True,
+            per_device_train_batch_size=(None if bool(args.auto_find_batch_size) else args.batch_size),
+            per_device_eval_batch_size=(None if bool(args.auto_find_batch_size) else args.batch_size),
+            auto_find_batch_size=bool(args.auto_find_batch_size),
+            max_length=4096
+        )
+        if include_neftune and args.neftune_noise_alpha > 0:
+            kwargs["neftune_noise_alpha"] = args.neftune_noise_alpha
+        return SFTConfig(**kwargs)
+
+    try:
+        training_args = build_sft_config(include_neftune=True)
+    except TypeError:
+        # Fallback for older TRL: drop neftune and any unsupported keys
+        training_args = build_sft_config(include_neftune=False)
     lora_config = LoraConfig(
     r=args.lora_r,
     lora_alpha=args.lora_alpha,
@@ -314,7 +308,7 @@ if __name__ == "__main__":
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer = tokenizer,
+        processing_class = tokenizer,
         args=training_args,
         train_dataset=train_data,
         eval_dataset=val_data,

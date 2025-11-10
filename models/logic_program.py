@@ -33,7 +33,7 @@ class LogicProgramGenerator:
         self.num_return_sequences = args.num_return_sequences
         if llm_model is None:
             if self.framework_to_use == "OpenAI":
-                self.llm_model = OpenAIModel(args.api_key, 'gpt-4', args.stop_words, args.max_new_tokens)
+                self.llm_model = OpenAIModel(args.api_key, self.model_name, args.stop_words, args.max_new_tokens, llm_chat_style = args.llm_chat_style)
             elif self.framework_to_use == "HuggingFace":
                 self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
                  is_AWQ=args.is_AWQ, timeout_time=args.timeout_time, batch_size=args.batch_size,
@@ -218,6 +218,7 @@ def parse_args():
     parser.add_argument('--num_return_sequences', type=int, default=1)
     parser.add_argument('--early_stopping', type=int, default=1)
     parser.add_argument('--batch_size', type=int, default=10)
+    parser.add_argument('--auto_batch_size', type=int, default=1)
     parser.add_argument('--timeout_time', type=int, default=1200)
     args = parser.parse_args()
     return args
@@ -226,6 +227,6 @@ if __name__ == '__main__':
     overall_start = time.time()
     args = parse_args()
     logic_program_generator = LogicProgramGenerator(args)
-    logic_program_generator.batch_logic_program_generation(batch_size = args.batch_size)
+    logic_program_generator.batch_logic_program_generation(batch_size = args.batch_size, auto_batch_size = bool(args.auto_batch_size))
     print(f"Total time: {time.time() - overall_start:.2f} secs")
-    print_gpu_utilization()
+    # print_gpu_utilization()
