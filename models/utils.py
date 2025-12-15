@@ -270,7 +270,7 @@ class HuggingFaceModel(LLMClass):
             except TimeoutError as e:
                 print(e)
                 # print(messages_list)
-                return ['Time out!' for m in messages_list]
+                return [['Time out!'] for m in messages_list]
 
 
 class OpenAIModel(LLMClass):
