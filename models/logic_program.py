@@ -108,6 +108,10 @@ class LogicProgramGenerator:
     def logic_program_generation(self):
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
+        if getattr(self.args, "dataset_fraction", 1.0) < 1.0:
+            keep = max(1, int(len(raw_dataset) * self.args.dataset_fraction))
+            raw_dataset = raw_dataset[:keep]
+            print(f"Subsampled dataset to fraction {self.args.dataset_fraction} -> {len(raw_dataset)} examples.")
         print("Loaded {} examples from {} split.".format(len(raw_dataset),self.split))
 
         outputs = []
@@ -135,42 +139,55 @@ class LogicProgramGenerator:
     '''
     Updated version of logic_program_generation; speed up the generation process by batching
     '''
-    def batch_logic_program_generation(self, batch_size = 10, auto_batch_size=True):
+    def batch_logic_program_generation(self, batch_size = None, auto_batch_size=True):
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
+        if getattr(self.args, "dataset_fraction", 1.0) < 1.0:
+            keep = max(1, int(len(raw_dataset) * self.args.dataset_fraction))
+            raw_dataset = raw_dataset[:keep]
+            print(f"Subsampled dataset to fraction {self.args.dataset_fraction} -> {len(raw_dataset)} examples.")
         print("Loaded {} examples from {} split.".format(len(raw_dataset),self.split))
+        # prefer the LLM model's declared batch size when none is provided
+        batch_size = int(max(1, batch_size or getattr(self.llm_model, "batch_size", 1)))
         if auto_batch_size:
             chunk = raw_dataset[:batch_size]
-            # create prompt
-            full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
-            batch_outputs = self.llm_model.batch_generate(full_prompts)
+            # create prompt for probe
+            probe_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
+            _ = self.llm_model.batch_generate(probe_prompts)
             relative_increase = print_gpu_utilization()
             batch_size = max(batch_size, int(0.9 * (batch_size * (1+relative_increase) - 1)))
             print('New batch size: ', batch_size)
 
+        # propagate chosen batch size back to the model so the pipeline uses it
+        try:
+            self.llm_model.batch_size = batch_size
+        except Exception:
+            pass
+
+        # create prompts for entire dataset once
+        full_prompts = [self.prompt_creator[self.dataset_name](example) for example in raw_dataset]
+
         outputs = []
-        # split dataset into chunks
-        dataset_chunks = [raw_dataset[i:i + batch_size] for i in range(0, len(raw_dataset), batch_size)]
-        for chunk in tqdm(dataset_chunks):
-            # create prompt
-            full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
-            try:
-                batch_outputs = self.llm_model.batch_generate(full_prompts)
-                # create output
-                for sample, programs in zip(chunk, batch_outputs):
-                    output = {'id': sample['id'], 
-                            'context': sample['context'],
-                            'question': sample['question'], 
-                            'answer': sample['answer'],
-                            'options': sample['options'],
-                            'raw_logic_programs': programs}
-                    outputs.append(output)
-            except:
-                # generate one by one if batch generation fails
-                for sample, full_prompt in zip(chunk, full_prompts):
-                    try:
-                        output = self.llm_model.generate(full_prompt)
-                        programs = output
+        try:
+            batch_outputs = self.llm_model.batch_generate(full_prompts)
+            for sample, programs in zip(raw_dataset, batch_outputs):
+                output = {'id': sample['id'], 
+                        'context': sample['context'],
+                        'question': sample['question'], 
+                        'answer': sample['answer'],
+                        'options': sample['options'],
+                        'raw_logic_programs': programs}
+                outputs.append(output)
+        except Exception as e:
+            print(e)
+            print("Batch generation failed on full dataset; falling back to chunked mode.")
+            # split dataset into chunks
+            dataset_chunks = [ (raw_dataset[i:i + batch_size], full_prompts[i:i + batch_size]) for i in range(0, len(raw_dataset), batch_size)]
+            for chunk, chunk_prompts in tqdm(dataset_chunks):
+                try:
+                    batch_outputs = self.llm_model.batch_generate(chunk_prompts)
+                    # create output
+                    for sample, programs in zip(chunk, batch_outputs):
                         output = {'id': sample['id'], 
                                 'context': sample['context'],
                                 'question': sample['question'], 
@@ -178,9 +195,22 @@ class LogicProgramGenerator:
                                 'options': sample['options'],
                                 'raw_logic_programs': programs}
                         outputs.append(output)
-                    except Exception as e:
-                        print(e)
-                        print('Error in generating logic programs for example: ', sample['id'])
+                except:
+                    # generate one by one if batch generation fails
+                    for sample, full_prompt in zip(chunk, chunk_prompts):
+                        try:
+                            output = self.llm_model.generate(full_prompt)
+                            programs = output
+                            output = {'id': sample['id'], 
+                                    'context': sample['context'],
+                                    'question': sample['question'], 
+                                    'answer': sample['answer'],
+                                    'options': sample['options'],
+                                    'raw_logic_programs': programs}
+                            outputs.append(output)
+                        except Exception as e:
+                            print(e)
+                            print('Error in generating logic programs for example: ', sample['id'])
 
         # remove examples with duplicate ids from the result
         outputs = list({output['id']: output for output in outputs}.values())
@@ -220,6 +250,8 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=10)
     parser.add_argument('--auto_batch_size', type=int, default=1)
     parser.add_argument('--timeout_time', type=int, default=1200)
+    parser.add_argument('--dataset_fraction', type=float, default=1.0,
+                        help='Fraction of dataset to run (e.g., 0.033 for ~1/30).')
     args = parser.parse_args()
     return args
 

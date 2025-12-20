@@ -15,7 +15,7 @@ import argparse
 import time
 import datetime
 from sklearn.model_selection import train_test_split
-from models.utils import print_gpu_utilization
+from models.utils import print_gpu_utilization, strip_comments
 
 def get_choice(answer_str):
     choices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'A)', 'B)', 'C)', 'D)', 'E)', 'F)', 'G)', 'H)', 
@@ -80,16 +80,19 @@ def ensure_chat_template(tokenizer, model_name):
     return tokenizer
 
 def get_program(x):
-    if 'program' not in x.index:
-        program = x['raw_logic_programs'][0]
-    else:
-        if x['program'] is None:
+    try:
+        if 'program' not in x.index:
             program = x['raw_logic_programs'][0]
         else:
-            program = x['program']
+            if x['program'] is None:
+                program = x['raw_logic_programs'][0]
+            else:
+                program = x['program']
 
-    program = program.rsplit("------", 1)[0]+"------"
-    return program
+        program = program.rsplit("------", 1)[0]+"------"
+        return program
+    except:
+        return ""
 
 def prepare_data(model_name, split, logic_inference, logic_programs, dataset_name, zero_shot=True, template=None):
     df_logic=[]
@@ -201,6 +204,8 @@ def parse_args():
     parser.add_argument('--neftune_noise_alpha', type=int, default=0)
     parser.add_argument('--use_rslora', type=int, default=0)
     parser.add_argument('--init_lora_weights', type=str, default='gaussian')
+    parser.add_argument('--dataset_fraction', type=float, default=1.0,
+                        help='Fraction of the prepared dataset to keep (e.g., 0.033 for ~1/30).')
     args, unknown = parser.parse_known_args()
     return args
 
@@ -224,6 +229,10 @@ if __name__ == "__main__":
     df_merged = df_merged.rename(columns={"query": "prompt", "raw_logic_programs": "completion"})
     df_merged = df_merged.drop(columns = df_merged.columns.drop(["prompt", "completion"]))
     df_merged = df_merged.drop_duplicates()
+    df_merged = df_merged.drop_duplicates(subset=["prompt"], keep="first")
+    if args.dataset_fraction < 1.0:
+        df_merged = df_merged.sample(frac=args.dataset_fraction, random_state=42).reset_index(drop=True)
+        print(f"Subsampled dataset to fraction {args.dataset_fraction}, new shape: {df_merged.shape}")
     print(df_merged.shape)
 
     # Get current date

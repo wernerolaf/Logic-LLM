@@ -33,6 +33,19 @@ import asyncio
 from typing import Any
 from signal import signal, alarm, SIGALRM
 import time
+from tqdm import tqdm
+
+try:
+    from vllm import LLM, SamplingParams
+    VLLM_AVAILABLE = True
+except Exception:
+    VLLM_AVAILABLE = False
+
+
+
+def strip_comments(block: str) -> str:
+    return "\n".join(line.split(":::")[0].strip() for line in block.splitlines() if line.strip())
+
 
 class TimeoutError(Exception):
     ...
@@ -106,6 +119,12 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import StoppingCriteria, StoppingCriteriaList
 from transformers import LogitsProcessorList, LogitsProcessor
+try:
+    from datasets import Dataset
+    from transformers.pipelines.pt_utils import KeyDataset
+except Exception:
+    Dataset = None
+    KeyDataset = None
 
 class StoppingCriteriaSeq(StoppingCriteria):
 
@@ -133,10 +152,12 @@ class IgnoreEOSLogitsProcessor(LogitsProcessor):
         return scores
 
 class HuggingFaceModel(LLMClass):
-    def __init__(self, model_id, stop_words, force_words="", max_new_tokens=1024, is_AWQ = "auto", timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True) -> None:
+    def __init__(self, model_id, stop_words, force_words="", max_new_tokens=1024, is_AWQ = "auto", timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True, backend="vllm",
+    tensor_parallel_size=1) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
+        self.batch_size = int(batch_size)
         self.num_beams = int(num_beams)
         self.num_beam_groups = int(num_beam_groups)
         self.diversity_penalty = diversity_penalty
@@ -145,8 +166,7 @@ class HuggingFaceModel(LLMClass):
 
         self.num_return_sequences = int(num_return_sequences)
         self.early_stopping = early_stopping
-
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map="balanced", torch_dtype="auto")
+        self.backend = backend.lower()
 
         if self.tokenizer.pad_token_id is None:
             self.tokenizer.pad_token_id = self.model.config.eos_token_id
@@ -156,50 +176,6 @@ class HuggingFaceModel(LLMClass):
             self.tokenizer.padding_side = "left"
         except Exception:
             pass
-
-        stopping_criteria = StoppingCriteriaList([StoppingCriteriaSeq(stops=stop_words.split(" "), tokenizer=self.tokenizer)])
-
-        self.force_words = force_words
-        if len(self.force_words) > 0:
-            self.force_words_ids = [self.tokenizer.encode(word, add_special_tokens=False) for word in force_words.split(" ")]
-            # Flatten the list of lists using list comprehension
-            self.force_words_ids = [item for sublist in self.force_words_ids for item in sublist]
-            print(self.force_words_ids)
-        else:
-            self.force_words_ids = None
-
-
-        pipeline_kwargs = {
-            "model": self.model,
-            "tokenizer": self.tokenizer,
-            "max_new_tokens": max_new_tokens,
-            "batch_size": batch_size,
-            "device_map": "balanced",
-            "do_sample": False,
-            "top_p": 1.0,
-            "return_full_text": False,
-            # "stopping_criteria": stopping_criteria,
-            "stop_strings": stop_words.split(" "),
-            "num_return_sequences": self.num_return_sequences,
-            "early_stopping": self.early_stopping,
-        }
-
-        if self.num_beams > 1:
-            pipeline_kwargs.update({
-                "num_beams": self.num_beams,
-                "num_beam_groups": self.num_beam_groups,
-                "diversity_penalty": self.diversity_penalty,
-                "force_words_ids": self.force_words_ids,
-            })
-
-        self.ignore_eos_processor = None
-        if len(self.force_words) > 0:
-            eos_token_id = self.tokenizer.eos_token_id
-            ignore_eos_processor = LogitsProcessorList([IgnoreEOSLogitsProcessor(eos_token_id)])
-            self.ignore_eos_processor = ignore_eos_processor
-            pipeline_kwargs.update({
-                "logits_processor": ignore_eos_processor,
-            })
 
         # Detect instruction-tuned chat models and enable chat templating if available
         self.use_chat_template = False
@@ -211,7 +187,73 @@ class HuggingFaceModel(LLMClass):
         except Exception:
             self.use_chat_template = False
 
-        self.pipe = pipeline("text-generation", **pipeline_kwargs)
+        quantization_config =None
+        if False:
+            quantization_config = BitsAndBytesConfig(
+                load_in_8bit=True,
+            )
+
+        if self.backend == "vllm":
+            if not VLLM_AVAILABLE:
+                raise ImportError("vLLM is not installed but backend='vllm' was requested")
+
+            self.llm = LLM(
+                model=model_id,
+                tensor_parallel_size=tensor_parallel_size,
+                dtype="auto",
+                trust_remote_code=True,
+            )
+            self.stop_words = stop_words.split(" ")
+            self.max_new_tokens = max_new_tokens
+        else:
+
+            self.model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config = quantization_config, device_map="auto", torch_dtype="auto")
+
+            stopping_criteria = StoppingCriteriaList([StoppingCriteriaSeq(stops=stop_words.split(" "), tokenizer=self.tokenizer)])
+
+            self.force_words = force_words
+            if len(self.force_words) > 0:
+                self.force_words_ids = [self.tokenizer.encode(word, add_special_tokens=False) for word in force_words.split(" ")]
+                # Flatten the list of lists using list comprehension
+                self.force_words_ids = [item for sublist in self.force_words_ids for item in sublist]
+                print(self.force_words_ids)
+            else:
+                self.force_words_ids = None
+
+
+            pipeline_kwargs = {
+                "model": self.model,
+                "tokenizer": self.tokenizer,
+                "max_new_tokens": max_new_tokens,
+                "batch_size": self.batch_size,
+                "device_map": "auto",
+                "do_sample": False,
+                "top_p": 1.0,
+                "return_full_text": False,
+                # "stopping_criteria": stopping_criteria,
+                "stop_strings": stop_words.split(" "),
+                "num_return_sequences": self.num_return_sequences,
+                "early_stopping": self.early_stopping,
+            }
+
+            if self.num_beams > 1:
+                pipeline_kwargs.update({
+                    "num_beams": self.num_beams,
+                    "num_beam_groups": self.num_beam_groups,
+                    "diversity_penalty": self.diversity_penalty,
+                    "force_words_ids": self.force_words_ids,
+                })
+
+            self.ignore_eos_processor = None
+            if len(self.force_words) > 0:
+                eos_token_id = self.tokenizer.eos_token_id
+                ignore_eos_processor = LogitsProcessorList([IgnoreEOSLogitsProcessor(eos_token_id)])
+                self.ignore_eos_processor = ignore_eos_processor
+                pipeline_kwargs.update({
+                    "logits_processor": ignore_eos_processor,
+                })
+
+            self.pipe = pipeline("text-generation", **pipeline_kwargs)
 
 
     def _maybe_apply_chat_template(self, inp):
@@ -243,10 +285,32 @@ class HuggingFaceModel(LLMClass):
             # Fallback to the raw input if templating fails for any reason
             return inp
 
+    def _vllm_generate(self, prompts, temperature):
+        sampling_params = SamplingParams(
+            temperature=temperature,
+            max_tokens=self.max_new_tokens,
+            stop=self.stop_words,
+            n=self.num_return_sequences,
+        )
+
+        outputs = self.llm.generate(prompts, sampling_params)
+
+        results = []
+        for out in outputs:
+            texts = [o.text.strip() for o in out.outputs]
+            results.append(texts)
+
+        return results
+
+
     def generate(self, input_string, temperature = 0.0):
         with Timeout(self.timeout_time): # time out after 5 minutes
             try:
                 to_generate = self._maybe_apply_chat_template(input_string)
+
+                if self.backend == "vllm":
+                    return self._vllm_generate([to_generate], temperature)[0]
+
                 response = self.pipe(to_generate, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
                 generated_text = [response[i]["generated_text"].strip() for i in range(len(response))]
                 return generated_text
@@ -256,21 +320,55 @@ class HuggingFaceModel(LLMClass):
                 return ['Time out!']
 
     def batch_generate(self, messages_list, temperature = 0.0):
-        with Timeout(self.timeout_time): # time out after 5 minutes
-            try:
-                if self.use_chat_template:
-                    prepped = []
-                    for m in messages_list:
-                        prepped.append(self._maybe_apply_chat_template(m))
-                else:
-                    prepped = messages_list
-                responses = self.pipe(prepped, temperature=temperature, tokenizer=self.tokenizer, logits_processor=self.ignore_eos_processor)
-                generated_text = [[response[i]["generated_text"].strip() for i in range(len(response))] for response in responses]
-                return generated_text
-            except TimeoutError as e:
-                print(e)
-                # print(messages_list)
-                return [['Time out!'] for m in messages_list]
+        # with Timeout(self.timeout_time): # time out after 5 minutes
+        # try:
+        if self.use_chat_template:
+            prepped = []
+            for m in messages_list:
+                prepped.append(self._maybe_apply_chat_template(m))
+        else:
+            prepped = messages_list
+
+        if self.backend == "vllm":
+            return self._vllm_generate(prepped, temperature)
+
+        # Prefer dataset streaming to allow pipeline to batch on-GPU efficiently
+        if Dataset is not None and KeyDataset is not None:
+            ds = Dataset.from_dict({"text": prepped})
+            generated_text = []
+            for response in tqdm(
+                self.pipe(
+                    KeyDataset(ds, "text"),
+                    temperature=temperature,
+                    tokenizer=self.tokenizer,
+                    logits_processor=self.ignore_eos_processor,
+                    batch_size=self.batch_size,
+                ),
+                total=len(prepped),
+                desc="Generating"
+            ):
+                generated_text.append(
+                    [response[i]["generated_text"].strip() for i in range(len(response))]
+                )
+            return generated_text
+
+        # Fallback if datasets is unavailable
+        responses = self.pipe(
+            prepped,
+            temperature=temperature,
+            tokenizer=self.tokenizer,
+            logits_processor=self.ignore_eos_processor,
+            batch_size=self.batch_size,
+        )
+        generated_text = [
+            [response[i]["generated_text"].strip() for i in range(len(response))]
+            for response in responses
+        ]
+        return generated_text
+            # except TimeoutError as e:
+            #     print(e)
+            #     # print(messages_list)
+            #     return [['Time out!'] for m in messages_list]
 
 
 class OpenAIModel(LLMClass):
