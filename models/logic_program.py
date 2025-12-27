@@ -11,7 +11,7 @@ import json
 from tqdm import tqdm
 from collections import OrderedDict
 from typing import Dict, List, Tuple
-from models.utils import OpenAIModel, HuggingFaceModel, LLMClass
+from models.utils import OpenAIModel, HuggingFaceModel, LLMClass, friendly_model_name
 import argparse
 from models.utils import print_gpu_utilization
 import time
@@ -22,9 +22,9 @@ class LogicProgramGenerator:
         self.data_path = args.data_path
         self.dataset_name = args.dataset_name
         self.split = args.split
-        self.model_name = args.model_name
+        self.model_id = args.model_name
         if args.use_fine_tuned == 1:
-            self.model_name = args.model_path + args.model_name
+            self.model_id = args.model_path + args.model_name
         self.save_path = args.save_path
         self.framework_to_use = args.framework_to_use
         self.num_beams = args.num_beams
@@ -33,21 +33,19 @@ class LogicProgramGenerator:
         self.num_return_sequences = args.num_return_sequences
         if llm_model is None:
             if self.framework_to_use == "OpenAI":
-                self.llm_model = OpenAIModel(args.api_key, self.model_name, args.stop_words, args.max_new_tokens, llm_chat_style = args.llm_chat_style)
+                self.llm_model = OpenAIModel(args.api_key, self.model_id, args.stop_words, args.max_new_tokens, llm_chat_style = args.llm_chat_style)
             elif self.framework_to_use == "HuggingFace":
-                self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
+                self.llm_model = HuggingFaceModel(model_id=self.model_id, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens,
                  is_AWQ=args.is_AWQ, timeout_time=args.timeout_time, batch_size=args.batch_size,
                  num_beams=args.num_beams, num_beam_groups=args.num_beam_groups, diversity_penalty=args.diversity_penalty, num_return_sequences=args.num_return_sequences, early_stopping = bool(args.early_stopping),
-                 force_words=args.force_words)
+                 force_words=args.force_words, tensor_parallel_size=args.tensor_parallel_size)
             else:
                 self.llm_model = LLMClass()
         else:
             self.llm_model = llm_model
 
-        if args.use_fine_tuned == 1:
-            self.model_name = args.model_name
-        
-        self.model_name=self.model_name.replace("/","-")
+        # Use a short, filesystem-friendly tag for filenames (avoid absolute paths).
+        self.model_name = friendly_model_name(args.model_name)
 
         self.prompt_creator = {'FOLIO': self.prompt_folio,
                            'ProntoQA': self.prompt_prontoqa,
@@ -56,7 +54,7 @@ class LogicProgramGenerator:
                            'AR-LSAT': self.prompt_arlsat}
         self.zero_shot = args.zero_shot
         self.load_prompt_templates()
-    
+
     def load_prompt_templates(self):
         prompt_file = './models/prompts/{}.txt'.format(self.dataset_name)
         if self.dataset_name == 'AR-LSAT' and self.model_name == 'gpt-4':
@@ -252,6 +250,7 @@ def parse_args():
     parser.add_argument('--timeout_time', type=int, default=1200)
     parser.add_argument('--dataset_fraction', type=float, default=1.0,
                         help='Fraction of dataset to run (e.g., 0.033 for ~1/30).')
+    parser.add_argument('--tensor_parallel_size', type=int, default=1)
     args = parser.parse_args()
     return args
 

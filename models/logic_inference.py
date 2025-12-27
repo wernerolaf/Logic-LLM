@@ -15,7 +15,7 @@ from models.symbolic_solvers.lean_solver.lean_solver import Lean_Program
 import argparse
 import random
 from models.backup_answer_generation import Backup_Answer_Generator
-from models.utils import print_gpu_utilization
+from models.utils import print_gpu_utilization, friendly_model_name
 import time
 import shutil
 
@@ -24,8 +24,7 @@ class LogicInferenceEngine:
         self.args = args
         self.dataset_name = args.dataset_name
         self.split = args.split
-        self.model_name = args.model_name
-        self.model_name=self.model_name.replace("/","-")
+        self.model_name = friendly_model_name(args.model_name)
         self.save_path = args.save_path
         self.backup_strategy = args.backup_strategy
         self.refiment = args.refiment
@@ -49,18 +48,6 @@ class LogicInferenceEngine:
                                 }
         self.program_executor = program_executor_map[self.dataset_name]
         self.backup_generator = Backup_Answer_Generator(args.mode, self.dataset_name, args.split, args.model_name, self.backup_strategy, self.args.backup_LLM_result_path)
-
-    def load_logic_programs(self):
-        if self.refiment == -1:
-            dataset = {}
-        elif self.refiment == 0:
-            with open(os.path.join('./outputs/logic_programs', f'{self.dataset_name}_{self.split}_{self.model_name}.json')) as f:
-                dataset = json.load(f)
-        else:
-            with open(os.path.join('./outputs/logic_programs', f'self-refine-{self.refiment}_{self.dataset_name}_{self.split}_{self.model_name}.json')) as f:
-                dataset = json.load(f)
-        print(f"Loaded {len(dataset)} examples from {self.split} split.")
-        return dataset
 
     def load_logic_programs(self):
         dataset = {}

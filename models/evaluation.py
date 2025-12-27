@@ -16,6 +16,7 @@ import json
 import os
 import argparse
 import time
+from models.utils import friendly_model_name
 
 # these functions are heavily influenced by the HF squad_metrics.py script
 def normalize_text(s):
@@ -132,6 +133,10 @@ def full_evaluation(result_file):
     with open(result_file, 'r') as f:
         all_samples = json.load(f)
 
+    if len(all_samples) == 0:
+        print(f"No samples loaded from {result_file}. Executable rate: 0")
+        return
+
     executable_samples = [sample for sample in all_samples if sample['flag'] == 'success']
     first_acc, any_acc = evaluate_QA(all_samples)
     exe_first_acc, exe_any_acc = evaluate_QA(executable_samples)
@@ -160,7 +165,7 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    model_name=args.model_name.replace("/","-")
+    model_name = friendly_model_name(args.model_name)
     num_beams = args.num_beams
 
     if num_beams > 1:

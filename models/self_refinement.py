@@ -31,7 +31,13 @@ class SelfRefinementEngine:
             if self.framework_to_use == "OpenAI":
                 self.llm_model = OpenAIModel(args.api_key, 'gpt-4', args.stop_words, args.max_new_tokens)
             elif self.framework_to_use == "HuggingFace":
-                self.llm_model = HuggingFaceModel(model_id=self.model_name, stop_words = args.stop_words, max_new_tokens=args.max_new_tokens, is_AWQ=args.is_AWQ)
+                self.llm_model = HuggingFaceModel(
+                    model_id=self.model_name,
+                    stop_words=args.stop_words,
+                    max_new_tokens=args.max_new_tokens,
+                    is_AWQ=args.is_AWQ,
+                    tensor_parallel_size=args.tensor_parallel_size,
+                )
             else:
                 self.llm_model = LLMClass()
         else:
@@ -187,6 +193,7 @@ def parse_args():
     parser.add_argument('--max_new_tokens', type=int, default=1024)
     parser.add_argument('--is_AWQ', type=str, default="auto")
     parser.add_argument('--mode', type=str, default='CoT')
+    parser.add_argument('--tensor_parallel_size', type=int, default=1)
     args = parser.parse_args()
     return args
 

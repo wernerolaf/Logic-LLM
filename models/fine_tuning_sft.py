@@ -250,6 +250,13 @@ if __name__ == "__main__":
 
     # Build SFTConfig with compatibility across TRL versions
     def build_sft_config(include_neftune: bool):
+        # TRL/Transformers do not accept None for per_device_*; use a minimal default when auto_find_batch_size is enabled.
+        train_bs = args.batch_size
+        eval_bs = args.batch_size
+        if bool(args.auto_find_batch_size):
+            train_bs = max(1, int(args.batch_size) if args.batch_size else 1)
+            eval_bs = train_bs
+
         kwargs = dict(
             output_dir=os.path.join(args.result_path, model_name, args.dataset_name, save_dir),
             report_to="tensorboard",
@@ -262,8 +269,8 @@ if __name__ == "__main__":
             save_safetensors=False,
             gradient_accumulation_steps=1,
             fp16=True,
-            per_device_train_batch_size=(None if bool(args.auto_find_batch_size) else args.batch_size),
-            per_device_eval_batch_size=(None if bool(args.auto_find_batch_size) else args.batch_size),
+            per_device_train_batch_size=train_bs,
+            per_device_eval_batch_size=eval_bs,
             auto_find_batch_size=bool(args.auto_find_batch_size),
             max_length=4096
         )
@@ -308,7 +315,7 @@ if __name__ == "__main__":
     model.config.use_cache = False
     model.generation_config.pad_token_id=tokenizer.pad_token_id
 
-    print_gpu_utilization()
+    # print_gpu_utilization()
 
     data = df_merged.to_dict('records')
     train_data, val_data = train_test_split(data, test_size=0.15, random_state=42)

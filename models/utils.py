@@ -47,6 +47,19 @@ def strip_comments(block: str) -> str:
     return "\n".join(line.split(":::")[0].strip() for line in block.splitlines() if line.strip())
 
 
+def friendly_model_name(name: str) -> str:
+    """
+    Shorten a potentially absolute model path for use in filenames.
+    Keeps the last few path segments and replaces slashes with dashes so
+    logic_program and logic_inference stay in sync.
+    """
+    parts = [p for p in name.strip(os.sep).split(os.sep) if p]
+    if os.path.isabs(name) and len(parts) > 4:
+        parts = parts[-4:]
+    safe = "-".join(parts) if parts else name
+    return safe.replace("/", "-")
+
+
 class TimeoutError(Exception):
     ...
 
@@ -153,7 +166,7 @@ class IgnoreEOSLogitsProcessor(LogitsProcessor):
 
 class HuggingFaceModel(LLMClass):
     def __init__(self, model_id, stop_words, force_words="", max_new_tokens=1024, is_AWQ = "auto", timeout_time=300, batch_size=10, num_beams=1, num_beam_groups=1, diversity_penalty=1.0, num_return_sequences=1, early_stopping = True, backend="vllm",
-    tensor_parallel_size=1) -> None:
+    tensor_parallel_size=1, max_model_len=None) -> None:
         self.model_id = model_id
         self.tokenizer = AutoTokenizer.from_pretrained(model_id)
         self.timeout_time = timeout_time
@@ -168,8 +181,10 @@ class HuggingFaceModel(LLMClass):
         self.early_stopping = early_stopping
         self.backend = backend.lower()
 
-        if self.tokenizer.pad_token_id is None:
-            self.tokenizer.pad_token_id = self.model.config.eos_token_id
+        # Try to set a reasonable pad token before any heavy model init
+        eos_token_id = getattr(self.tokenizer, "eos_token_id", None)
+        if self.tokenizer.pad_token_id is None and eos_token_id is not None:
+            self.tokenizer.pad_token_id = eos_token_id
 
         # Many causal models require left padding
         try:
@@ -197,17 +212,25 @@ class HuggingFaceModel(LLMClass):
             if not VLLM_AVAILABLE:
                 raise ImportError("vLLM is not installed but backend='vllm' was requested")
 
-            self.llm = LLM(
+            llm_kwargs = dict(
                 model=model_id,
                 tensor_parallel_size=tensor_parallel_size,
                 dtype="auto",
                 trust_remote_code=True,
             )
+            if max_model_len is not None:
+                llm_kwargs["max_model_len"] = max_model_len
+
+            self.llm = LLM(**llm_kwargs)
             self.stop_words = stop_words.split(" ")
             self.max_new_tokens = max_new_tokens
         else:
 
             self.model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config = quantization_config, device_map="auto", torch_dtype="auto")
+
+            # If padding is still unset, borrow it from the loaded model config
+            if self.tokenizer.pad_token_id is None:
+                self.tokenizer.pad_token_id = getattr(self.model.config, "eos_token_id", self.tokenizer.pad_token_id)
 
             stopping_criteria = StoppingCriteriaList([StoppingCriteriaSeq(stops=stop_words.split(" "), tokenizer=self.tokenizer)])
 
